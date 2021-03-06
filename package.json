@@ -1,0 +1,27 @@
+{
+  "name": "marcherunner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "backend": "npm start --prefix backend",
+    "frontend": "npm start --prefix frontend",
+    "clientinstall": "npm install --prefix frontend",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrewthamcc/marche_runner.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrewthamcc/marche_runner/issues"
+  },
+  "homepage": "https://github.com/andrewthamcc/marche_runner#readme",
+  "devDependencies": {
+    "concurrently": "^6.0.0"
+  }
+}
