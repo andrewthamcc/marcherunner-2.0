@@ -1,0 +1,55 @@
+@import '../../theme/colors.scss'
+
+.button {
+  background-color: transparent;
+  border: 2px solid #c0c0c0;
+  border-radius: 40px;
+  box-shadow: 0 1px 2px 0 rgba(55, 58, 75, 0.35);
+  color: $black;
+  font-size: 1.6rem;
+  padding: 8px 16px;
+  width: 130px;
+
+  &-text {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  &.disabled {
+    background-color: #c0c0c0 !important;
+  }
+
+  &.no-border {
+    border: none;
+  }
+
+  &.green {
+    background-color: $green;
+    border-color: #ffffff;
+    color: #ffffff;
+
+    &:hover,
+    &:focus {
+      background-color: lighten($green, 5%);
+    }
+
+    &:active {
+      background-color: darken($green, 5%);
+    }
+  }
+
+  &.orange {
+    color: #ffffff;
+    background-color: $orange;
+
+    &:hover,
+    &:focus {
+      background-color: lighten($orange, 5%);
+    }
+
+    &:active {
+      background-color: darken($orange, 5%);
+    }
+  }
+}
