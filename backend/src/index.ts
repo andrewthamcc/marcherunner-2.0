@@ -1,12 +1,9 @@
-import express from 'express'
+import { app, server } from './server'
 
-const app = express()
-app.use(express.json())
+const port = process.env.port || 4000
 
-app.get('/', (req, res) => {
-  res.send('Hello World')
-})
-
-const port = process.env.PORT || 5000;
-
-app.listen(port, () => console.log(`Sever running on ${port} 🚀`));
+app.listen({ port }, () =>
+  console.log(
+    `Server running on http://localhost:${port}${server.graphqlPath} 🚀`
+  )
+)
