@@ -28,7 +28,7 @@ describe('button component', () => {
     const button = screen.getByRole('button', { name: /my button/i })
     expect(button).toBeDisabled()
   })
-  
+
   test('has a class name passed to it', () => {
     render(customRender(undefined, 'my-class'))
     const button = screen.getByRole('button', { name: /my button/i })
