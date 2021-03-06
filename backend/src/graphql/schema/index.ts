@@ -1,7 +1,7 @@
 import dummySchema from './dummy'
 
 const typeDefs = {
-  ...dummySchema
+  ...dummySchema,
 }
 
 export default typeDefs

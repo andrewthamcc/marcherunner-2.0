@@ -6,14 +6,14 @@ import app from './app'
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-});
+})
 
-server.applyMiddleware({ app });
+server.applyMiddleware({ app })
 
 app.use((req, res) => {
-  res.status(200);
-  res.send('Hello!');
-  res.end();
-});
+  res.status(200)
+  res.send('Hello!')
+  res.end()
+})
 
 export { server, app }

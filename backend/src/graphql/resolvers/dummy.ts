@@ -4,8 +4,8 @@ export default {
       return {
         firstName: 'Andrew',
         lastName: 'Tham',
-        email: 'hello@andrewtham.cc'
+        email: 'hello@andrewtham.cc',
       }
-    }
+    },
   },
 }

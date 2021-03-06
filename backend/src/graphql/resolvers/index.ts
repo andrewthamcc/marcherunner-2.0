@@ -1,7 +1,7 @@
 import dummyResolver from './dummy'
 
 const resolvers = {
-  ...dummyResolver
+  ...dummyResolver,
 }
 
 export default resolvers
