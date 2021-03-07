@@ -19,10 +19,5 @@ export default {
 
 export const Plain: React.FC<ToastProps> = () => {
   const toast = useToast()
-  return (
-    <Button
-      onClick={() => toast('a toast message')}
-      label="Show Toast"
-    />
-  )
+  return <Button onClick={() => toast('a toast message')} label="Show Toast" />
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Story, Meta } from '@storybook/react/types-6-0'
+import { StoryBookWrapper } from '../../utils'
 import { Button, ButtonProps } from './button'
 import { action } from '@storybook/addon-actions'
 
@@ -12,7 +13,11 @@ export default {
   },
 } as Meta
 
-const Template: Story<ButtonProps> = (args) => <Button {...args} />
+const Template: Story<ButtonProps> = (args) => (
+  <StoryBookWrapper>
+    <Button {...args} />
+  </StoryBookWrapper>
+)
 
 export const Green = Template.bind({})
 Green.args = {
