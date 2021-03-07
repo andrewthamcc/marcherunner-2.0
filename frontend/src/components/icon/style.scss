@@ -1,0 +1,46 @@
+.icon {
+  display: inline-block;
+
+  &.green {
+    svg {
+      path {
+        fill: #1dd43c;
+      }
+    }
+  }
+
+  &.orange {
+    svg {
+      path {
+        fill: #f48b00;
+      }
+    }
+  }
+
+  // color for icon-button
+  &.grey {
+    svg {
+      path {
+        fill: #747474;
+
+        &:hover,
+        &:focus {
+          fill: darken(#747474, 15%);
+        }
+      }
+    }
+  }
+
+  &.red {
+    svg {
+      path {
+        fill: #ff0000;
+
+        &:hover,
+        &:focus {
+          fill: darken(#ff0000, 15%);
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Meta } from '@storybook/react/types-6-0'
-import { Toast, ToastProps } from './toast'
+import { Toast, ToastProps, TOAST_TYPES, ToastVariants } from './toast'
 import { ToastProvider } from './toast.provider'
 import { useToast } from './use-toast'
 import { Button } from '../.'
@@ -19,5 +19,26 @@ export default {
 
 export const Plain: React.FC<ToastProps> = () => {
   const toast = useToast()
-  return <Button onClick={() => toast('a toast message')} label="Show Toast" />
+
+  const style = {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '1rem',
+  }
+
+  function handleClick(type: ToastVariants) {
+    toast('a toast message', { variant: type })
+  }
+
+  return (
+    <div style={style}>
+      {TOAST_TYPES.map((type, index) => (
+        <Button
+          key={index}
+          onClick={() => handleClick(type)}
+          label={`${type}`}
+        />
+      ))}
+    </div>
+  )
 }

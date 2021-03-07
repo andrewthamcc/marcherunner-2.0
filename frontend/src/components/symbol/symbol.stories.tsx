@@ -1,19 +1,11 @@
 import React from 'react'
-import { Story, Meta } from '@storybook/react/types-6-0'
-import { StoryBookWrapper } from '../../utils'
-import { Symbol, SymbolProps, SYMBOL_TYPES } from './symbol'
+import { Meta } from '@storybook/react/types-6-0'
+import { Symbol, SYMBOL_TYPES } from './symbol'
 
 export default {
   title: 'Atoms/Symbol',
   component: Symbol,
 } as Meta
-
-const Template: Story<SymbolProps> = (args) => (
-  <StoryBookWrapper>
-    SymbolProps
-    <Symbol {...args} />
-  </StoryBookWrapper>
-)
 
 const style = {
   display: 'flex',

@@ -1,8 +1,10 @@
 import React, { useState, createContext } from 'react'
 import { Toast, ToastProps } from './toast'
+import './style.scss'
 
 export type MessageOptions = Pick<ToastProps, 'variant' | 'timeout'>
 interface ToastMessage extends MessageOptions {
+  id: number
   message: string
 }
 
@@ -15,34 +17,36 @@ export const ToastContext = createContext<IToastContext | null>(null)
 export const ToastProvider: React.FC = ({ children }) => {
   const [toastMessages, setToastMessages] = useState<ToastMessage[]>([])
 
-  function closeToast(index: number) {
-    const remainingToasts = toastMessages.filter((t, i) => i !== index)
-    setToastMessages(remainingToasts)
+  const closeToast = (id: number) => {
+    setToastMessages((prev) => prev.filter((t) => t.id !== id))
   }
 
-  function showToast(
+  const showToast = (
     message: string,
-    options: MessageOptions = { variant: 'plain', timeout: undefined }
-  ) {
-    const newToasts = [...toastMessages, { message, ...options }]
-    setToastMessages(newToasts)
+    options: MessageOptions = { variant: undefined, timeout: undefined }
+  ) => {
+    const newToast = { message, ...options, id: toastMessages.length }
+    setToastMessages((prev) => [...prev, newToast])
   }
 
   return (
     <ToastContext.Provider value={{ showToast }}>
       {children}
-      <div id="toast-portal" />
-      <ul className="toast-list">
-        {toastMessages.map(({ ...messageProps }, index) => (
-          <li className="toast-list-item" key={index}>
-            <Toast
-              {...messageProps}
-              onClose={() => closeToast(index)}
-              showToast
-            />
-          </li>
-        ))}
-      </ul>
+
+      {toastMessages.length === 0 ? null : (
+        <ul className="toast-list">
+          {toastMessages.map(({ id, ...messageProps }) => (
+            <li className="toast-list-item" key={id}>
+              <Toast
+                {...messageProps}
+                onClose={() => closeToast(id)}
+                showToast
+                timeout={3500}
+              />
+            </li>
+          ))}
+        </ul>
+      )}
     </ToastContext.Provider>
   )
 }

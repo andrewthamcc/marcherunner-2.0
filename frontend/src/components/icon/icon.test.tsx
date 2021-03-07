@@ -1,12 +1,12 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import { Symbol, SYMBOL_TYPES } from './symbol'
+import { Icon, ICON_TYPES } from './icon'
 
-describe('Symbols', () => {
+describe('Icons', () => {
   const customRender = () => (
     <div>
-      {SYMBOL_TYPES.map((symbol, index) => (
-        <Symbol key={index} symbol={symbol} />
+      {ICON_TYPES.map((icon, index) => (
+        <Icon key={index} icon={icon} />
       ))}
     </div>
   )

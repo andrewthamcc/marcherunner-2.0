@@ -1,8 +1,8 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import { Toast, ToastVariants } from './toast'
 
-describe.skip('Toast message', () => {
+describe('Toast message', () => {
   const closefn = jest.fn()
 
   const customRender = (
@@ -11,8 +11,7 @@ describe.skip('Toast message', () => {
     timeout?: number,
     variant?: ToastVariants
   ) => (
-    <>
-      <div id="toast-portal" />
+    <div>
       <Toast
         showToast={showToast}
         message={message}
@@ -20,13 +19,21 @@ describe.skip('Toast message', () => {
         variant={variant}
         timeout={timeout}
       />
-    </>
+    </div>
   )
 
-  test('renders', async () => {
+  test('renders', () => {
     render(customRender())
 
     const toast = screen.getByText(/toast/i)
     expect(toast).toBeInTheDocument()
+  })
+
+  test('calls close fn', async () => {
+    render(customRender())
+
+    const close = screen.getByRole('button')
+    fireEvent.click(close)
+    expect(closefn).toBeCalledTimes(1)
   })
 })
