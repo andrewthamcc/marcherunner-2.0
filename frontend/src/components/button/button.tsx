@@ -1,7 +1,7 @@
 import React from 'react'
 import './style.scss'
 
-interface Props {
+export interface Props {
   border?: boolean
   label: string
   className?: string // passthrough for className
