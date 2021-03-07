@@ -1,7 +1,7 @@
 import React from 'react'
 import './style.scss'
 
-export interface Props {
+export interface ButtonProps {
   border?: boolean
   label: string
   className?: string // passthrough for className
@@ -10,14 +10,14 @@ export interface Props {
   onClick?: () => void
 }
 
-export const Button: React.FC<Props> = ({
+export const Button: React.FC<ButtonProps> = ({
   border = false,
   className = '',
   color = 'green',
   disabled = false,
   label,
   onClick,
-}: Props) => {
+}) => {
   return (
     <button
       name={label}
