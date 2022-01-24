@@ -1,4 +1,5 @@
 import React from 'react'
+import { ColorValues } from '../../theme'
 import { ReactComponent as Close } from './assets/close.svg'
 import './style.scss'
 
@@ -11,7 +12,7 @@ const iconVariants: Record<IconVariants, React.FC> = {
 
 interface IconProps {
   className?: string
-  color?: 'green' | 'orange' | 'grey' | 'red'
+  color?: ColorValues
   icon: IconVariants
 }
 

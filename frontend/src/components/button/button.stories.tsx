@@ -29,11 +29,6 @@ Orange.args = {
   color: 'orange',
 }
 
-export const Purple = Template.bind({})
-Purple.args = {
-  color: 'purple',
-}
-
 export const Disabled = Template.bind({})
 Disabled.args = {
   color: 'green',

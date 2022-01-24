@@ -25,7 +25,8 @@ export const Toast: React.FC<ToastProps> = ({
 
     const toastTimeout = setTimeout(onClose, timeout)
     return () => clearTimeout(toastTimeout)
-  }, [showToast, onClose, timeout])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showToast, timeout])
 
   const toast = (
     <div className={`toast ${showToast ? 'fadeIn' : ''}`}>

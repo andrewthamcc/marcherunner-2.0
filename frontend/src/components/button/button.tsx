@@ -1,11 +1,12 @@
 import React from 'react'
+import { ColorValues } from '../../theme'
 import './style.scss'
 
 export interface ButtonProps {
   border?: boolean
   label: string
   className?: string // passthrough for className
-  color?: 'green' | 'orange' | 'purple' // color of icon
+  color?: ColorValues
   disabled?: boolean
   onClick?: () => void
 }
