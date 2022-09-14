@@ -1,0 +1,45 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": "latest",
+    "ecmaFeatures": {
+      "impliedStrict": true,
+      "jsx": true
+    }
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jest": true,
+    "node": true
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended",
+    "plugin:import/recommended"
+  ],
+  "plugins": ["prettier", "react"],
+  "rules": {
+    "react/destructuring-assignment": 1,
+    "react/prop-types": 0,
+    "react/display-name": 0,
+    "react/jsx-fragments": [1, "syntax"],
+    "react/jsx-no-leaked-render": 1,
+    "react/jsx-no-useless-fragment": 1,
+    "react/self-closing-comp": 1,
+    "react/hook-use-state": 1,
+    "import/export": 1,
+    "import/first": 1,
+    "import/no-named-as-default": 0,
+    "import/order": 1
+  }
+}

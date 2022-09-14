@@ -54,7 +54,13 @@
     "@storybook/preset-create-react-app": "^3.1.6",
     "@storybook/react": "^6.1.21",
     "@types/react-router-dom": "^5.1.7",
-    "node-sass": "^5.0.0",
-    "prettier": "^2.2.1"
+    "@typescript-eslint/eslint-plugin": "^5.37.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.8",
+    "node-sass": "^7.0.3",
+    "prettier": "^2.7.1"
   }
 }
