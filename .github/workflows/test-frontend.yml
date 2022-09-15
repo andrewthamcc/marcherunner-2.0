@@ -21,7 +21,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Install frontend dependencies
-        run: npm install:frontend
+        run: npm frontend:install
       - name: Build dependencies
         run: npm build:front-end
       - name: Test
