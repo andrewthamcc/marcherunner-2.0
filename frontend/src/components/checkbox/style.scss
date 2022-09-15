@@ -1,0 +1,51 @@
+.checkbox {
+  input {
+    left: -1000%;
+    position: absolute;
+
+    &:focus {
+      // todo: research - changing font style may not be best option for displaying focus
+      ~ label {
+        font-style: italic;
+      }
+    }
+  }
+
+  &-icon svg {
+    height: 14px;
+    width: 14px;
+  }
+
+  label {
+    margin-left: 0.5rem;
+
+    &.checked {
+      color: #808080;
+      position: relative;
+
+      &::after {
+        animation-duration: 0.1s;
+        animation-fill-mode: forwards;
+        animation-iteration-count: 1;
+        animation-name: strike;
+        animation-timing-function: linear;
+        background: #808080;
+        content: ' ';
+        left: 0;
+        height: 2px;
+        position: absolute;
+        top: 45%;
+        width: 150%;
+      }
+    }
+  }
+}
+
+@keyframes strike {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}

@@ -15,10 +15,10 @@ const style = {
 
 export const symbols: React.FC = () => {
   return (
-    <div style={style}>
+    <>
       {SYMBOL_TYPES.map((symbol, index) => (
         <Symbol key={index} symbol={symbol} />
       ))}
-    </div>
+    </>
   )
 }

@@ -5,7 +5,7 @@ import { Home } from './home'
 const Pages = () => {
   return (
     <Switch>
-      <Route exact path="/" component={Home} />
+      <Route path="/" component={Home} />
     </Switch>
   )
 }

@@ -20,18 +20,18 @@ export default {
 export const Plain: React.FC<ToastProps> = () => {
   const toast = useToast()
 
-  const style = {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '1rem',
-  }
-
   function handleClick(type: ToastVariants) {
     toast('a toast message', { variant: type })
   }
 
   return (
-    <div style={style}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '1rem',
+      }}
+    >
       {TOAST_TYPES.map((type, index) => (
         <Button
           key={index}

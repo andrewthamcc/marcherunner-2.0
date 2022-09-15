@@ -1,7 +1,7 @@
 import React from 'react'
 import { ApolloProvider } from '@apollo/client'
-import client from './apollo/client'
 import { BrowserRouter } from 'react-router-dom'
+import client from './apollo/client'
 import { ToastProvider } from './components/toast'
 import Pages from './pages'
 import './theme/app.scss'
