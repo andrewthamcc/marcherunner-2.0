@@ -3,7 +3,7 @@ on:
   pull_request:
     paths:
       - ".github/workflows/test-frontend.yml"
-      - "front-end/**"
+      - "/front-end/**"
 jobs:
   test-frontend:
     runs-on: ubuntu-latest
