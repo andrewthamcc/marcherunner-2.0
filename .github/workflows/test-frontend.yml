@@ -23,9 +23,8 @@ jobs:
       - name: Install frontend dependencies
         run: npm run install:frontend
       - name: Build dependencies
-        run: npm run build:front-end
+        run: npm run build:frontend
       - name: Test
         env:
-          CI: false
           EXTEND_ESLINT: true
-        run: npm run test:front-end:ci
+        run: npm run test:frontend:ci
