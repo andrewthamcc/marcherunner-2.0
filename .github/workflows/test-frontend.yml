@@ -3,16 +3,17 @@ on:
   pull_request:
     paths:
       - ".github/workflows/test-frontend.yml"
-      - "/front-end/**"
+      - "front-end/**"
 jobs:
   test-frontend:
     runs-on: ubuntu-latest
     name: Test Frontend
-      - name: Install dependencies
+    steps:
       - uses: actions/checkout@v1
+      - name: Install dependencies
         run: npm install
-      - name: Build test dependencies
-        run: npm run build:dependencies:front-end
+      - name: Build dependencies
+        run: npm run build
       - name: Test
         env:
           EXTEND_ESLINT: true
