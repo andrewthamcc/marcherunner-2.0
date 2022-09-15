@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Symbol, SymbolVariants } from '../symbol'
-import { Icon } from '../icon'
+import { IconButton } from '../icon-button'
 
 export const TOAST_TYPES = ['success', 'error', 'warning', 'info'] as const
 export type ToastVariants = typeof TOAST_TYPES[number]
@@ -35,9 +35,11 @@ export const Toast: React.FC<ToastProps> = ({
           <Symbol symbol={variant as SymbolVariants} className="toast-symbol" />
         )}
         <p className="toast-message">{message}</p>
-        <button onClick={() => onClose()} className="toast-close">
-          <Icon icon="close" />
-        </button>
+        <IconButton
+          onClick={() => onClose()}
+          className="toast-close"
+          icon="close"
+        />
       </div>
     </div>
   )

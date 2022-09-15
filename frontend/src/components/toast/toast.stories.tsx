@@ -1,9 +1,9 @@
 import React from 'react'
-import { Meta } from '@storybook/react/types-6-0'
+import { Meta } from '@storybook/react'
+import { Button } from '../.'
 import { Toast, ToastProps, TOAST_TYPES, ToastVariants } from './toast'
 import { ToastProvider } from './toast.provider'
 import { useToast } from './use-toast'
-import { Button } from '../.'
 
 export default {
   title: 'Molecules/Toast',

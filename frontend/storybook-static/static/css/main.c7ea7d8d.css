@@ -1,0 +1,20 @@
+*{box-sizing:border-box}html{font-size:62.5%}body{background-color:#ffffff;color:#1e1e1e;font-family:'Arial', sans-serif;font-size:1.6rem}h1,h2,h3,ul,p{margin:0;padding:0}li{list-style:none}a{text-decoration:none}img{display:block;width:100%;max-width:100%}.container{width:85%;max-width:1400px;margin:0 auto}
+
+.button{background-color:transparent;border:2px solid #c0c0c0;border-radius:40px;box-shadow:0 1px 2px 0 rgba(55,58,75,0.35);color:#1e1e1e;font-size:1.6rem;padding:8px 16px;width:130px}.button:focus{outline:none}.button:hover{cursor:pointer}.button-text{align-items:center;display:flex;justify-content:center}.button.disabled{background-color:#c0c0c0 !important}.button.no-border{border:none}.button.green{background-color:#18bc33;border-color:#ffffff;color:#ffffff}.button.green:hover,.button.green:focus{background-color:#1bd339}.button.green:active{background-color:#15a52d}.button.orange{color:#ffffff;background-color:#eb8e14}.button.orange:hover,.button.orange:focus{background-color:#ed992c}.button.orange:active{background-color:#d48012}
+
+.symbol{display:inline-block}
+
+.checkbox input{left:-1000%;position:absolute}.checkbox input:focus ~ label{font-style:italic}.checkbox-icon svg{height:14px;width:14px}.checkbox label{margin-left:0.5rem}.checkbox label.checked{color:#808080;position:relative}.checkbox label.checked::after{-webkit-animation-duration:0.1s;animation-duration:0.1s;-webkit-animation-fill-mode:forwards;animation-fill-mode:forwards;-webkit-animation-iteration-count:1;animation-iteration-count:1;-webkit-animation-name:strike;animation-name:strike;-webkit-animation-timing-function:linear;animation-timing-function:linear;background:#808080;content:' ';left:0;height:2px;position:absolute;top:45%;width:150%}@-webkit-keyframes strike{0%{width:0}100%{width:100%}}@keyframes strike{0%{width:0}100%{width:100%}}
+
+.icon{display:inline-block}.icon.green svg path{fill:#1dd43c}.icon.orange svg path{fill:#f48b00}.icon.grey svg path{fill:#747474}.icon.grey svg path:hover,.icon.grey svg path:focus{fill:#4e4e4e}.icon.red svg path{fill:#ff0000}.icon.red svg path:hover,.icon.red svg path:focus{fill:#b30000}
+
+.icon-button{background:transparent;border:none}.icon-button:hover{cursor:pointer}
+
+.loading{flex-grow:1;display:flex;align-items:center;justify-content:center}.loading-spinner{-webkit-animation:spin 2s linear infinite;animation:spin 2s linear infinite;max-width:90px;flex-grow:1}.loading-spinner svg{width:100%}@-webkit-keyframes spin{100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes spin{100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}
+
+.radio-button input{left:-1000%;position:absolute}.radio-button input:focus ~ label{font-style:italic}.radio-button-icon svg{height:14px;width:14px}.radio-button label{margin-left:0.5rem}
+
+.toast{background-color:white;border:2px solid #c0c0c0;border-radius:8px;box-shadow:0 16px 32px 0 rgba(55,58,75,0.35);height:70px;width:270px;display:flex;align-items:center}.toast-wrapper{font-size:1.5rem;font-weight:600;height:100%;width:100%;padding:1rem 2rem;position:relative;display:flex;align-items:center}.toast-symbol{margin-right:0.75rem;display:flex;align-items:center}.toast-close{cursor:pointer;position:absolute;right:8px;top:8px}.toast.fadeIn{-webkit-animation:fadein 0.3s;animation:fadein 0.3s}.toast-list{display:flex;flex-direction:column;gap:0.5rem;position:fixed;right:0;top:0;z-index:999;padding:1rem}@-webkit-keyframes fadein{from{height:0;opacity:0}to{height:70px;opacity:1}}@keyframes fadein{from{height:0;opacity:0}to{height:70px;opacity:1}}
+
+
+/*# sourceMappingURL=main.c7ea7d8d.css.map*/

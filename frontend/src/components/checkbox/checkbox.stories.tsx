@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { Meta } from '@storybook/react/types-6-0'
+import { Meta } from '@storybook/react'
 import { Checkbox } from './checkbox'
 
 export default {
-  title: 'Atoms/Button',
+  title: 'Atoms/Checkbox',
   component: Checkbox,
 } as Meta
 
