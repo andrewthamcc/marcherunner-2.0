@@ -21,11 +21,11 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Install frontend dependencies
-        run: npm frontend:install
+        run: npm run install:frontend
       - name: Build dependencies
-        run: npm build:front-end
+        run: npm run build:front-end
       - name: Test
         env:
           CI: false
           EXTEND_ESLINT: true
-        run: npm test:front-end:ci
+        run: npm run test:front-end:ci
