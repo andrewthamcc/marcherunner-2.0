@@ -1,13 +1,13 @@
 import React from 'react'
 import { Meta } from '@storybook/react'
-import { Symbol, SYMBOL_TYPES } from './symbol'
+import { Icon, ICON_TYPES } from './icon'
 
 export default {
-  title: 'Atoms/Symbol',
-  component: Symbol,
+  title: 'Atoms/Icon',
+  component: Icon,
 } as Meta
 
-export const symbols: React.FC = () => {
+export const icons: React.FC = () => {
   return (
     <div
       style={{
@@ -15,8 +15,8 @@ export const symbols: React.FC = () => {
         flexDirection: 'column',
       }}
     >
-      {SYMBOL_TYPES.map((symbol, index) => (
-        <Symbol key={index} symbol={symbol} />
+      {ICON_TYPES.map((icon, index) => (
+        <Icon key={index} icon={icon} color="grey" />
       ))}
     </div>
   )
