@@ -1,0 +1,30 @@
+name: Test Frontend
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/test-frontend.yml"
+      - "front-end/**"
+jobs:
+  test-frontend:
+    runs-on: ubuntu-latest
+    name: Test Frontend
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.x]
+    steps:
+      - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build --if-present
+      - name: Install dependencies
+      - uses: actions/checkout@v1
+        run: npm install
+      - name: Build test dependencies
+        run: npm run build:dependencies:front-end
+      - name: Test
+        env:
+          EXTEND_ESLINT: true
+        run: npm run test:front-end:ci
