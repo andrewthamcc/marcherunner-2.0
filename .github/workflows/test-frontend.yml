@@ -22,8 +22,8 @@ jobs:
 
       - name: clean cache
         run: npm cache clean --force
-      - name: Install dependencies
-        run: npm install
+      - name: Install frontend dependencies
+        run: npm install:frontend
       - name: CI
         run: npm ci
       - name: Build dependencies
