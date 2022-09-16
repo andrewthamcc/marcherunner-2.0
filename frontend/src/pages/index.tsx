@@ -1,11 +1,14 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
+import { PrivateRoute } from '../auth'
+import { Dashboard } from './dashboard'
 import { Home } from './home'
 
 const Pages = () => {
   return (
     <Switch>
-      <Route path="/" component={Home} />
+      <Route component={Home} exact path="/" />
+      <PrivateRoute component={Dashboard} path="/dashboard" />
     </Switch>
   )
 }

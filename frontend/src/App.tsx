@@ -1,20 +1,22 @@
 import React from 'react'
-import { ApolloProvider } from '@apollo/client'
 import { BrowserRouter } from 'react-router-dom'
-import client from './apollo/client'
+import { ApolloWrapper } from './apollo'
 import { ToastProvider } from './components/toast'
+import { Auth0WrapperWithHistory } from './auth'
 import Pages from './pages'
 import './theme/app.scss'
 
 function App() {
   return (
-    <ApolloProvider client={client}>
-      <BrowserRouter>
-        <ToastProvider>
-          <Pages />
-        </ToastProvider>
-      </BrowserRouter>
-    </ApolloProvider>
+    <BrowserRouter>
+      <Auth0WrapperWithHistory>
+        <ApolloWrapper>
+          <ToastProvider>
+            <Pages />
+          </ToastProvider>
+        </ApolloWrapper>
+      </Auth0WrapperWithHistory>
+    </BrowserRouter>
   )
 }
 
