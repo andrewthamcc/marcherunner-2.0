@@ -1,5 +1,5 @@
 import { InMemoryCache } from '@apollo/client'
 
-export default function createCache(): InMemoryCache {
+export const createCache = (): InMemoryCache => {
   return new InMemoryCache()
 }

@@ -1,26 +1,13 @@
 import React from 'react'
-import { useQuery, gql } from '@apollo/client'
+import { useAuth0 } from '@auth0/auth0-react'
 
 export const Home: React.FC = () => {
-  const DUMMY = gql`
-    query dummy {
-      dummy {
-        firstName
-        lastName
-        email
-      }
-    }
-  `
-
-  const { data, loading, error } = useQuery(DUMMY)
-
-  if (loading) return <p>Loading...</p>
-  if (error) return <p>{error.message}</p>
-  if (!data) return <p>No Data</p>
+  const { loginWithPopup } = useAuth0()
 
   return (
     <div>
       <h1>Home</h1>
+      <button onClick={loginWithPopup}>login</button>
     </div>
   )
 }
