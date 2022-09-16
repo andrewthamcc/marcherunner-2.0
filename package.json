@@ -11,7 +11,7 @@
     "clientinstall": "npm install --prefix frontend",
     "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
     "install:frontend:ci": "cd frontend && npm ci",
-    "build:frontend": "cd frontend && npm run build",
+    "build:frontend": "CI=false cd frontend && npm run build",
     "test:frontend:ci": "cd frontend && npm run test -- --ci --watchAll=false"
   },
   "repository": {
