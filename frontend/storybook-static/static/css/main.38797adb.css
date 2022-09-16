@@ -14,7 +14,9 @@
 
 .radio-button input{left:-1000%;position:absolute}.radio-button input:focus ~ label{font-style:italic}.radio-button-icon svg{height:14px;width:14px}.radio-button label{margin-left:0.5rem}
 
+.text-input{margin:1rem 0;position:relative;display:flex;flex-direction:column;justify-content:center}.text-input label{margin-bottom:1rem;font-size:1.5rem;font-weight:600}.text-input input{display:block;border:2px solid #c0c0c0;border-radius:8px;outline:none;padding:8px 16px;transition:border 0.2s ease-in, box-shadow 0.2s ease-in;width:100%}.text-input input.error{border-color:#ff0000}.text-input input:focus{border-color:#18bc33}.text-input-errors{background:#ffffff;color:#ff0000;display:inline-block;height:12px;font-size:12px;position:absolute;left:16px;bottom:-4px}
+
 .toast{background-color:white;border:2px solid #c0c0c0;border-radius:8px;box-shadow:0 16px 32px 0 rgba(55,58,75,0.35);height:70px;width:270px;display:flex;align-items:center}.toast-wrapper{font-size:1.5rem;font-weight:600;height:100%;width:100%;padding:1rem 2rem;position:relative;display:flex;align-items:center}.toast-symbol{margin-right:0.75rem;display:flex;align-items:center}.toast-close{cursor:pointer;position:absolute;right:8px;top:8px}.toast.fadeIn{-webkit-animation:fadein 0.3s;animation:fadein 0.3s}.toast-list{display:flex;flex-direction:column;gap:0.5rem;position:fixed;right:0;top:0;z-index:999;padding:1rem}@-webkit-keyframes fadein{from{height:0;opacity:0}to{height:70px;opacity:1}}@keyframes fadein{from{height:0;opacity:0}to{height:70px;opacity:1}}
 
 
-/*# sourceMappingURL=main.c7ea7d8d.css.map*/
+/*# sourceMappingURL=main.38797adb.css.map*/
