@@ -3,27 +3,17 @@ on:
   pull_request:
     paths:
       - ".github/workflows/test-frontend.yml"
-      - "front-end/**"
+      - "frontend/**"
 jobs:
   test-frontend:
     runs-on: ubuntu-latest
     name: Test Frontend
-
-    strategy:
-      matrix:
-        node-version: [10.x, 12.x, 14.x]
-
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Install frontend dependencies
-        run: npm run install:frontend
-      - name: Build dependencies
-        run: npm run build:frontend --if-present
+      - name: Install dependencies
+        run: npm run clientinstall
+      - name: Build test dependencies
+        run: npm run build:frontend
       - name: Test
         env:
           EXTEND_ESLINT: true
