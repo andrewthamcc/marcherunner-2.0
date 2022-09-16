@@ -1,13 +1,10 @@
 import React from 'react'
-import { useAuth0 } from '@auth0/auth0-react'
+import { Layout } from '../../layout'
 
 export const Home: React.FC = () => {
-  const { loginWithPopup } = useAuth0()
-
   return (
-    <div>
+    <Layout>
       <h1>Home</h1>
-      <button onClick={loginWithPopup}>login</button>
-    </div>
+    </Layout>
   )
 }

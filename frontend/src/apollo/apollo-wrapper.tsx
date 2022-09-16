@@ -51,11 +51,7 @@ export const ApolloWrapper: React.FC = ({ children }) => {
 
   // displays loading state if auth0 still in process of authenticating OR the access token hasn't yet been set after authentication
   if (auth0Loading || (isAuthenticated && !accessToken)) {
-    return (
-      <div>
-        <p>Loading</p>
-      </div>
-    )
+    return null
   }
 
   return <ApolloProvider client={client}>{children}</ApolloProvider>

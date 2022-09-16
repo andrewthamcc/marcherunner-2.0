@@ -1,5 +1,6 @@
 export * from './button'
 export * from './checkbox'
+export * from './icon'
 export * from './icon-button'
 export * from './loading-spinner'
 export * from './symbol'
