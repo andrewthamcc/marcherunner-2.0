@@ -4,18 +4,18 @@ import { IconButton } from './icon-button'
 
 describe('icon button component', () => {
   const clickfn = jest.fn()
-  const customRender = (disabled: boolean = false, className: string = '') => (
+  const customRender = (disabled = false, className = '') => (
     <IconButton
-      icon="close"
-      disabled={disabled}
-      onClick={clickfn}
       className={className}
+      disabled={disabled}
+      icon="close"
+      onClick={clickfn}
     />
   )
 
   test('renders an icon button', () => {
     render(customRender())
-    const button = screen.getByRole('button', { name: /my button/i })
+    const button = screen.getByRole('button')
     fireEvent.click(button)
 
     expect(button).toBeInTheDocument()
@@ -25,13 +25,13 @@ describe('icon button component', () => {
 
   test('renders a disabled icon button', () => {
     render(customRender(true))
-    const button = screen.getByRole('button', { name: /my button/i })
+    const button = screen.getByRole('button')
     expect(button).toBeDisabled()
   })
 
   test('has a class name passed to it', () => {
     render(customRender(undefined, 'my-class'))
-    const button = screen.getByRole('button', { name: /my button/i })
+    const button = screen.getByRole('button')
     expect(button.classList.contains('my-class')).toBe(true)
   })
 })
