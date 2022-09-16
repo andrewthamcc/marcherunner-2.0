@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install dependencies
-        run: npm run clientinstall
+        run: npm run install:frontend:ci
       - name: Build test dependencies
         run: npm run build:frontend
       - name: Test

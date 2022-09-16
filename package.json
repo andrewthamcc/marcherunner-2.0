@@ -10,8 +10,9 @@
     "prettier": "concurrently \"npm run prettier --prefix backend\" \"npm run prettier --prefix frontend\"",
     "clientinstall": "npm install --prefix frontend",
     "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "install:frontend:ci": "cd frontend && npm install -- --ci -watchAll=false",
     "build:frontend": "cd frontend && npm run build",
-    "test:frontend:ci": "cd frontend && npm run test -- --ci"
+    "test:frontend:ci": "cd frontend && npm run test -- --ci -watchAll=false"
   },
   "repository": {
     "type": "git",
