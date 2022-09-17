@@ -1,13 +1,20 @@
-name: Test Frontend
+name: Lint
+
 on:
   pull_request:
     paths:
       - ".github/workflows/test-frontend.yml"
       - "frontend/**"
+
+permissions:
+  checks: write
+  contents: write
+
 jobs:
-  test-frontend:
+  run-linters:
+    name: Run linters
     runs-on: ubuntu-latest
-    name: Test Frontend
+
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v2
@@ -15,10 +22,9 @@ jobs:
       - name: Install dependencies
         run: npm run install:frontend:ci
 
-      - name: Build test dependencies
-        run: npm run build:frontend
-
-      - name: Test
-        env:
-          EXTEND_ESLINT: true
-        run: npm run test:frontend:ci
+      - name: Run linters
+        uses: wearerequired/lint-action@v2
+        uses: wearerequired/lint-action@v2
+          with:
+            eslint: true
+            prettier: true
