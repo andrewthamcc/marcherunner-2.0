@@ -6,8 +6,7 @@ import { ReactComponent as Selected } from './assets/selected.svg'
 import { ReactComponent as Success } from './assets/success.svg'
 import { ReactComponent as Unselected } from './assets/unselected.svg'
 import { ReactComponent as Warning } from './assets/warning.svg'
-
-require('./style.scss')
+import './style.scss'
 
 export const SYMBOL_TYPES = [
   'checkmark',
