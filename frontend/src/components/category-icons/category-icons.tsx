@@ -12,7 +12,7 @@ import { ReactComponent as Pharmacy } from './assets/pharmacy.svg'
 import { ReactComponent as Prepared } from './assets/prepared.svg'
 import { ReactComponent as Produce } from './assets/produce.svg'
 import { ReactComponent as Seafood } from './assets/seafood.svg'
-import { ReactComponent as Snacks } from './assets/snack.svg'
+import { ReactComponent as Snacks } from './assets/snacks.svg'
 
 export const CATEGORY_ICONS = [
   'all',
