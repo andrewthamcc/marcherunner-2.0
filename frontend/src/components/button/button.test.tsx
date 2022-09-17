@@ -4,12 +4,12 @@ import { Button } from './button'
 
 describe('button component', () => {
   const clickfn = jest.fn()
-  const customRender = (disabled: boolean = false, className: string = '') => (
+  const customRender = (disabled = false, className = '') => (
     <Button
+      className={className}
       disabled={disabled}
       label="my button"
       onClick={clickfn}
-      className={className}
     />
   )
 

@@ -40,3 +40,26 @@ Borderless.args = {
   color: 'green',
   border: false,
 }
+
+export const Plain = Template.bind({})
+Plain.args = {
+  plain: true,
+}
+
+export const WithChildren = () => {
+  return (
+    <Button label="With Children">
+      <p>Child Element</p>
+    </Button>
+  )
+}
+
+export const Widths = () => {
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      <Button label="100" width={100} />
+      <Button label="200" width={200} />
+      <Button label="400" width={400} />
+    </div>
+  )
+}

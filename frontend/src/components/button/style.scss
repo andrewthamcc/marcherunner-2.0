@@ -22,10 +22,24 @@
     align-items: center;
     display: flex;
     justify-content: center;
+
+    &.none {
+      display: none;
+    }
   }
 
   &.disabled {
     background-color: #c0c0c0 !important;
+  }
+
+  &.plain {
+    background-color: transparent !important;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    font-size: 1.6rem;
+    padding: 0;
+    color: $black !important;
   }
 
   &.no-border {

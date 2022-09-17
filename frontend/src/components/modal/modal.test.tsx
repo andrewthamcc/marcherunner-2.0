@@ -1,19 +1,17 @@
 import React from 'react'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent, cleanup } from '@testing-library/react'
 import { Modal } from '.'
 
 const MODAL_TEXT = 'I am Bob, the modal'
 
 describe('Modal', () => {
+  afterEach(cleanup)
   const closefn = jest.fn()
   const customRender = (isOpen = false) => {
     return (
-      <div>
-        <Modal close={closefn} isOpen={isOpen}>
-          <p>{MODAL_TEXT}</p>
-        </Modal>
-        <div id="portal-root" />
-      </div>
+      <Modal close={closefn} isOpen={isOpen}>
+        <p>{MODAL_TEXT}</p>
+      </Modal>
     )
   }
 
@@ -22,16 +20,13 @@ describe('Modal', () => {
     expect(screen.queryByText(MODAL_TEXT)).not.toBeInTheDocument()
   })
 
-  it.skip('renders a modal if open', () => {
-    render(customRender(true))
-    expect(screen.getByText(MODAL_TEXT)).toBeInTheDocument()
+  it('renders a modal if open', () => {
+    const { getByText } = render(customRender(true))
+    expect(getByText(MODAL_TEXT)).toBeInTheDocument()
   })
 
   it.skip('closes a modal on clickoutside', () => {
-    render(customRender(true))
-    expect(screen.getByText(MODAL_TEXT)).toBeInTheDocument()
-
-    fireEvent.click(document)
-    expect(closefn).toHaveBeenCalled()
+    const { getByText } = render(customRender(true))
+    expect(getByText(MODAL_TEXT)).toBeInTheDocument()
   })
 })
