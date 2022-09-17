@@ -17,6 +17,15 @@ export const Modal: React.FC<ModalProps> = ({
   const node = useRef<null | HTMLDivElement>(null)
 
   useEffect(() => {
+    let portalRoot = document.querySelector('#portal-root')
+    if (!portalRoot) {
+      portalRoot = document.createElement('div')
+      portalRoot.setAttribute('id', 'portal-root')
+      document.body.appendChild(portalRoot)
+    }
+  }, [])
+
+  useEffect(() => {
     if (isOpen) {
       document.addEventListener('mousedown', handleOutsideClick)
     } else {
