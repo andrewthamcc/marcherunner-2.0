@@ -1,4 +1,4 @@
-name: Lint
+name: Lint Frontend
 
 on:
   pull_request:
@@ -23,7 +23,6 @@ jobs:
         run: npm run install:frontend:ci
 
       - name: Run linters
-        uses: wearerequired/lint-action@v2
         uses: wearerequired/lint-action@v2
           with:
             eslint: true
