@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import ReactDOM from 'react-dom'
 import { useOutsideClick } from '../../hooks'
 import './style.scss'
@@ -15,6 +15,15 @@ export const Modal: React.FC<ModalProps> = ({
   close,
   isOpen,
 }) => {
+  useEffect(() => {
+    let portalRoot = document.querySelector('#portal-root')
+    if (!portalRoot) {
+      portalRoot = document.createElement('div')
+      portalRoot.setAttribute('id', 'portal-root')
+      document.body.appendChild(portalRoot)
+    }
+  }, [])
+
   const node = useRef<null | HTMLDivElement>(null)
   useOutsideClick(node, isOpen, close)
 

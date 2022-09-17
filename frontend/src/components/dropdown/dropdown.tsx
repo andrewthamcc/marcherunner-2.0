@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { Button, Icon } from '..'
+import { useOutsideClick } from '../../hooks'
 import { DropdownList } from './components'
 require('./style.scss')
 
@@ -42,24 +43,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   const [isOpen, setIsOpen] = useState(false)
   const [coords, setCoords] = useState<Coords>({ x: 0, y: 0, width: 0 }) // coordinates to open dropdown list
   const dropdownRef = useRef<null | HTMLDivElement>(null) // ref of dropdown list for coordinates
-
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (
-        dropdownRef &&
-        dropdownRef.current &&
-        !dropdownRef.current.contains(e.target as Node)
-      ) {
-        setIsOpen(false)
-      }
-    }
-
-    document.addEventListener('click', handleClickOutside)
-
-    return () => {
-      document.removeEventListener('click', handleClickOutside)
-    }
-  })
+  useOutsideClick(dropdownRef, isOpen, () => setIsOpen(false))
 
   useEffect(() => {
     if (dropdownRef && dropdownRef.current) {
