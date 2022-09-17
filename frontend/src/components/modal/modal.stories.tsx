@@ -11,7 +11,6 @@ export default {
 
 export const Simple = () => {
   const { isOpen, openModal, closeModal } = useModal()
-
   return (
     <div>
       <Button label="Open Modal" onClick={openModal} />
