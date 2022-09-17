@@ -2,6 +2,9 @@ import { ApolloServer } from 'apollo-server-express'
 import typeDefs from './graphql/schema'
 import resolvers from './graphql/resolvers'
 import app from './app'
+import { initializeDB } from './db'
+
+const sequelize = initializeDB()
 
 const server = new ApolloServer({
   typeDefs,
@@ -16,4 +19,4 @@ app.use((req, res) => {
   res.end()
 })
 
-export { server, app }
+export { server, sequelize, app }
