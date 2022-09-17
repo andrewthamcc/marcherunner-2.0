@@ -1,5 +1,8 @@
 import { useState } from 'react'
 
+/**
+ * @returns {{ isOpen: boolean, openModal: () => void, closeModal: () => void }}
+ */
 export const useModal = () => {
   const [isOpen, setIsOpen] = useState(false)
 
