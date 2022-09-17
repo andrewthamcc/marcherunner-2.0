@@ -20,6 +20,7 @@ export const Header: React.FC = () => {
 
         <Button
           border={false}
+          color="orange"
           label={isAuthenticated ? 'Logout' : 'Sign In'}
           onClick={isAuthenticated ? () => logout() : loginWithPopup}
         />
