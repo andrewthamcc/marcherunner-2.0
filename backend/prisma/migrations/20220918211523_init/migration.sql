@@ -3,6 +3,7 @@ CREATE TABLE "Item" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "categoryId" TEXT NOT NULL,
+    "categoryName" TEXT NOT NULL,
     "purchased" BOOLEAN NOT NULL DEFAULT false,
     "userId" TEXT NOT NULL,
 
