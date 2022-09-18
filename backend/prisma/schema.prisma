@@ -16,7 +16,6 @@ model Item {
   name          String
   category      GroceryCategory @relation(fields: [categoryId], references: [id])
   categoryId    String
-  categoryName  String
   purchased     Boolean @default(false)
   userId        String
 }
