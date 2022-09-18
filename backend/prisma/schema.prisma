@@ -13,10 +13,10 @@ datasource db {
 
 model Item {
   id          String  @id @default(uuid())
+  name        String
   category    GroceryCategory @relation(fields: [categoryId], references: [id])
   categoryId  String
   purchased   Boolean @default(false)
-  user        User @relation(fields: [userId], references: [id])
   userId      String
 }
 
@@ -24,9 +24,4 @@ model GroceryCategory {
   id            String  @id @default(uuid())
   categoryName  String @unique
   items         Item[]
-}
-
-model User {
-  id    String @id
-  items Item[]
 }
