@@ -12,12 +12,13 @@ datasource db {
 }
 
 model Item {
-  id          String  @id @default(uuid())
-  name        String
-  category    GroceryCategory @relation(fields: [categoryId], references: [id])
-  categoryId  String
-  purchased   Boolean @default(false)
-  userId      String
+  id            String  @id @default(uuid())
+  name          String
+  category      GroceryCategory @relation(fields: [categoryId], references: [id])
+  categoryId    String
+  categoryName  String
+  purchased     Boolean @default(false)
+  userId        String
 }
 
 model GroceryCategory {
