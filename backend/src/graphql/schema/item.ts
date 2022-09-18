@@ -1,7 +1,7 @@
 import { gql } from 'apollo-server-express'
 
 export default gql`
-  type GroceryCategory {
+  type Item {
     id: ID!
     name: String!
     categoryId: ID!
@@ -14,15 +14,15 @@ export default gql`
     item(id: ID!): Item!
   }
 
-  type AddItemData {
+  input AddItemData {
     name: String!
     categoryId: ID!
     userId: ID!
   }
 
   type Mutation {
-    addItem(item: AddItemData!): Item!
+    createItem(item: AddItemData!): Item!
+    updateItem(id: ID!): Item!
     deleteItem(id: ID!): Item!
-    editItem(id: ID!): Item!
   }
 `
