@@ -1,7 +1,7 @@
-import dummyResolver from './dummy'
+import groceryCategoryResolver from './grocery-category'
 
 const resolvers = {
-  ...dummyResolver,
+  ...groceryCategoryResolver,
 }
 
 export default resolvers

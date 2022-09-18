@@ -1,7 +1,7 @@
-import dummySchema from './dummy'
+import groceryCategorySchema from './grocery-category'
 
 const typeDefs = {
-  ...dummySchema,
+  ...groceryCategorySchema,
 }
 
 export default typeDefs
