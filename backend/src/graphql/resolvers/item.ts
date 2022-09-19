@@ -1,9 +1,11 @@
 import { Context } from '../context'
 
 type ItemArgs = {
-  name: string
-  categoryId: string
-  userId: string
+  item: {
+    name: string
+    categoryId: string
+    userId: string
+  }
 }
 
 export default {
@@ -24,11 +26,8 @@ export default {
     },
   },
   Mutation: {
-    createItem: async (_parent: void, args: ItemArgs, { prisma }: Context) => {
-      const { name, categoryId, userId } = args
-      
-      const exisiting = await prisma.item.findMany({ where: { name, userId }})
-      if (exisiting) throw new Error('This is a duplicate item.')
+    createItem: async (_parent: void, { item }: ItemArgs, { prisma }: Context) => {
+      const { name, categoryId, userId } = item
 
       return await prisma.item.create({
         data: {

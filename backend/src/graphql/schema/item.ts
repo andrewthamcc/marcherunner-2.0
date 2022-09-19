@@ -14,14 +14,14 @@ export default gql`
     item(id: ID!): Item!
   }
 
-  input AddItemData {
+  input CreateItemData {
     name: String!
     categoryId: ID!
     userId: ID!
   }
 
   type Mutation {
-    createItem(item: AddItemData!): Item!
+    createItem(item: CreateItemData!): Item!
     updateItem(id: ID!): Item!
     deleteItem(id: ID!): Item!
   }
