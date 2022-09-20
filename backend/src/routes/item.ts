@@ -1,27 +1,31 @@
 import express, { Request } from 'express'
-import { PrismaClient } from '@prisma/client'
+import { auth, requiredScopes, AuthResult } from 'express-oauth2-jwt-bearer'
+import { dataSources } from '../server'
 
 export const itemRouter = express.Router()
-const prisma = new PrismaClient()
+itemRouter.use(
+  auth({
+    issuerBaseURL: process.env.AUTH0_DOMAIN,
+    audience: process.env.AUTH0_AUDIENCE,
+  })
+)
 
-
-export interface TypedRequestBody<T> extends Request {
+export interface AuthRequest<T> extends AuthResult {
   body: T
-  user: any
 }
 
+itemRouter.post(
+  '/deleteAll',
+  requiredScopes('delete:items'),
+  async (req, res) => {
+    // await dataSources.itemAPI.deleteItems(req.userId)
+  }
+)
 
-itemRouter.post('/deleteAll', async (req, res) => {
-  // const items = await prisma.item.findMany({ where: { id } })
-  // if (!items.length) res.send(400)
-
-  // await prisma.item.deleteMany({ where: { id } })
-})
-
-itemRouter.post('/deletePurchased', async (req, res) => {
-  // const items = await prisma.item.findMany({ where: { id } })
-  // if (!items.length) res.send(400)
-
-  // await prisma.item.deleteMany({ where: { id, purchased: true } })
-})
-
+itemRouter.post(
+  '/deletePurchased',
+  requiredScopes('delete:purchasedItems'),
+  async (req, res) => {
+    // await dataSources.itemAPI.deletePurchasedItems(req.user.id)
+  }
+)
