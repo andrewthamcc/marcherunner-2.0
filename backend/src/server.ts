@@ -51,7 +51,7 @@ server.applyMiddleware({ app })
 
 app.use((_, res) => {
   res.status(200)
-  res.send('Hello!')
+  res.send('Hello World 🌎!')
   res.end()
 })
 
