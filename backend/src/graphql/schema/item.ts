@@ -10,7 +10,7 @@ export default gql`
   }
 
   type Query {
-    items: [Item]!
+    items: [Item!]!
     item(id: ID!): Item!
   }
 

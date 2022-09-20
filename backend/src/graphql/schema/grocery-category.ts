@@ -7,6 +7,6 @@ export default gql`
   }
 
   type Query {
-    groceryCategory: [GroceryCategory]!
+    groceryCategory: [GroceryCategory!]!
   }
 `

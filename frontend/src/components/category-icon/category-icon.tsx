@@ -54,7 +54,7 @@ interface CategoryIconProps {
   icon: CategoryVariants
 }
 
-export const CategoryIcons: React.FC<CategoryIconProps> = ({
+export const CategoryIcon: React.FC<CategoryIconProps> = ({
   className,
   icon,
 }) => {

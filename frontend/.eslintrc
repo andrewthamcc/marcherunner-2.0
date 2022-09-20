@@ -34,7 +34,6 @@
     "react/prop-types": 0,
     "react/display-name": 0,
     "react/jsx-fragments": [1, "syntax"],
-    "react/jsx-no-leaked-render": 1,
     "react/jsx-no-useless-fragment": 1,
     "react/self-closing-comp": 1,
     "react/jsx-sort-props": 1,
