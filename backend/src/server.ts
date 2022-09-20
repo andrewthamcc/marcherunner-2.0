@@ -40,19 +40,28 @@ const context = async ({ req }: ExpressContext) => {
   return {}
 }
 
-const server = new ApolloServer({
-  schema,
-  dataSources: () => dataSources,
-  context,
-  playground: true,
-})
+export async function startApolloServer() {
+  const server = new ApolloServer({
+    schema,
+    dataSources: () => dataSources,
+    context,
+    csrfPrevention: true,
+  })
 
-server.applyMiddleware({ app })
+  await server.start()
+  server.applyMiddleware({ app })
 
-app.use((_, res) => {
-  res.status(200)
-  res.send('Hello World 🌎!')
-  res.end()
-})
+  app.use((_, res) => {
+    res.status(200)
+    res.send('Hello World 🌎!')
+    res.end()
+  })
 
-export { server, app }
+  const port = process.env.NODEENV || 4000
+  app.listen({ port }, () =>
+    console.log(
+      `Server running on http://localhost:${port}${server.graphqlPath} 🚀`
+    )
+  )
+  return { server, app }
+}
