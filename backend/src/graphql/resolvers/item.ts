@@ -1,4 +1,4 @@
-import { Context } from '../context'
+import { Context } from '../../server'
 
 type ItemArgs = {
   item: {
@@ -10,63 +10,48 @@ type ItemArgs = {
 
 export default {
   Query: {
-    items: async (_parent: void, args: void, { prisma }: Context) => {
-      return await prisma.item.findMany()
+    items: async (
+      _parent: void,
+      args: void,
+      { user, dataSources}: Context
+    ) => {
+      return await dataSources.itemAPI.getItems(user.id)
     },
     item: async (
       _parent: void,
       { id }: { id: string },
-      { prisma }: Context
+      { dataSources }: Context
     ) => {
-      return await prisma.item.findUnique({
-        where: {
-          id,
-        },
-      })
+      return await dataSources.itemAPI.getItem(id)
     },
   },
   Mutation: {
-    createItem: async (_parent: void, { item }: ItemArgs, { prisma }: Context) => {
+    createItem: async (
+      _parent: void,
+      { item }: ItemArgs,
+      { dataSources }: Context
+    ) => {
       const { name, categoryId, userId } = item
 
-      return await prisma.item.create({
-        data: {
-          name,
-          categoryId,
-          userId,
-        },
+      return await dataSources.itemAPI.createItem({
+        name,
+        categoryId,
+        userId,
       })
     },
     updateItem: async (
       _parent: void,
       { id }: { id: string },
-      { prisma }: Context
+      { dataSources }: Context
     ) => {
-      const item = await prisma.item.findUnique({ where: { id } })
-      if (!item) throw new Error('That item could not be found.')
-
-      return await prisma.item.update({
-        where: {
-          id,
-        },
-        data: {
-          purchased: !item.purchased,
-        },
-      })
+      return await dataSources.itemAPI.updateItem(id)
     },
     deleteItem: async (
       _parent: void,
       { id }: { id: string },
-      { prisma }: Context
+      { dataSources }: Context
     ) => {
-      const item = await prisma.item.findUnique({ where: { id } })
-      if (!item) throw new Error('That item could not be found.')
-
-      return prisma.item.delete({
-        where: {
-          id,
-        },
-      })
+      return await dataSources.itemAPI.deleteItem(id)
     },
   },
 }
