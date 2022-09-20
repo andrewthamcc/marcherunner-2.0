@@ -1,4 +1,5 @@
 export * from './button'
+export * from './category-icon'
 export * from './checkbox'
 export * from './icon'
 export * from './icon-button'

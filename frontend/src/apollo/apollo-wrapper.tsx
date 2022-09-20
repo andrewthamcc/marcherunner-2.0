@@ -4,6 +4,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { ApolloClient, HttpLink } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
 import { useHistory } from 'react-router-dom'
+import { bearerToken } from './store'
 import { createCache } from '.'
 import './style.scss'
 
@@ -22,6 +23,7 @@ export const ApolloWrapper: React.FC = ({ children }) => {
   const getToken = async () => {
     try {
       const token = await getAccessTokenSilently()
+      bearerToken(token)
       setAccessToken(token)
     } catch (error) {
       console.error(error)
@@ -50,7 +52,6 @@ export const ApolloWrapper: React.FC = ({ children }) => {
     link: authLink.concat(httpLink),
   })
 
-  // displays loading state if auth0 still in process of authenticating OR the access token hasn't yet been set after authentication
   if (auth0Loading || (isAuthenticated && !accessToken)) {
     return <div className="auth-loading" />
   }

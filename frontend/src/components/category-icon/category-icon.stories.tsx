@@ -1,10 +1,10 @@
 import React from 'react'
 import { Meta } from '@storybook/react'
-import { CategoryIcons, CATEGORY_ICONS } from './category-icons'
+import { CategoryIcon, CATEGORY_ICONS } from './category-icon'
 
 export default {
-  title: 'Atoms/CategoryIcons',
-  component: CategoryIcons,
+  title: 'Atoms/CategoryIcon',
+  component: CategoryIcon,
 } as Meta
 
 export const symbols: React.FC = () => {
@@ -16,7 +16,7 @@ export const symbols: React.FC = () => {
       }}
     >
       {CATEGORY_ICONS.map((c, index) => (
-        <CategoryIcons icon={c} key={index} />
+        <CategoryIcon icon={c} key={index} />
       ))}
     </div>
   )
