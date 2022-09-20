@@ -1,4 +1,4 @@
-import express, { Request } from 'express'
+import express from 'express'
 import { auth, requiredScopes, AuthResult } from 'express-oauth2-jwt-bearer'
 import { dataSources } from '../server'
 

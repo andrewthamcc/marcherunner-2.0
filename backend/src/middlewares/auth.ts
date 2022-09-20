@@ -1,12 +1,13 @@
-import jwt, { JwtPayload } from 'jsonwebtoken'
+import jwt, { JwtHeader, JwtPayload } from 'jsonwebtoken'
 import jwksClient from 'jwks-rsa'
+import config from '../config'
 
-const jwksURL = `https://${process.env.AUTH0_DOMAIN}/.well-known/jwks.json`
+const jwksURL = `${config.jwksUrl}/.well-known/jwks.json`
 const client = jwksClient({
   jwksUri: jwksURL,
 })
 
-async function getKey(header: jwt.JwtHeader, callback: any) {
+async function getKey(header: JwtHeader, callback: any) {
   try {
     const key = await client.getSigningKey(header.kid)
     callback(null, key.getPublicKey())
@@ -14,13 +15,12 @@ async function getKey(header: jwt.JwtHeader, callback: any) {
     console.error(error)
     return
   }
-  
 }
 
 function isTokenValid(token: string): Promise<string | JwtPayload> {
   return new Promise((resolve, reject) => {
     if (!token) {
-      reject(new Error('No token provided'))
+      reject(new Error('No JWT provided'))
     }
 
     const bearerToken = token.split(' ')
@@ -29,13 +29,13 @@ function isTokenValid(token: string): Promise<string | JwtPayload> {
       bearerToken[1],
       getKey,
       {
-        audience: process.env.AUTH0_AUDIENCE,
-        issuer: `https://${process.env.AUTH0_DOMAIN}/`,
+        audience: config.audience,
+        issuer: config.issuer,
         algorithms: ['RS256'],
       },
-      (err, decoded) => {
-        if (err || decoded === undefined) {
-          reject(err || 'No JWT was provided.')
+      (error, decoded) => {
+        if (error || decoded === undefined) {
+          reject(error || 'No JWT provided')
         } else {
           resolve(decoded)
         }
