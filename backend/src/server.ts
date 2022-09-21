@@ -6,7 +6,7 @@ import { isTokenValid, restAuth, Auth0TokenResponse, User } from './middlewares'
 import { dataSourcesInit, DataSources } from './datasources'
 import app from './app'
 
-export interface GraphQLContext {
+export interface Context {
   dataSources: DataSources
   user: User
 }
