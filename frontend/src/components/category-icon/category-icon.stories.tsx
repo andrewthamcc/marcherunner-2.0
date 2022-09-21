@@ -7,12 +7,13 @@ export default {
   component: CategoryIcon,
 } as Meta
 
-export const symbols: React.FC = () => {
+export const categoryIcons: React.FC = () => {
   return (
     <div
       style={{
         display: 'flex',
         flexDirection: 'column',
+        width: '20px',
       }}
     >
       {CATEGORY_ICONS.map((c, index) => (

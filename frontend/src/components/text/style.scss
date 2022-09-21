@@ -1,0 +1,55 @@
+@import '../../theme/colors.scss';
+
+.text {
+  &.left {
+    text-align: left;
+  }
+
+  &.center {
+    text-align: center;
+  }
+
+  &.right {
+    text-align: right;
+  }
+
+  &.body-copy {
+    font-size: 1.6rem;
+  }
+
+  &.body-copy-small {
+    font-size: 1.4rem;
+  }
+
+  &.body-copy-xsmall {
+    font-size: 1.2rem;
+  }
+
+  &.body-copy-large {
+    font-size: 1.6rem;
+  }
+
+  &.body-copy-xlarge {
+    font-size: 1.8rem;
+  }
+
+  &.black {
+    color: $black;
+  }
+
+  &.green {
+    color: $green;
+  }
+
+  &.red {
+    color: $red;
+  }
+
+  &.orange {
+    color: $orange;
+  }
+
+  &.white {
+    color: $white;
+  }
+}

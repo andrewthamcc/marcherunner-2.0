@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { Button, Icon } from '..'
+import { Button, Icon, Text } from '..'
 import { useOutsideClick } from '../../hooks'
 import { DropdownList } from './components'
 require('./style.scss')
@@ -79,13 +79,11 @@ export const Dropdown: React.FC<DropdownProps> = ({
         ref={dropdownRef}
         tabIndex={0}
       >
-        {!!value?.icon && <span className="dropdown-icon">{value.icon}</span>}
-        <span className="dropdown-text">
+        {!!value?.icon && <div className="dropdown-icon">{value.icon}</div>}
+        <Text className="dropdown-text" span>
           {!value ? placeholder : value.label}
-        </span>
-        <span className="dropdown-caret">
-          <Icon icon="caret down" />
-        </span>
+        </Text>
+        <Icon className="dropdown-caret" icon="caret down" />
 
         <DropdownList
           coords={coords}

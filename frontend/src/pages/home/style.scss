@@ -37,17 +37,14 @@
       }
     }
 
-    &-signin {
-      font-size: 1.3rem;
+    &-signin-link {
+      width: auto;
+      color: $orange !important;
+      font-weight: 600;
 
-      &-link {
-        color: $orange;
-        font-weight: 600;
-
-        &:hover {
-          text-decoration: underline;
-          cursor: pointer;
-        }
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
       }
     }
   }
@@ -120,7 +117,6 @@
     &-text {
       margin-top: 2rem;
       text-align: center;
-      font-size: 1.8rem;
       font-weight: 600;
     }
   }
@@ -197,10 +193,6 @@
         svg {
           width: 150px;
           height: 150px;
-        }
-
-        &-text {
-          font-size: 1.6rem;
         }
       }
     }

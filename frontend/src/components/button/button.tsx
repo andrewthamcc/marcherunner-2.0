@@ -1,4 +1,5 @@
 import React from 'react'
+import { Text } from '..'
 import { ColorValues } from '../../theme'
 import './style.scss'
 
