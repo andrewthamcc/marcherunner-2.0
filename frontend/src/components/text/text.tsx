@@ -32,7 +32,7 @@ export const Text: React.FC<TextProps> = ({
   className = '',
   color = 'black',
   children,
-  span = 'false',
+  span = false,
   variant = 'body-copy',
 }) => {
   if (span)

@@ -34,9 +34,9 @@ export const RadioButton: React.FC<RadioButtonProps> = ({
         type="radio"
         value={value}
       />
-      <span className="radio-button-icon" onClick={onChange}>
+      <div className="radio-button-icon" onClick={onChange}>
         <Symbol symbol={checked ? 'selected' : 'unselected'} />
-      </span>
+      </div>
       <label htmlFor={id}>{label}</label>
     </div>
   )

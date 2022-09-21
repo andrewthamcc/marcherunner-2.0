@@ -7,8 +7,8 @@ const resolvers = {
     ...itemResolver.Query,
   },
   Mutation: {
-    ...itemResolver.Mutation
-  }
+    ...itemResolver.Mutation,
+  },
 }
 
 export default resolvers

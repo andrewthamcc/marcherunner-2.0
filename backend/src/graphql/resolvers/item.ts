@@ -13,7 +13,7 @@ export default {
     items: async (
       _parent: void,
       args: void,
-      { user, dataSources}: Context
+      { user, dataSources }: Context
     ) => {
       return await dataSources.itemAPI.getItems(user.id)
     },

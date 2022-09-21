@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Symbol, SymbolVariants } from '../symbol'
+import { Symbol, SymbolVariants, Text } from '..'
 import { IconButton } from '../icon-button'
 
 export const TOAST_TYPES = ['success', 'error', 'warning', 'info'] as const
@@ -32,13 +32,15 @@ export const Toast: React.FC<ToastProps> = ({
     <div className={`toast ${showToast ? 'fadeIn' : ''}`}>
       <div className="toast-wrapper">
         {variant && (
-          <Symbol symbol={variant as SymbolVariants} className="toast-symbol" />
+          <Symbol className="toast-symbol" symbol={variant as SymbolVariants} />
         )}
-        <p className="toast-message">{message}</p>
+        <Text className="toast-message" variant="body-copy-xsmall">
+          {message}
+        </Text>
         <IconButton
-          onClick={() => onClose()}
           className="toast-close"
           icon="close"
+          onClick={() => onClose()}
         />
       </div>
     </div>

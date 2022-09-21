@@ -91,20 +91,20 @@ export class ItemAPI extends DataSource {
   }
 
   /**
-   * 
+   *
    * @param string
    * @returns Promise
    */
   async deleteItems(userId: string) {
-    return this.store.item.deleteMany({ where: { userId }})
+    return this.store.item.deleteMany({ where: { userId } })
   }
 
   /**
-   * 
+   *
    * @param string
    * @returns Promise
    */
   async deletePurchasedItems(userId: string) {
-    return this.store.item.deleteMany({ where: { userId, purchased: true }})
+    return this.store.item.deleteMany({ where: { userId, purchased: true } })
   }
 }

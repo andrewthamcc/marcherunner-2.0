@@ -1,4 +1,5 @@
 import React, { useState, RefObject } from 'react'
+import { Text } from '..'
 import './style.scss'
 
 export interface TextInputProps {
@@ -63,7 +64,13 @@ export const TextInput: React.FC<TextInputProps> = ({
         type="text"
         value={value}
       />
-      <p className="text-input-errors">{errors}</p>
+      <Text
+        className="text-input-errors"
+        color="red"
+        variant="body-copy-xsmall"
+      >
+        {errors}
+      </Text>
     </div>
   )
 }

@@ -10,9 +10,13 @@
     }
   }
 
-  &-icon svg {
-    height: 14px;
-    width: 14px;
+  &-icon {
+    display: inline;
+
+    svg {
+      height: 14px;
+      width: 14px;
+    }
   }
 
   label {

@@ -1,4 +1,4 @@
-import { addTwo } from "./add-two";
+import { addTwo } from './add-two'
 
 describe('adds two numbers', () => {
   it('adds', () => {

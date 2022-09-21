@@ -1,7 +1,6 @@
 import { PrismaClient } from '@prisma/client'
 import { DataSource } from 'apollo-datasource'
 
-
 export class GroceryCategoryAPI extends DataSource {
   private store: PrismaClient
   private context: any

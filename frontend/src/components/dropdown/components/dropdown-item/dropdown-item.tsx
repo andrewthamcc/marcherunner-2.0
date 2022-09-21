@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from '../../..'
+import { Button, Text } from '../../..'
 import { DropItem } from '../..'
 import './style.scss'
 
@@ -17,8 +17,10 @@ export const DropdownItem: React.FC<Props> = ({ item, onChange }) => {
   return (
     <li className="dropdown-item" tabIndex={0}>
       <Button label={item.label} onClick={() => onChange(item)} plain>
-        <span className="dropdown-item-icon">{item.icon}</span>
-        <span className="dropdown-item-text">{item.label}</span>
+        <div className="dropdown-item-icon">{item.icon}</div>
+        <Text className="dropdown-item-text" span>
+          {item.label}
+        </Text>
       </Button>
     </li>
   )
