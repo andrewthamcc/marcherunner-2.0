@@ -1,6 +1,7 @@
 import express from 'express'
-import { auth, requiredScopes, AuthResult } from 'express-oauth2-jwt-bearer'
+import { auth, requiredScopes } from 'express-oauth2-jwt-bearer'
 import { dataSources } from '../server'
+import { AuthRequest } from '../middlewares/types'
 
 export const itemRouter = express.Router()
 itemRouter.use(
@@ -10,22 +11,24 @@ itemRouter.use(
   })
 )
 
-export interface AuthRequest<T> extends AuthResult {
-  body: T
-}
-
 itemRouter.post(
   '/deleteAll',
   requiredScopes('delete:items'),
-  async (req, res) => {
-    // await dataSources.itemAPI.deleteItems(req.userId)
+  async (req: AuthRequest, res) => {
+    if (!req.user) return res.status(401).send('Unauthorized')
+
+    await dataSources.itemAPI.deleteItems(req.user.id)
+    return res.status(200).send({ body: { deleted: 'All Items' } })
   }
 )
 
 itemRouter.post(
   '/deletePurchased',
   requiredScopes('delete:purchasedItems'),
-  async (req, res) => {
-    // await dataSources.itemAPI.deletePurchasedItems(req.user.id)
+  async (req: AuthRequest, res) => {
+    if (!req.user) return res.status(401).send('Unauthorized')
+
+    await dataSources.itemAPI.deletePurchasedItems(req.user.id)
+    return res.status(200).send({ body: { deleted: 'Purchased Items' } })
   }
 )
