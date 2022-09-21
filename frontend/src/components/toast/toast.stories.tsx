@@ -35,8 +35,8 @@ export const Plain: React.FC<ToastProps> = () => {
       {TOAST_TYPES.map((type, index) => (
         <Button
           key={index}
-          onClick={() => handleClick(type)}
           label={`${type}`}
+          onClick={() => handleClick(type)}
         />
       ))}
     </div>

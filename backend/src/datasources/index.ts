@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client'
-import { DataSource as Source } from 'apollo-datasource'
+import { User } from '../middlewares'
 import { GroceryCategoryAPI } from './groceryCategoryAPI'
 import { ItemAPI } from './itemAPI'
 
@@ -8,9 +8,10 @@ export interface DataSources {
   groceryCategoryAPI: GroceryCategoryAPI
 }
 
-export const dataSourcesInit = (prisma: PrismaClient) => {
-  return {
-    itemAPI: new ItemAPI(prisma),
-    groceryCategoryAPI: new GroceryCategoryAPI(prisma),
+export const dataSourcesInit =
+  (prisma: PrismaClient) => (context: { user: User }) => {
+    return {
+      itemAPI: new ItemAPI(prisma, context),
+      groceryCategoryAPI: new GroceryCategoryAPI(prisma, context),
+    }
   }
-}

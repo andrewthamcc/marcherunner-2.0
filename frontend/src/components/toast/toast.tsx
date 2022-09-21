@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
-import { Symbol, SymbolVariants, Text } from '..'
+import { Symbol, SymbolVariants } from '../symbol'
 import { IconButton } from '../icon-button'
+import { Text } from '../text'
 
 export const TOAST_TYPES = ['success', 'error', 'warning', 'info'] as const
 export type ToastVariants = typeof TOAST_TYPES[number]
