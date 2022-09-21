@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client'
 import { DataSource } from 'apollo-datasource'
+import { User } from '../../middlewares'
 
 interface Item {
   name: string
@@ -9,15 +10,12 @@ interface Item {
 
 export class ItemAPI extends DataSource {
   private store: PrismaClient
-  private context: any
+  private context: { user: User }
 
-  constructor(store: any) {
+  constructor(store: PrismaClient, context: { user: User }) {
     super()
     this.store = store
-  }
-
-  initialize(config: any) {
-    this.context = config.context
+    this.context = context
   }
 
   /**

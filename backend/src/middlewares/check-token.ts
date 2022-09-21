@@ -12,8 +12,7 @@ async function getKey(header: JwtHeader, callback: any) {
     const key = await client.getSigningKey(header.kid)
     callback(null, key.getPublicKey())
   } catch (error) {
-    console.error(error)
-    return
+    return error
   }
 }
 
@@ -35,7 +34,7 @@ export const isTokenValid = (token: string): Promise<string | JwtPayload> => {
       },
       (error, decoded) => {
         if (error || decoded === undefined) {
-          reject(error || 'No JWT provided')
+          reject(new Error('Unauthorized'))
         } else {
           resolve(decoded)
         }

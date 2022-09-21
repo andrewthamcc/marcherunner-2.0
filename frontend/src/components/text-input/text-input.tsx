@@ -1,5 +1,5 @@
 import React, { useState, RefObject } from 'react'
-import { Text } from '..'
+import { Text } from '../text'
 import './style.scss'
 
 export interface TextInputProps {
