@@ -1,20 +1,9 @@
 import { ApolloServer, ExpressContext } from 'apollo-server-express'
-import { JwtPayload } from 'jsonwebtoken'
-import isTokenValid from './middlewares/auth'
 import { schema } from './graphql'
 import { prismaClient } from './prismaClient'
+import { isTokenValid, restAuth, Auth0TokenResponse, User } from './middlewares'
 import { dataSourcesInit, DataSources } from './datasources'
 import app from './app'
-
-interface Auth0TokenResponse extends JwtPayload {
-  sub: string
-  permissions: string[]
-}
-
-interface User {
-  id: string
-  permissions?: string[]
-}
 
 export interface Context {
   dataSources: DataSources
@@ -51,7 +40,7 @@ export async function startApolloServer() {
   await server.start()
   server.applyMiddleware({ app })
 
-  app.use((_, res) => {
+  app.use(restAuth, (_, res) => {
     res.status(200)
     res.send('Hello World 🌎!')
     res.end()

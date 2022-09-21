@@ -17,7 +17,7 @@ async function getKey(header: JwtHeader, callback: any) {
   }
 }
 
-function isTokenValid(token: string): Promise<string | JwtPayload> {
+export const isTokenValid = (token: string): Promise<string | JwtPayload> => {
   return new Promise((resolve, reject) => {
     if (!token) {
       reject(new Error('No JWT provided'))
@@ -43,5 +43,3 @@ function isTokenValid(token: string): Promise<string | JwtPayload> {
     )
   })
 }
-
-export default isTokenValid
