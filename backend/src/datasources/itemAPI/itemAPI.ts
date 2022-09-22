@@ -1,6 +1,7 @@
 import { PrismaClient } from '@prisma/client'
 import { DataSource } from 'apollo-datasource'
 import { User } from '../../middlewares'
+import { dataSourcesWithContext as dataSources } from '../../server'
 
 interface Item {
   name: string
@@ -24,6 +25,8 @@ export class ItemAPI extends DataSource {
    * @returns Promise<items[]>
    */
   async getItems(userId: string) {
+    await dataSources?.userAPI.hasPermisson('read:items')
+
     return this.store.item.findMany({ where: { userId } })
   }
 
@@ -33,6 +36,8 @@ export class ItemAPI extends DataSource {
    * @returns Promise<item>
    */
   async getItem(itemId: string) {
+    // await dataSources?.userAPI.hasPermisson('read:item')
+
     return this.store.item.findMany({ where: { id: itemId } })
   }
 
@@ -42,6 +47,8 @@ export class ItemAPI extends DataSource {
    * @returns Promise<item>
    */
   async createItem(item: Item) {
+    await dataSources?.userAPI.hasPermisson('create:item')
+
     const { name, categoryId, userId } = item
 
     return this.store.item.create({
@@ -59,6 +66,8 @@ export class ItemAPI extends DataSource {
    * @returns Promise<item>
    */
   async updateItem(itemId: string) {
+    await dataSources?.userAPI.hasPermisson('update:item')
+
     const item = await this.store.item.findUnique({ where: { id: itemId } })
     if (!item) throw new Error('That item could not be found.')
 
@@ -78,6 +87,8 @@ export class ItemAPI extends DataSource {
    * @returns Promise<item>
    */
   async deleteItem(itemId: string) {
+    await dataSources?.userAPI.hasPermisson('delete:item')
+
     const item = this.store.item.findUnique({ where: { id: itemId } })
     if (!item) throw new Error('That item could not be found.')
 
@@ -94,6 +105,8 @@ export class ItemAPI extends DataSource {
    * @returns Promise
    */
   async deleteItems(userId: string) {
+    await dataSources?.userAPI.hasPermisson('delete:items')
+
     return this.store.item.deleteMany({ where: { userId } })
   }
 
@@ -103,6 +116,8 @@ export class ItemAPI extends DataSource {
    * @returns Promise
    */
   async deletePurchasedItems(userId: string) {
+    await dataSources?.userAPI.hasPermisson('delete:purchased')
+
     return this.store.item.deleteMany({ where: { userId, purchased: true } })
   }
 }
