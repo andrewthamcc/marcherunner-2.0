@@ -7,16 +7,16 @@ export const TOAST_TYPES = ['success', 'error', 'warning', 'info'] as const
 export type ToastVariants = typeof TOAST_TYPES[number]
 
 export interface ToastProps {
+  closeToast: () => void
   message: string
-  onClose: () => void
   showToast: boolean
   timeout?: number
   variant?: ToastVariants
 }
 
 export const Toast: React.FC<ToastProps> = ({
+  closeToast,
   message,
-  onClose,
   showToast,
   timeout = 3000,
   variant,
@@ -24,7 +24,7 @@ export const Toast: React.FC<ToastProps> = ({
   useEffect(() => {
     if (!timeout) return
 
-    const toastTimeout = setTimeout(onClose, timeout)
+    const toastTimeout = setTimeout(closeToast, timeout)
     return () => clearTimeout(toastTimeout)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showToast, timeout])
@@ -39,9 +39,10 @@ export const Toast: React.FC<ToastProps> = ({
           {message}
         </Text>
         <IconButton
+          a11ylabel="close-toast"
           className="toast-close"
           icon="close"
-          onClick={() => onClose()}
+          onClick={closeToast}
         />
       </div>
     </div>

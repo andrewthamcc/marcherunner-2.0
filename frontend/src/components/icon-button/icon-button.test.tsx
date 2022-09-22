@@ -6,6 +6,7 @@ describe('icon button component', () => {
   const clickfn = jest.fn()
   const customRender = (disabled = false, className = '') => (
     <IconButton
+      a11ylabel="close"
       className={className}
       disabled={disabled}
       icon="close"

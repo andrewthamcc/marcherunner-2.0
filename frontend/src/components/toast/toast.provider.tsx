@@ -39,7 +39,7 @@ export const ToastProvider: React.FC = ({ children }) => {
             <li className="toast-list-item" key={id}>
               <Toast
                 {...messageProps}
-                onClose={() => closeToast(id)}
+                closeToast={() => closeToast(id)}
                 showToast
                 timeout={3500}
               />
