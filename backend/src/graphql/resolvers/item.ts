@@ -12,7 +12,7 @@ export default {
   Query: {
     items: async (
       _parent: void,
-      args: void,
+      _args: void,
       { user, dataSources }: Context
     ) => {
       return await dataSources.itemAPI.getItems(user.id)

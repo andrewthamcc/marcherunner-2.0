@@ -1,11 +1,13 @@
 import { PrismaClient } from '@prisma/client'
 import { User } from '../middlewares'
-import { GroceryCategoryAPI } from './groceryCategoryAPI'
 import { ItemAPI } from './itemAPI'
+import { GroceryCategoryAPI } from './groceryCategoryAPI'
+import { UserAPI } from './userAPI'
 
 export interface DataSources {
   itemAPI: ItemAPI
   groceryCategoryAPI: GroceryCategoryAPI
+  userAPI: UserAPI
 }
 
 export const dataSourcesInit =
@@ -13,5 +15,6 @@ export const dataSourcesInit =
     return {
       itemAPI: new ItemAPI(prisma, context),
       groceryCategoryAPI: new GroceryCategoryAPI(prisma, context),
+      userAPI: new UserAPI(prisma, context),
     }
   }
