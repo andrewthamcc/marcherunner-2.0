@@ -1,23 +1,23 @@
 import React from 'react'
-import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import { Toast, ToastVariants } from './toast'
 
 describe('Toast message', () => {
   const closefn = jest.fn()
 
   const customRender = (
-    showToast: boolean = true,
-    message: string = 'toast message',
+    showToast = true,
+    message = 'toast message',
     timeout?: number,
     variant?: ToastVariants
   ) => (
     <div>
       <Toast
-        showToast={showToast}
+        closeToast={closefn}
         message={message}
-        onClose={closefn}
-        variant={variant}
+        showToast={showToast}
         timeout={timeout}
+        variant={variant}
       />
     </div>
   )

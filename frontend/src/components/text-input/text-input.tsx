@@ -1,4 +1,4 @@
-import React, { useState, RefObject } from 'react'
+import React, { useState } from 'react'
 import { Text } from '../text'
 import './style.scss'
 
@@ -11,8 +11,7 @@ export interface TextInputProps {
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void // passthrough of callback for onBlur event
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
   onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void
-  placeholder?: string // placeholder text
-  ref?: RefObject<HTMLInputElement> | null // forwardRef
+  placeholder?: string
   required?: boolean
   tabIndex?: number // passthrough for tab index
   value: string
@@ -43,14 +42,14 @@ export const TextInput: React.FC<TextInputProps> = ({
   const validateInput = (e: React.FocusEvent<HTMLInputElement>) => {
     if (onBlur) onBlur(e)
 
-    if (required && value === '') {
+    if (required && !value) {
       setErrors('This is required')
     }
   }
 
   return (
     <div className={`text-input ${className ? className : ''}`}>
-      {!!label && <label htmlFor={id}>{label}</label>}
+      {label && <label htmlFor={id}>{label}</label>}
       <input
         className={`${errors ? 'error' : ''}`}
         disabled={disabled}

@@ -4,6 +4,7 @@ import { Icon, IconVariants } from '../icon'
 import './style.scss'
 
 export interface IconButtonProps {
+  a11ylabel: string
   className?: string // passthrough for className
   color?: ColorValues
   disabled?: boolean
@@ -12,6 +13,7 @@ export interface IconButtonProps {
 }
 
 export const IconButton: React.FC<IconButtonProps> = ({
+  a11ylabel,
   className,
   color = 'grey',
   disabled = false,
@@ -20,11 +22,12 @@ export const IconButton: React.FC<IconButtonProps> = ({
 }) => {
   return (
     <button
+      aria-label={a11ylabel}
       className={`icon-button ${className ? className : ''}`}
       disabled={disabled}
       onClick={onClick}
     >
-      {icon && <Icon icon={icon} color={color} />}
+      {icon && <Icon color={color} icon={icon} />}
     </button>
   )
 }

@@ -8,6 +8,7 @@ export default {
   title: 'Atoms/IconButton',
   component: IconButton,
   args: {
+    a11ylabel: 'storybook buton',
     label: 'Icon Button',
     onClick: action('clicked'),
   },

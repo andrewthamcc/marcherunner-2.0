@@ -62,10 +62,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
       className={`dropdown-wrapper ${className ? className : ''}`}
       disabled={disabled}
       label={label || ''}
-      onClick={() => {
-        if (disabled) return
-        setIsOpen(!isOpen)
-      }}
+      onClick={() => setIsOpen(!isOpen)}
       plain
       width={width}
     >
@@ -79,7 +76,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
         ref={dropdownRef}
         tabIndex={0}
       >
-        {!!value?.icon && <div className="dropdown-icon">{value.icon}</div>}
+        {value?.icon && <div className="dropdown-icon">{value.icon}</div>}
         <Text className="dropdown-text" span>
           {!value ? placeholder : value.label}
         </Text>
