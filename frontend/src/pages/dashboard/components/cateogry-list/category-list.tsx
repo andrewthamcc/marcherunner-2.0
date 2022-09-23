@@ -1,14 +1,14 @@
 import React from 'react'
 import {
   Dashboard_items,
-  Dashboard_groceryCategory,
+  Dashboard_groceryCategories,
 } from '../../types/Dashboard'
 import { CategoryIcon, CategoryVariants, Text } from '../../../../components'
 import { CategoryItem } from '..'
 
 interface Props {
   items: Dashboard_items[]
-  category: Dashboard_groceryCategory
+  category: Dashboard_groceryCategories
 }
 
 export const CategoryList: React.FC<Props> = ({ category, items }) => {
