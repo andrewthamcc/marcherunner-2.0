@@ -1,4 +1,4 @@
-import { Context } from '../../server'
+import { Context } from '../../datasources'
 
 type ItemArgs = {
   item: {
@@ -15,7 +15,7 @@ export default {
       _args: void,
       { user, dataSources }: Context
     ) => {
-      return await dataSources.itemAPI.getItems(user.id)
+      return await dataSources.itemAPI.getItems(user?.id || '')
     },
     item: async (
       _parent: void,

@@ -1,3 +1,3 @@
-export * from './check-token'
+export * from './isTokenValid'
 export * from './hasPermission'
 export * from './types'

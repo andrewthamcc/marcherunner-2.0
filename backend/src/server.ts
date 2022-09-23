@@ -3,18 +3,15 @@ import { DataSources as ApolloDataSources } from 'apollo-server-core/dist/graphq
 import { schema } from './graphql'
 import { prismaClient } from './prismaClient'
 import { isTokenValid } from './auth'
-import { dataSourcesInit, DataSources } from './datasources'
-import { restAuth, Auth0TokenResponse, User } from './middlewares'
+import { dataSourcesInit, DataSources, DataSourcesContext } from './datasources'
+import { restAuth, Auth0TokenResponse } from './middlewares'
 import app from './app'
 
-export interface Context {
-  dataSources: DataSources
-  user: User
-}
-
 export const dataSources = dataSourcesInit(prismaClient.prisma)
-export let dataSourcesWithContext: null | DataSources = null
-const addDataSourcesContext = (context: { user: User }) => dataSources(context)
+export let dataSourcesWithContext: DataSources
+
+const addDataSourcesContext = (context: DataSourcesContext) =>
+  dataSources(context)
 
 const context = async ({ req }: ExpressContext) => {
   const token = req.headers.authorization
@@ -27,7 +24,10 @@ const context = async ({ req }: ExpressContext) => {
 
       return { user }
     } catch (error) {
-      console.error(error)
+      const user = { id: '', permissions: [] }
+      dataSourcesWithContext = addDataSourcesContext({
+        user,
+      })
       return error
     }
   }
@@ -42,6 +42,7 @@ export async function startApolloServer() {
       dataSourcesWithContext as unknown as ApolloDataSources<DataSources>,
     context,
     csrfPrevention: true,
+    introspection: true,
   })
 
   await server.start()

@@ -1,7 +1,7 @@
 import { PrismaClient } from '@prisma/client'
 import { DataSource } from 'apollo-datasource'
-import { User } from '../../middlewares'
 import { dataSourcesWithContext as dataSources } from '../../server'
+import { DataSourcesContext } from '..'
 
 interface Item {
   name: string
@@ -11,9 +11,9 @@ interface Item {
 
 export class ItemAPI extends DataSource {
   private store: PrismaClient
-  private context: { user: User }
+  private context: DataSourcesContext
 
-  constructor(store: PrismaClient, context: { user: User }) {
+  constructor(store: PrismaClient, context: DataSourcesContext) {
     super()
     this.store = store
     this.context = context

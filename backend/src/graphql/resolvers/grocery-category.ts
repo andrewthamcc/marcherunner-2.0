@@ -1,8 +1,8 @@
-import { Context } from '../../server'
+import { Context } from '../../datasources'
 
 export default {
   Query: {
-    groceryCategory: async (
+    groceryCategories: async (
       _parent: void,
       _args: void,
       { dataSources }: Context

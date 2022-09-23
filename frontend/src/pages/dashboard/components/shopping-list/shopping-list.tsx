@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import {
   Dashboard_items,
-  Dashboard_groceryCategory,
+  Dashboard_groceryCategories,
 } from '../../types/Dashboard'
 import { CategoryList, SearchedList, ShoppingListControls } from '..'
 
 interface Props {
   items: Dashboard_items[]
-  categories: Dashboard_groceryCategory[]
+  categories: Dashboard_groceryCategories[]
 }
 
 export const ShoppingList: React.FC<Props> = ({ items, categories }) => {
