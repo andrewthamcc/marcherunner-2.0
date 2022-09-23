@@ -5,7 +5,7 @@ import './style.scss'
 export const LoadingSpinner: React.FC = () => (
   <div className="loading">
     <div className="loading-spinner">
-      <img src={Spinner} alt="loading..." />
+      <img alt="loading..." src={Spinner} />
     </div>
   </div>
 )

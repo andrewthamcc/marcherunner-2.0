@@ -1,12 +1,8 @@
 import React from 'react'
 import { useQuery } from '@apollo/client'
 import { Layout } from '../../layout'
-import {
-  CategoryIcon,
-  CategoryVariants,
-  LoadingSpinner,
-  Text,
-} from '../../components'
+import { LoadingSpinner, Text } from '../../components'
+import { ShoppingList } from './components'
 import { DASHBOARD_QUERY } from './query'
 import { Dashboard as DashboardData } from './types/Dashboard'
 import './style.scss'
@@ -48,9 +44,7 @@ export const Dashboard = () => {
 
   return (
     <Layout>
-      {data.groceryCategory.map((c) => (
-        <CategoryIcon icon={c.categoryName as CategoryVariants} key={c.id} />
-      ))}
+      <ShoppingList categories={data.groceryCategory} items={data.items} />
     </Layout>
   )
 }

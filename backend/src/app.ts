@@ -6,8 +6,6 @@ app.use(express.json())
 
 app.use('/items', itemRouter)
 
-app.get('/', (req, res) => {
-  res.send('Hello World')
-})
+app.get('/', (_, res) => res.send('Hello World'))
 
 export default app

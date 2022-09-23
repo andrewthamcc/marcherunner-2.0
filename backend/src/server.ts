@@ -2,8 +2,9 @@ import { ApolloServer, ExpressContext } from 'apollo-server-express'
 import { DataSources as ApolloDataSources } from 'apollo-server-core/dist/graphqlOptions'
 import { schema } from './graphql'
 import { prismaClient } from './prismaClient'
-import { isTokenValid, restAuth, Auth0TokenResponse, User } from './middlewares'
+import { isTokenValid } from './auth'
 import { dataSourcesInit, DataSources } from './datasources'
+import { restAuth, Auth0TokenResponse, User } from './middlewares'
 import app from './app'
 
 export interface Context {
@@ -35,8 +36,6 @@ const context = async ({ req }: ExpressContext) => {
 }
 
 export async function startApolloServer() {
-  // if (!dataSourcesWithContext) return
-
   const server = new ApolloServer({
     schema,
     dataSources: () =>
