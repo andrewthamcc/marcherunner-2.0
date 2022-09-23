@@ -9,7 +9,7 @@ export const DASHBOARD_QUERY = gql`
       categoryId
       purchased
     }
-    groceryCategory {
+    groceryCategories {
       id
       categoryName
     }

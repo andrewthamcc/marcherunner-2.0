@@ -36,7 +36,7 @@ export const isTokenValid = (token: string): Promise<string | JwtPayload> => {
       },
       (error, decoded) => {
         if (error || decoded === undefined) {
-          reject(new Error('Unauthorized'))
+          reject(error || 'No JWT Provided')
         } else {
           resolve(decoded)
         }

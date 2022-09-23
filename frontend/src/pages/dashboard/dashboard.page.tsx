@@ -44,7 +44,7 @@ export const Dashboard = () => {
 
   return (
     <Layout>
-      <ShoppingList categories={data.groceryCategory} items={data.items} />
+      <ShoppingList categories={data.groceryCategories} items={data.items} />
     </Layout>
   )
 }
