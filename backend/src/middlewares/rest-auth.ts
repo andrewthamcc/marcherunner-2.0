@@ -1,5 +1,6 @@
 import { Response, NextFunction } from 'express'
-import { Auth0TokenResponse, AuthRequest, isTokenValid } from '.'
+import { isTokenValid } from '../auth'
+import { Auth0TokenResponse, AuthRequest } from '.'
 
 export const restAuth = async (
   req: AuthRequest,
