@@ -3,6 +3,13 @@ import { bearerToken } from '../apollo/store'
 
 type HTTPMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE'
 
+/**
+ *
+ * @param url - string
+ * @param method - HTTP request method
+ * @param body - BodyInit
+ * @returns - Promise<Response>
+ */
 export const restClient = (
   url: string,
   method: HTTPMethod = 'GET',
