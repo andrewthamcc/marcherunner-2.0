@@ -1,6 +1,8 @@
 import React from 'react'
 import { ColorValues } from '../../theme'
 import { ReactComponent as CaretDown } from './assets/caretDown.svg'
+import { ReactComponent as CartCheckout } from './assets/cart-checkout.svg'
+import { ReactComponent as CartClear } from './assets/cart-clear.svg'
 import { ReactComponent as Chevron } from './assets/chevron.svg'
 import { ReactComponent as ChevronLeft } from './assets/chevronLeft.svg'
 import { ReactComponent as ChevronRight } from './assets/chevronRight.svg'
@@ -16,6 +18,8 @@ import './style.scss'
 
 export const ICON_TYPES = [
   'caret down',
+  'checkout cart',
+  'clear cart',
   'chevron',
   'chevron left',
   'chevron right',
@@ -32,6 +36,8 @@ export type IconVariants = typeof ICON_TYPES[number]
 
 const iconVariants: Record<IconVariants, React.FC> = {
   'caret down': CaretDown,
+  'checkout cart': CartCheckout,
+  'clear cart': CartClear,
   chevron: Chevron,
   'chevron left': ChevronLeft,
   'chevron right': ChevronRight,

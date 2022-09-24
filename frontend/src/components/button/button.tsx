@@ -10,6 +10,7 @@ export interface ButtonProps {
   label: string
   plain?: boolean
   onClick?: () => void
+  type?: 'submit' | 'button'
   width?: number
 }
 
@@ -22,6 +23,7 @@ export const Button: React.FC<ButtonProps> = ({
   label,
   plain = false,
   onClick,
+  type = 'button',
   width,
 }) => {
   return (
@@ -36,6 +38,7 @@ export const Button: React.FC<ButtonProps> = ({
       name={label}
       onClick={onClick}
       style={{ width: `${width}px` }}
+      type={type}
     >
       {children}
       <span className={`button-text ${children ? 'none' : ''}`}>{label}</span>

@@ -1,3 +1,4 @@
+export * from './category-controls'
 export * from './category-item'
 export * from './cateogry-list'
 export * from './searched-list'

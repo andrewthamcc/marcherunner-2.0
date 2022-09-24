@@ -8,11 +8,11 @@ interface ToastMessage extends MessageOptions {
   message: string
 }
 
-interface IToastContext {
+interface ToastContext {
   showToast: (message: string, options?: MessageOptions) => void
 }
 
-export const ToastContext = createContext<IToastContext | null>(null)
+export const ToastContext = createContext<ToastContext | null>(null)
 
 export const ToastProvider: React.FC = ({ children }) => {
   const [toastMessages, setToastMessages] = useState<ToastMessage[]>([])
@@ -38,10 +38,10 @@ export const ToastProvider: React.FC = ({ children }) => {
           {toastMessages.map(({ id, ...messageProps }) => (
             <li className="toast-list-item" key={id}>
               <Toast
-                {...messageProps}
                 closeToast={() => closeToast(id)}
                 showToast
                 timeout={3500}
+                {...messageProps}
               />
             </li>
           ))}

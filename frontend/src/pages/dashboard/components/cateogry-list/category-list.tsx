@@ -3,8 +3,7 @@ import {
   Dashboard_items,
   Dashboard_groceryCategories,
 } from '../../types/Dashboard'
-import { CategoryIcon, CategoryVariants, Text } from '../../../../components'
-import { CategoryItem } from '..'
+import { CategoryControls, CategoryItem } from '..'
 
 interface Props {
   items: Dashboard_items[]
@@ -15,14 +14,13 @@ export const CategoryList: React.FC<Props> = ({ category, items }) => {
   return (
     <div className="category-list">
       <div className="category-list-header">
-        <CategoryIcon icon={category.categoryName as CategoryVariants} />
-        <Text>{category.categoryName}</Text>
+        <CategoryControls category={category} />
       </div>
-      <li>
+      <ul>
         {items.map((i) => (
           <CategoryItem item={i} key={i.id} />
         ))}
-      </li>
+      </ul>
     </div>
   )
 }
