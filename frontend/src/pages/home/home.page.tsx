@@ -9,7 +9,7 @@ import { ReactComponent as Cart } from './assets/cart.svg'
 import './style.scss'
 
 export const Home: React.FC = () => {
-  const { loginWithPopup } = useAuth0()
+  const { loginWithRedirect } = useAuth0()
 
   return (
     <Layout>
@@ -27,7 +27,7 @@ export const Home: React.FC = () => {
                 <Button
                   className="hero-signin-link"
                   label="Sign In"
-                  onClick={loginWithPopup}
+                  onClick={loginWithRedirect}
                   plain
                 />
               </Text>

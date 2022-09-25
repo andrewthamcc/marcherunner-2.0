@@ -38,11 +38,6 @@ export const CategoryControls: React.FC<Props> = ({ category }) => {
 
   const node = useRef<null | HTMLFormElement>(null)
 
-  const handleClearAndCloseEdit = () => {
-    setItemName('')
-    setIsEditing(false)
-  }
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
@@ -88,10 +83,12 @@ export const CategoryControls: React.FC<Props> = ({ category }) => {
           </Button>
           <IconButton
             a11ylabel="clear"
-            color={itemName ? 'red' : 'grey'}
-            disabled={!itemName}
+            color="red"
             icon="close"
-            onClick={handleClearAndCloseEdit}
+            onClick={() => {
+              setItemName('')
+              setIsEditing(false)
+            }}
           />
         </form>
       )}

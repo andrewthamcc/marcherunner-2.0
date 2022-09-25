@@ -8,13 +8,14 @@ import { CategoryControls, CategoryItem } from '..'
 import './style.scss'
 
 interface Props {
-  items: Dashboard_items[]
   category: Dashboard_groceryCategories
+  isEmpty: boolean
+  items: Dashboard_items[]
 }
 
-export const CategoryList: React.FC<Props> = ({ category, items }) => {
+export const CategoryList: React.FC<Props> = ({ category, isEmpty, items }) => {
   return (
-    <div className="category-list">
+    <div className={`category-list ${isEmpty && 'empty'}`}>
       <CategoryControls category={category} />
       <hr />
       {!items.length ? (

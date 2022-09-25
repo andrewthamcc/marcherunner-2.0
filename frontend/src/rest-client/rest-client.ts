@@ -4,18 +4,21 @@ type HTTPMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE'
 
 /**
  *
- * @param url - string
+ * @param endpoint - string
  * @param method - HTTP request method
  * @param body - BodyInit
  * @returns - Promise<Response>
  */
-export const restClient = (
+export const restClient = async (
   url: string,
   method: HTTPMethod = 'GET',
   body?: BodyInit
 ) => {
   const token = bearerToken()
-  return fetch(url, {
+  const baseUrl =
+    process.env.NODE_ENV === 'development' ? 'http://localhost:4000' : ''
+
+  return fetch(baseUrl + url, {
     method,
     headers: new Headers({
       Authorization: `Bearer ${token}`,

@@ -7,7 +7,7 @@ const mockLogin = jest.fn()
 jest.mock('@auth0/auth0-react', () => ({
   useAuth0: () => {
     return {
-      loginWithPopup: mockLogin,
+      loginWithRedirect: mockLogin,
     }
   },
 }))

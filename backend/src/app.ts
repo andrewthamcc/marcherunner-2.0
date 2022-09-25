@@ -1,11 +1,11 @@
 import express from 'express'
+import cors from 'cors'
 import { itemRouter } from './routes'
+import { restAuth } from './middlewares'
 
 const app = express()
-app.use(express.json())
+app.use(express.json(), restAuth)
 
-app.use('/items', itemRouter)
-
-app.get('/', (_, res) => res.send('Hello World'))
+app.use('/item', cors(), itemRouter)
 
 export default app

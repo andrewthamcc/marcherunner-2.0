@@ -4,7 +4,7 @@ import { schema } from './graphql'
 import { prismaClient } from './prismaClient'
 import { isTokenValid } from './auth'
 import { dataSourcesInit, DataSources, DataSourcesContext } from './datasources'
-import { restAuth, Auth0TokenResponse } from './middlewares'
+import { Auth0TokenResponse } from './middlewares'
 import app from './app'
 
 export const dataSources = dataSourcesInit(prismaClient.prisma)
@@ -47,12 +47,6 @@ export async function startApolloServer() {
 
   await server.start()
   server.applyMiddleware({ app })
-
-  app.use(restAuth, (_, res) => {
-    res.status(200)
-    res.send('Hello World 🌎!')
-    res.end()
-  })
 
   const port = process.env.port || 4000
   app.listen({ port }, () =>

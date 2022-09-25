@@ -43,7 +43,12 @@ export const ShoppingList: React.FC<Props> = ({ items, categories }) => {
             const categoryItems = items.filter((i) => i.categoryId === c.id)
 
             return (
-              <CategoryList category={c} items={categoryItems} key={c.id} />
+              <CategoryList
+                category={c}
+                isEmpty={!categoryItems.length}
+                items={categoryItems}
+                key={c.id}
+              />
             )
           })}
         </div>
