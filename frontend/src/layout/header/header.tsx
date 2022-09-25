@@ -6,7 +6,7 @@ import { ReactComponent as Runner } from './assets/runner.svg'
 import './style.scss'
 
 export const Header: React.FC = () => {
-  const { isAuthenticated, loginWithPopup, logout } = useAuth0()
+  const { isAuthenticated, loginWithRedirect, logout } = useAuth0()
 
   return (
     <header className="header">
@@ -22,7 +22,7 @@ export const Header: React.FC = () => {
           border={false}
           color="orange"
           label={isAuthenticated ? 'Logout' : 'Sign In'}
-          onClick={isAuthenticated ? () => logout() : loginWithPopup}
+          onClick={isAuthenticated ? () => logout() : loginWithRedirect}
         />
       </div>
     </header>
