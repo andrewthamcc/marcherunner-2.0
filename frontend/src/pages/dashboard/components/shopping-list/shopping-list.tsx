@@ -4,6 +4,7 @@ import {
   Dashboard_groceryCategories,
 } from '../../types/Dashboard'
 import { CategoryList, SearchedList, ShoppingListControls } from '..'
+import './style.scss'
 
 interface Props {
   items: Dashboard_items[]
@@ -16,24 +17,37 @@ export const ShoppingList: React.FC<Props> = ({ items, categories }) => {
   )
 
   const handleSearch = (search: string) => {
-    if (!search) setSearchedItems(null)
+    if (search === '') {
+      setSearchedItems(null)
+      return
+    }
 
-    const res = items.filter((i) => i.name.includes(search))
+    const res = items.filter((i) =>
+      i.name.toLowerCase().includes(search.toLowerCase())
+    )
     setSearchedItems(res)
   }
 
-  if (searchedItems) {
-    return <SearchedList items={searchedItems} />
-  }
+  const filteredCategories = categories
+    .filter((c) => !['all', 'list'].includes(c.categoryName))
+    .sort((a, b) => a.categoryName.localeCompare(b.categoryName))
 
   return (
     <div className="shopping-list">
       <ShoppingListControls handleSearch={handleSearch} />
-      {categories.map((c) => {
-        const categoryItems = items.filter((i) => i.categoryId === c.id)
+      {searchedItems ? (
+        <SearchedList items={searchedItems} />
+      ) : (
+        <div className="shopping-list-grid">
+          {filteredCategories.map((c) => {
+            const categoryItems = items.filter((i) => i.categoryId === c.id)
 
-        return <CategoryList category={c} items={categoryItems} key={c.id} />
-      })}
+            return (
+              <CategoryList category={c} items={categoryItems} key={c.id} />
+            )
+          })}
+        </div>
+      )}
     </div>
   )
 }

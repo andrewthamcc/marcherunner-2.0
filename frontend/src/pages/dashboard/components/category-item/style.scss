@@ -1,0 +1,19 @@
+.category-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin: 0.25rem 0;
+  margin-left: 1rem;
+
+  &-delete {
+    opacity: 0;
+    width: auto;
+    padding: 0;
+
+    &:focus,
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

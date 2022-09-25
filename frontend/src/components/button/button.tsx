@@ -26,6 +26,8 @@ export const Button: React.FC<ButtonProps> = ({
   type = 'button',
   width,
 }) => {
+  const calcWidth = children ? 'auto' : `${width}px`
+
   return (
     <button
       className={`button 
@@ -37,7 +39,7 @@ export const Button: React.FC<ButtonProps> = ({
       disabled={disabled}
       name={label}
       onClick={onClick}
-      style={{ width: `${width}px` }}
+      style={{ width: calcWidth }}
       type={type}
     >
       {children}

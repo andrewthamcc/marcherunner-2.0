@@ -1,4 +1,3 @@
-import { useReactiveVar } from '@apollo/client'
 import { bearerToken } from '../apollo/store'
 
 type HTTPMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE'
@@ -15,8 +14,7 @@ export const restClient = (
   method: HTTPMethod = 'GET',
   body?: BodyInit
 ) => {
-  const token = useReactiveVar(bearerToken)
-
+  const token = bearerToken()
   return fetch(url, {
     method,
     headers: new Headers({

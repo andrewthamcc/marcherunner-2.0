@@ -1,0 +1,20 @@
+.shopping-list-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &-right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &-delete {
+    margin-left: 1rem;
+
+    svg {
+      height: 30px;
+      width: 30px;
+    }
+  }
+}

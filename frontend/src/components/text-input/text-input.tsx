@@ -3,11 +3,12 @@ import { Text } from '../text'
 import './style.scss'
 
 export interface TextInputProps {
-  className?: string // passthrough for className
-  disabled?: boolean // prop to disable input
-  id?: string // id for input required if labels are being used
-  name: string // name for label
-  label?: string // label name
+  autofocus?: boolean
+  className?: string
+  disabled?: boolean
+  id?: string
+  name: string
+  label?: string
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void // passthrough of callback for onBlur event
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
   onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void
@@ -17,8 +18,8 @@ export interface TextInputProps {
   value: string
 }
 
-// todo: investigate proper typing of forwardRef
 export const TextInput: React.FC<TextInputProps> = ({
+  autofocus = false,
   className,
   disabled,
   id,
@@ -51,6 +52,7 @@ export const TextInput: React.FC<TextInputProps> = ({
     <div className={`text-input ${className ? className : ''}`}>
       {label && <label htmlFor={id}>{label}</label>}
       <input
+        autoFocus={autofocus}
         className={`${errors ? 'error' : ''}`}
         disabled={disabled}
         id={id}

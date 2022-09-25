@@ -1,0 +1,13 @@
+.shopping-list {
+  padding: 4rem 0;
+  height: 100%;
+  width: 85%;
+  margin: 0 auto;
+
+  &-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 6rem;
+    grid-row-gap: 2rem;
+  }
+}
