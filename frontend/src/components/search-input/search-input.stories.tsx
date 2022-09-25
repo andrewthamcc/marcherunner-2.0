@@ -11,7 +11,6 @@ export const Simple = () => {
   const [isSearching, setIsSearching] = useState(false)
 
   const handleSearch = (search: string) => {
-    console.log(search)
     if (search) setIsSearching(true)
     else setIsSearching(false)
   }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react'
 import { Text } from '../text'
 import './style.scss'
 
@@ -18,22 +18,38 @@ export interface TextInputProps {
   value: string
 }
 
-export const TextInput: React.FC<TextInputProps> = ({
-  autofocus = false,
-  className,
-  disabled,
-  id,
-  name,
-  label,
-  onBlur,
-  onChange,
-  onFocus,
-  placeholder,
-  required,
-  tabIndex,
-  value,
-}) => {
+interface TextInputHandle {
+  focusInput: () => void
+}
+
+const TextInputWithRef: React.ForwardRefRenderFunction<
+  TextInputHandle,
+  TextInputProps
+> = (
+  {
+    autofocus = false,
+    className,
+    disabled,
+    id,
+    name,
+    label,
+    onBlur,
+    onChange,
+    onFocus,
+    placeholder,
+    required,
+    tabIndex,
+    value,
+  },
+  ref
+) => {
   const [errors, setErrors] = useState<null | string>(null)
+  useImperativeHandle(ref, () => ({ focusInput }))
+  const inputRef = useRef<HTMLInputElement | null>(null)
+
+  const focusInput = () => {
+    if (inputRef && inputRef.current) inputRef.current.focus()
+  }
 
   const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
     if (onFocus) onFocus(e)
@@ -61,6 +77,7 @@ export const TextInput: React.FC<TextInputProps> = ({
         onChange={onChange}
         onFocus={handleFocus}
         placeholder={placeholder}
+        ref={inputRef}
         tabIndex={tabIndex}
         type="text"
         value={value}
@@ -75,3 +92,5 @@ export const TextInput: React.FC<TextInputProps> = ({
     </div>
   )
 }
+
+export const TextInput = forwardRef(TextInputWithRef)

@@ -4,8 +4,8 @@ import { itemRouter } from './routes'
 import { restAuth } from './middlewares'
 
 const app = express()
-app.use(express.json(), restAuth)
+app.use(express.json())
 
-app.use('/item', cors(), itemRouter)
+app.use('/item', restAuth, itemRouter)
 
 export default app

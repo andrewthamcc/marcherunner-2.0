@@ -1,18 +1,21 @@
-import React, { useState, useRef } from 'react'
+import React, { ElementRef, useState, useRef } from 'react'
 import {
   Button,
   CategoryIcon,
   CategoryVariants,
   IconButton,
+  LoadingSpinner,
   Symbol,
   TextInput,
   Text,
 } from '../../../../components'
 import { Dashboard_groceryCategories } from '../../types/Dashboard'
 import './style.scss'
+import { useCreateItem } from './use-create-item'
 
 interface Props {
   category: Dashboard_groceryCategories
+  userId: string
 }
 
 type CategoryTitles = Exclude<CategoryVariants, 'all' | 'list'>
@@ -32,17 +35,25 @@ const categoryTiles: Record<CategoryTitles, string> = {
   snacks: 'Snacks',
 }
 
-export const CategoryControls: React.FC<Props> = ({ category }) => {
+type InputHandle = ElementRef<typeof TextInput>
+
+export const CategoryControls: React.FC<Props> = ({ category, userId }) => {
   const [isEditing, setIsEditing] = useState(false)
   const [itemName, setItemName] = useState('')
+  const itemInput = useRef<InputHandle>(null)
+  const { createItem, loading } = useCreateItem()
 
-  const node = useRef<null | HTMLFormElement>(null)
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
+    await createItem({
+      name: itemName,
+      userId,
+      categoryId: category.id,
+    })
+
     setItemName('')
-    return
+    if (itemInput && itemInput.current) itemInput.current.focusInput()
   }
 
   return (
@@ -63,7 +74,7 @@ export const CategoryControls: React.FC<Props> = ({ category }) => {
           <Symbol symbol="add orange" />
         </Button>
       ) : (
-        <form onSubmit={handleSubmit} ref={node}>
+        <form onSubmit={handleSubmit}>
           <CategoryIcon
             className="category-controls-icon"
             icon={category.categoryName as CategoryVariants}
@@ -71,25 +82,44 @@ export const CategoryControls: React.FC<Props> = ({ category }) => {
           <TextInput
             autofocus
             className="category-controls-input"
+            disabled={loading}
             id={category.id}
             name={category.categoryName}
             onBlur={() => setIsEditing(false)}
             onChange={(e) => setItemName(e.target.value)}
             placeholder="Add an item"
+            ref={itemInput}
             value={itemName}
           />
-          <Button disabled={!itemName} label="add item" type="submit">
-            <Symbol symbol={itemName ? 'add green' : 'add disabled'} />
-          </Button>
-          <IconButton
-            a11ylabel="clear"
-            color="red"
-            icon="close"
-            onClick={() => {
-              setItemName('')
-              setIsEditing(false)
-            }}
-          />
+          <div className="category-controls-button-container">
+            {loading ? (
+              <div className="loading">
+                <LoadingSpinner />
+              </div>
+            ) : (
+              <>
+                <Button
+                  className="category-controls-buttons"
+                  disabled={!itemName || loading}
+                  label="add item"
+                  type="submit"
+                >
+                  <Symbol symbol={itemName ? 'add green' : 'add disabled'} />
+                </Button>
+                <IconButton
+                  a11ylabel="clear"
+                  className="category-controls-buttons"
+                  color="red"
+                  disabled={loading}
+                  icon="close"
+                  onClick={() => {
+                    setItemName('')
+                    setIsEditing(false)
+                  }}
+                />
+              </>
+            )}
+          </div>
         </form>
       )}
     </div>
