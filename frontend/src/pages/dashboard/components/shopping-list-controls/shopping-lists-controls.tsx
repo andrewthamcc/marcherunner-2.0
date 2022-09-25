@@ -13,8 +13,7 @@ export const ShoppingListControls: React.FC<Props> = ({ handleSearch }) => {
   const handleDelete = async (deleteItems: 'all' | 'purchased') => {
     if (deleteItems === 'all') {
       try {
-        const res = await restClient('/item/deleteAll', 'POST')
-        console.log(res)
+        await restClient('/item/deleteAll', 'POST')
       } catch (error) {
         toast('Could not delete all items.', { variant: 'error' })
         console.error(error)

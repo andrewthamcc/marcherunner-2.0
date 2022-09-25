@@ -11,12 +11,18 @@ interface Props {
   category: Dashboard_groceryCategories
   isEmpty: boolean
   items: Dashboard_items[]
+  userId: string
 }
 
-export const CategoryList: React.FC<Props> = ({ category, isEmpty, items }) => {
+export const CategoryList: React.FC<Props> = ({
+  category,
+  isEmpty,
+  items,
+  userId,
+}) => {
   return (
     <div className={`category-list ${isEmpty && 'empty'}`}>
-      <CategoryControls category={category} />
+      <CategoryControls category={category} userId={userId} />
       <hr />
       {!items.length ? (
         <Text align="center" variant="body-copy-small">

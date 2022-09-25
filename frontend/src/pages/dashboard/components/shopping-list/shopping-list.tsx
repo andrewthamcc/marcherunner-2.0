@@ -9,9 +9,14 @@ import './style.scss'
 interface Props {
   items: Dashboard_items[]
   categories: Dashboard_groceryCategories[]
+  userId: string
 }
 
-export const ShoppingList: React.FC<Props> = ({ items, categories }) => {
+export const ShoppingList: React.FC<Props> = ({
+  items,
+  categories,
+  userId,
+}) => {
   const [searchedItems, setSearchedItems] = useState<null | Dashboard_items[]>(
     null
   )
@@ -48,6 +53,7 @@ export const ShoppingList: React.FC<Props> = ({ items, categories }) => {
                 isEmpty={!categoryItems.length}
                 items={categoryItems}
                 key={c.id}
+                userId={userId}
               />
             )
           })}

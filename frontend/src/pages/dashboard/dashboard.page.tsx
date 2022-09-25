@@ -1,4 +1,5 @@
 import React from 'react'
+import { useAuth0 } from '@auth0/auth0-react'
 import { useQuery } from '@apollo/client'
 import { Layout } from '../../layout'
 import { LoadingSpinner, Text } from '../../components'
@@ -8,6 +9,7 @@ import { Dashboard as DashboardData } from './types/Dashboard'
 import './style.scss'
 
 export const Dashboard = () => {
+  const { user } = useAuth0()
   const { data, loading, error } = useQuery<DashboardData>(DASHBOARD_QUERY)
 
   if (loading || error) {
@@ -44,7 +46,11 @@ export const Dashboard = () => {
 
   return (
     <Layout>
-      <ShoppingList categories={data.groceryCategories} items={data.items} />
+      <ShoppingList
+        categories={data.groceryCategories}
+        items={data.items}
+        userId={user?.sub || ''}
+      />
     </Layout>
   )
 }
