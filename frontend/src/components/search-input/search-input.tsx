@@ -31,8 +31,11 @@ export const SearchInput: React.FC<SearchInputProps> = ({
   const debouncedSearchText = useDebounce(value, searchDelay)
 
   useEffect(() => {
-    if (value && debouncedSearchText) onSearch(debouncedSearchText)
-    else onSearch('')
+    if (!value && debouncedSearchText) onSearch('')
+  }, [value])
+
+  useEffect(() => {
+    if (debouncedSearchText) onSearch(debouncedSearchText)
   }, [debouncedSearchText])
 
   return (
