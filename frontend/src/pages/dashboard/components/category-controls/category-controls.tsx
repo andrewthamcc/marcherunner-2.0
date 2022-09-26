@@ -58,53 +58,53 @@ export const CategoryControls: React.FC<Props> = ({ category, userId }) => {
           <Symbol symbol="add orange" />
         </Button>
       ) : (
-        <form onSubmit={handleSubmit}>
-          <CategoryIcon
-            className="category-controls-icon"
-            icon={category.categoryName as CategoryVariants}
-          />
-          <TextInput
-            autofocus
-            className="category-controls-input"
-            disabled={loading}
-            id={category.id}
-            name={category.categoryName}
-            onBlur={() => setIsEditing(false)}
-            onChange={(e) => setItemName(e.target.value)}
-            placeholder="Add an item"
-            ref={itemInput}
-            value={itemName}
-          />
-          <div className="category-controls-button-container">
-            {loading ? (
-              <div className="loading">
-                <LoadingSpinner />
-              </div>
-            ) : (
-              <>
+        <>
+          <form onSubmit={handleSubmit}>
+            <CategoryIcon
+              className="category-controls-icon"
+              icon={category.categoryName as CategoryVariants}
+            />
+            <TextInput
+              autofocus
+              className="category-controls-input"
+              disabled={loading}
+              id={category.id}
+              name={category.categoryName}
+              onBlur={() => setIsEditing(false)}
+              onChange={(e) => setItemName(e.target.value)}
+              placeholder="Add an item"
+              ref={itemInput}
+              value={itemName}
+            />
+            <div className="category-controls-button-container">
+              {loading ? (
+                <div className="loading">
+                  <LoadingSpinner />
+                </div>
+              ) : (
                 <Button
-                  className="category-controls-buttons"
+                  className="category-controls-add"
                   disabled={!itemName || loading}
                   label="add item"
                   type="submit"
                 >
                   <Symbol symbol={itemName ? 'add green' : 'add disabled'} />
                 </Button>
-                <IconButton
-                  a11ylabel="clear"
-                  className="category-controls-buttons"
-                  color="red"
-                  disabled={loading}
-                  icon="close"
-                  onClick={() => {
-                    setItemName('')
-                    setIsEditing(false)
-                  }}
-                />
-              </>
-            )}
-          </div>
-        </form>
+              )}
+            </div>
+          </form>
+          <IconButton
+            a11ylabel="clear"
+            className="category-controls-close"
+            color="red"
+            disabled={loading}
+            icon="close"
+            onClick={() => {
+              setItemName('')
+              setIsEditing(false)
+            }}
+          />
+        </>
       )}
     </div>
   )

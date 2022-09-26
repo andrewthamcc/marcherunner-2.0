@@ -107,7 +107,7 @@ export const ShoppingListControls: React.FC<Props> = ({
         {loading ? (
           <LoadingSpinner />
         ) : (
-          <Text>{`Delete ${itemDeleteType?.toUpperCase()} items?`}</Text>
+          <Text align="center">{`Delete ${itemDeleteType?.toUpperCase()} items?`}</Text>
         )}
       </ConfirmationModal>
     </div>

@@ -12,6 +12,14 @@
   }
 }
 
+@media only screen and (max-width: 950px) {
+  .shopping-list {
+    &-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .shopping-list {
     padding: 2rem 0;
