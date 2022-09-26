@@ -39,7 +39,11 @@ export const ShoppingList: React.FC<Props> = ({
 
   return (
     <div className="shopping-list">
-      <ShoppingListControls handleSearch={handleSearch} />
+      <ShoppingListControls
+        handleSearch={handleSearch}
+        hasItems={items.length > 0}
+        hasPurchasedItems={items.filter((i) => i.purchased).length > 0}
+      />
       {searchedItems ? (
         <SearchedList items={searchedItems} />
       ) : (

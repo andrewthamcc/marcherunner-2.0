@@ -23,11 +23,13 @@ export const IconButton: React.FC<IconButtonProps> = ({
   return (
     <button
       aria-label={a11ylabel}
-      className={`icon-button ${className ? className : ''}`}
+      className={`icon-button ${className ? className : ''} ${
+        disabled ? 'disabled' : ''
+      }`}
       disabled={disabled}
       onClick={onClick}
     >
-      {icon && <Icon color={color} icon={icon} />}
+      {icon && <Icon color={disabled ? 'grey' : color} icon={icon} />}
     </button>
   )
 }
