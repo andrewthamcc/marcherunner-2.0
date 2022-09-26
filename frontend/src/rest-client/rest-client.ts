@@ -22,7 +22,8 @@ export const restClient = async (
     method,
     headers: new Headers({
       Authorization: `Bearer ${token}`,
-      'Content-Type': 'application/x-www-form-urlencoded',
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
     }),
     body,
   })

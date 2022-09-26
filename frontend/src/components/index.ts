@@ -1,6 +1,7 @@
 export * from './button'
 export * from './category-icon'
 export * from './checkbox'
+export * from './confirmation-modal'
 export * from './dropdown'
 export * from './icon'
 export * from './icon-button'

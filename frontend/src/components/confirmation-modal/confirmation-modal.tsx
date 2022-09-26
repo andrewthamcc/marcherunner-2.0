@@ -5,20 +5,23 @@ import './style.scss'
 interface ConfirmationModalProps {
   close: () => void
   isOpen: boolean
-  message: string
+  message?: string
   onConfirm: () => void
 }
 
 export const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
+  children,
   close,
   isOpen,
-  message,
+  message = '',
   onConfirm,
 }) => {
   return (
     <Modal close={close} isOpen={isOpen}>
       <div className="confirmation-modal">
-        <Text align="center">{message}</Text>
+        <div className="confirmation-modal-body">
+          {children ? children : <Text align="center">{message}</Text>}
+        </div>
 
         <div className="confirmation-modal-controls">
           <Button

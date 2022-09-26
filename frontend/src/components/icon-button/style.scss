@@ -2,7 +2,7 @@
   background: transparent;
   border: none;
 
-  &:hover {
+  &:hover:not(.disabled) {
     cursor: pointer;
   }
 }
