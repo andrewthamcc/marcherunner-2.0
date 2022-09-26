@@ -26,7 +26,6 @@ export const Toast: React.FC<ToastProps> = ({
 
     const toastTimeout = setTimeout(closeToast, timeout)
     return () => clearTimeout(toastTimeout)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showToast, timeout])
 
   const toast = (
