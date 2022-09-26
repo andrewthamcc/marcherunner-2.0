@@ -1,7 +1,7 @@
 import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
-const CATEGORY_ICONS = [
+const GROCERY_CATEGORIES = [
   'all',
   'bakery',
   'beverage',
@@ -9,7 +9,6 @@ const CATEGORY_ICONS = [
   'dry',
   'frozen',
   'household',
-  'list',
   'meat',
   'pharmacy',
   'prepared',
@@ -19,7 +18,7 @@ const CATEGORY_ICONS = [
 ] as const
 
 export const seedGroceryCategories = async () => {
-  CATEGORY_ICONS.forEach(async (c) => {
+  GROCERY_CATEGORIES.forEach(async (c) => {
     await prisma.groceryCategory.upsert({
       where: { categoryName: c as string },
       update: {},

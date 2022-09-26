@@ -10,29 +10,13 @@ import {
   Text,
 } from '../../../../components'
 import { Dashboard_groceryCategories } from '../../types/Dashboard'
-import './style.scss'
+import { CategoryTitles, getCategoryTitle } from '../../../../utils'
 import { useCreateItem } from './use-create-item'
+import './style.scss'
 
 interface Props {
   category: Dashboard_groceryCategories
   userId: string
-}
-
-type CategoryTitles = Exclude<CategoryVariants, 'all' | 'list'>
-
-const categoryTiles: Record<CategoryTitles, string> = {
-  bakery: 'Bakery',
-  beverage: 'Beverages',
-  dairy: 'Dairy & Cheese',
-  dry: 'Dry & Canned Goods',
-  frozen: 'Frozen Foods',
-  household: 'Household Items',
-  meat: 'Meat',
-  pharmacy: 'Pharmacy & Personal Items',
-  prepared: 'Deli & Prepared Foods',
-  produce: 'Fruits & Vegetables',
-  seafood: 'Seafood',
-  snacks: 'Snacks',
 }
 
 type InputHandle = ElementRef<typeof TextInput>
@@ -69,7 +53,7 @@ export const CategoryControls: React.FC<Props> = ({ category, userId }) => {
             icon={category.categoryName as CategoryVariants}
           />
           <Text className="category-controls-title" variant="body-copy-xlarge">
-            {categoryTiles[category.categoryName as CategoryTitles]}
+            {getCategoryTitle(category.categoryName as CategoryTitles)}
           </Text>
           <Symbol symbol="add orange" />
         </Button>
