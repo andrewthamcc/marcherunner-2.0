@@ -8,7 +8,7 @@ export interface DropItem {
   disabled?: boolean
   icon?: JSX.Element
   label: string
-  value: string | number
+  value: unknown
 }
 
 interface DropdownProps {
@@ -35,10 +35,10 @@ export const Dropdown: React.FC<DropdownProps> = ({
   label,
   list,
   placeholder = 'Select',
-  listWidth = 200,
+  listWidth = 275,
   onChange,
   value,
-  width = 200,
+  width = 275,
 }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [coords, setCoords] = useState<Coords>({ x: 0, y: 0, width: 0 }) // coordinates to open dropdown list
@@ -58,30 +58,33 @@ export const Dropdown: React.FC<DropdownProps> = ({
   }, [dropdownRef])
 
   return (
-    <Button
+    <div
       className={`dropdown-wrapper ${className ? className : ''}`}
-      disabled={disabled}
-      label={label || ''}
-      onClick={() => setIsOpen(!isOpen)}
-      plain
-      width={width}
+      ref={dropdownRef}
+      style={{ width: `${width}px` }}
     >
-      {!!label && <label className="dropdown-label">{label}</label>}
+      <Button
+        className="dropdown-button"
+        disabled={disabled}
+        label={label || ''}
+        onClick={() => setIsOpen(!isOpen)}
+        plain
+      >
+        {!!label && <label className="dropdown-label">{label}</label>}
 
-      <div
-        className={`dropdown 
+        <div
+          className={`dropdown 
           ${isOpen ? 'open' : ''} 
           ${disabled ? 'disabled' : ''}
         `}
-        ref={dropdownRef}
-        tabIndex={0}
-      >
-        {value?.icon && <div className="dropdown-icon">{value.icon}</div>}
-        <Text className="dropdown-text" span>
-          {!value ? placeholder : value.label}
-        </Text>
-        <Icon className="dropdown-caret" icon="caret down" />
-
+          tabIndex={0}
+        >
+          {value?.icon && <div className="dropdown-icon">{value.icon}</div>}
+          <Text className="dropdown-text">
+            {!value ? placeholder : value.label}
+          </Text>
+          <Icon className="dropdown-caret" icon="caret down" />
+        </div>
         <DropdownList
           coords={coords}
           isOpen={isOpen}
@@ -89,7 +92,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
           listWidth={listWidth}
           onChange={onChange}
         />
-      </div>
-    </Button>
+      </Button>
+    </div>
   )
 }

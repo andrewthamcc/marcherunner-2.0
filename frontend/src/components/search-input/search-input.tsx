@@ -27,12 +27,14 @@ export const SearchInput: React.FC<SearchInputProps> = ({
   searchDelay = 600,
   tabIndex,
 }) => {
+  const [hasSearched, setHasSearched] = useState(false)
   const [value, setValue] = useState('')
   const debouncedSearchText = useDebounce(value, searchDelay)
 
   useEffect(() => {
-    if (!value && debouncedSearchText) onSearch('')
-  }, [value])
+    // only call if the user has searched
+    if (!value && hasSearched) onSearch('')
+  }, [value, hasSearched])
 
   useEffect(() => {
     if (debouncedSearchText) onSearch(debouncedSearchText)
@@ -47,7 +49,10 @@ export const SearchInput: React.FC<SearchInputProps> = ({
           disabled={disabled}
           id={id}
           name={name}
-          onChange={(e) => setValue(e.target.value)}
+          onChange={(e) => {
+            if (!hasSearched) setHasSearched(true)
+            setValue(e.target.value)
+          }}
           placeholder={placeholder}
           spellCheck={false}
           tabIndex={tabIndex}

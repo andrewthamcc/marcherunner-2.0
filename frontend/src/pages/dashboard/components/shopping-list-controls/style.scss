@@ -1,16 +1,21 @@
 .shopping-list-controls {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+
+  &-drop {
+    margin-left: auto;
+  }
 
   &-right {
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-left: 1rem;
   }
 
   &-delete {
     margin-left: 1rem;
+    padding: 0;
 
     svg {
       height: 30px;
