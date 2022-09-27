@@ -1,0 +1,49 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "ecmaFeatures": {
+      "impliedStrict": true,
+      "jsx": true
+    }
+  },
+  "env": {
+    "browser": true,
+    "react-native/react-native": true
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "plugin:react-native/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "eslint-config-prettier",
+    "plugin:prettier/recommended",
+    "eslint:recommended",
+    "plugin:import/errors",
+    "plugin:import/typescript"
+  ],
+  "plugins": ["prettier", "react", "react-native", "react-hooks"],
+  "rules": {
+    "react/jsx-fragments": [1, "syntax"],
+    "react/jsx-no-useless-fragment": 1,
+    "react/self-closing-comp": 1,
+    "react/jsx-sort-props": 1,
+    "react/hook-use-state": 1,
+    "react-native/no-unused-styles": 2,
+    "react-native/split-platform-components": 2,
+    "react-native/no-inline-styles": 2,
+    "react-native/no-color-literals": 2,
+    "react-native/no-raw-text": 2,
+    "react-native/sort-styles": [
+      "error",
+      "asc",
+      {
+        "ignoreClassNames": false,
+        "ignoreStyleProperties": false
+      }
+    ],
+    "import/export": 1,
+    "import/first": 1,
+    "import/no-named-as-default": 0,
+    "import/order": 1
+  }
+}
