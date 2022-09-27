@@ -16,11 +16,14 @@ export const DropdownItem: React.FC<Props> = ({ item, onChange }) => {
 
   return (
     <li className="dropdown-item" tabIndex={0}>
-      <Button label={item.label} onClick={() => onChange(item)} plain>
+      <Button
+        className="dropdown-item-button"
+        label={item.label}
+        onClick={() => onChange(item)}
+        plain
+      >
         <div className="dropdown-item-icon">{item.icon}</div>
-        <Text className="dropdown-item-text" span>
-          {item.label}
-        </Text>
+        <Text className="dropdown-item-text">{item.label}</Text>
       </Button>
     </li>
   )

@@ -1,7 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { StoreObject, useApolloClient } from '@apollo/client'
 import {
+  CategoryIcon,
+  CategoryVariants,
   ConfirmationModal,
+  DropItem,
+  Dropdown,
   IconButton,
   LoadingSpinner,
   SearchInput,
@@ -10,9 +14,13 @@ import {
 } from '../../../../components'
 import { useModal } from '../../../../hooks'
 import { restClient } from '../../../../rest-client'
+import { Dashboard_groceryCategories } from '../../types/Dashboard'
+import { CategoryTitles, getCategoryTitle } from '../../../../utils'
 import './style.scss'
 
 interface Props {
+  categories: Dashboard_groceryCategories[]
+  handleFilter: (categoryId: string | null) => void
   handleSearch: (search: string) => void
   hasPurchasedItems: boolean
   hasItems: boolean
@@ -24,15 +32,33 @@ const DELETE_ALL = '/item/deleteAll'
 const DELETE_PURCHASED = '/item/deletePurchased'
 
 export const ShoppingListControls: React.FC<Props> = ({
+  categories,
+  handleFilter,
   handleSearch,
   hasPurchasedItems,
   hasItems,
 }) => {
   const [loading, setLoading] = useState(false)
   const [itemDeleteType, setItemDeleteType] = useState<DeleteType | null>(null)
+  const [dropdownList, setDropdownList] = useState<DropItem[] | null>(null)
+  const [selectedCategory, setSelectedCategory] = useState<DropItem | null>(
+    null
+  )
   const { isOpen, closeModal, openModal } = useModal()
   const toast = useToast()
   const client = useApolloClient()
+
+  useEffect(() => {
+    const dropdownList = categories
+      .map((c) => ({
+        icon: <CategoryIcon icon={c.categoryName as CategoryVariants} />,
+        label: getCategoryTitle(c.categoryName as CategoryTitles),
+        value: c.id,
+      }))
+      .sort((a, b) => a.label.localeCompare(b.label))
+    setDropdownList(dropdownList)
+    setSelectedCategory(dropdownList[0])
+  }, [])
 
   const handleDelete = async (deleteType: DeleteType) => {
     setLoading(true)
@@ -62,11 +88,30 @@ export const ShoppingListControls: React.FC<Props> = ({
   return (
     <div className="shopping-list-controls">
       <SearchInput
+        className="shopping-list-controls-search"
         id="shopping-list-search"
         name="shopping-list-search"
         onSearch={handleSearch}
         placeholder="Search"
       />
+
+      {dropdownList && selectedCategory && (
+        <Dropdown
+          className="shopping-list-controls-drop"
+          list={dropdownList}
+          onChange={(category) => {
+            setSelectedCategory(category)
+
+            if (category.label === 'All') {
+              handleFilter(null)
+              return
+            }
+
+            handleFilter(category.value as string)
+          }}
+          value={selectedCategory}
+        />
+      )}
 
       <div className="shopping-list-controls-right">
         <IconButton

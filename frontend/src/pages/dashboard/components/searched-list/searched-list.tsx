@@ -12,7 +12,7 @@ export const SearchedList: React.FC<Props> = ({ items }) => {
   return (
     <div className="searched-items">
       <div className="searched-items-header">
-        <CategoryIcon className="searched-items-icon" icon="all" />{' '}
+        <CategoryIcon className="searched-items-icon" icon="list" />{' '}
         <Text className="searched-items-title">Search Results</Text>
       </div>
       <hr />
