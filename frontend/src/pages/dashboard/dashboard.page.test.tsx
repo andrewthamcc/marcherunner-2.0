@@ -2,6 +2,7 @@ import React from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
 import { MockedProvider, MockedResponse } from '@apollo/client/testing'
 import { MemoryRouter } from 'react-router-dom'
+import { createCache } from '../../apollo'
 import { ToastProvider } from '../../components'
 import { groceryCategoriesMock } from '../../__mocks__'
 import { DASHBOARD_QUERY } from './query'
@@ -40,7 +41,7 @@ const dashboardMock = {
 const customRender = (mocks: MockedResponse[]) => {
   return (
     <MemoryRouter>
-      <MockedProvider addTypename mocks={mocks}>
+      <MockedProvider addTypename cache={createCache()} mocks={mocks}>
         <ToastProvider>
           <Dashboard />
         </ToastProvider>

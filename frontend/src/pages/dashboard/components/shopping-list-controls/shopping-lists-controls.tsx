@@ -22,8 +22,8 @@ interface Props {
   categories: Dashboard_groceryCategories[]
   handleFilter: (categoryId: string | null) => void
   handleSearch: (search: string) => void
-  hasPurchasedItems: boolean
   hasItems: boolean
+  hasPurchasedItems: boolean
 }
 
 type DeleteType = 'all' | 'purchased'
@@ -35,8 +35,8 @@ export const ShoppingListControls: React.FC<Props> = ({
   categories,
   handleFilter,
   handleSearch,
-  hasPurchasedItems,
   hasItems,
+  hasPurchasedItems,
 }) => {
   const [loading, setLoading] = useState(false)
   const [itemDeleteType, setItemDeleteType] = useState<DeleteType | null>(null)
