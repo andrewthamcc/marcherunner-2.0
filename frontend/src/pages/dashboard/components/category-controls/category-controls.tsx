@@ -84,6 +84,7 @@ export const CategoryControls: React.FC<Props> = ({ category, userId }) => {
                 </div>
               ) : (
                 <Button
+                  a11ylabel="add item"
                   className="category-controls-add"
                   disabled={!itemName || loading}
                   label="add item"

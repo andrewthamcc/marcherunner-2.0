@@ -5,18 +5,21 @@ import { ToastProvider } from './components/toast'
 import { Auth0WrapperWithHistory } from './auth'
 import Pages from './pages'
 import './theme/app.scss'
+import ErrorBoundary from './error-boundary'
 
 function App() {
   return (
-    <BrowserRouter>
-      <Auth0WrapperWithHistory>
-        <ApolloWrapper>
-          <ToastProvider>
-            <Pages />
-          </ToastProvider>
-        </ApolloWrapper>
-      </Auth0WrapperWithHistory>
-    </BrowserRouter>
+    <ErrorBoundary>
+      <BrowserRouter>
+        <Auth0WrapperWithHistory>
+          <ApolloWrapper>
+            <ToastProvider>
+              <Pages />
+            </ToastProvider>
+          </ApolloWrapper>
+        </Auth0WrapperWithHistory>
+      </BrowserRouter>
+    </ErrorBoundary>
   )
 }
 
