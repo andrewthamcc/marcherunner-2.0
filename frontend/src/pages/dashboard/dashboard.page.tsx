@@ -12,7 +12,7 @@ export const Dashboard = () => {
   const { user } = useAuth0()
   const { data, loading, error } = useQuery<DashboardData>(DASHBOARD_QUERY)
 
-  if (loading || error) {
+  if (loading || error || !data) {
     return (
       <Layout>
         <div className="dashboard-initial">
@@ -25,24 +25,20 @@ export const Dashboard = () => {
               </Text>
             </>
           )}
+          {!data && (
+            <>
+              <Text align="center" variant="body-copy-xlarge">
+                No Data!
+              </Text>
+              <Text align="center" variant="body-copy-xsmall">
+                Something has gone very very wrong...
+              </Text>
+            </>
+          )}
         </div>
       </Layout>
     )
   }
-
-  if (!data)
-    return (
-      <Layout>
-        <div className="dashboard-initial">
-          <Text align="center" variant="body-copy-xlarge">
-            No Data!
-          </Text>
-          <Text align="center" variant="body-copy-xsmall">
-            Something has gone very very wrong...
-          </Text>
-        </div>
-      </Layout>
-    )
 
   return (
     <Layout>

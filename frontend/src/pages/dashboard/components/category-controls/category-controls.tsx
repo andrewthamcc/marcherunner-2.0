@@ -44,6 +44,7 @@ export const CategoryControls: React.FC<Props> = ({ category, userId }) => {
     <div className="category-controls">
       {!isEditing ? (
         <Button
+          a11ylabel={`Add item ${category.categoryName}`}
           className="category-controls-header"
           label="add item"
           onClick={() => setIsEditing(true)}
@@ -52,7 +53,7 @@ export const CategoryControls: React.FC<Props> = ({ category, userId }) => {
             className="category-controls-icon"
             icon={category.categoryName as CategoryVariants}
           />
-          <Text className="category-controls-title" variant="body-copy-xlarge">
+          <Text className="category-controls-title" variant="body-copy-large">
             {getCategoryTitle(category.categoryName as CategoryTitles)}
           </Text>
           <Symbol symbol="add orange" />

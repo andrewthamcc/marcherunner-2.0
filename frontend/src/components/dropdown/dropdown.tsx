@@ -64,6 +64,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
       style={{ width: `${width}px` }}
     >
       <Button
+        a11ylabel="Category Filter"
         className="dropdown-button"
         disabled={disabled}
         label={label || ''}

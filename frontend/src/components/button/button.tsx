@@ -3,6 +3,7 @@ import { ColorValues } from '../../theme'
 import './style.scss'
 
 export interface ButtonProps {
+  a11ylabel?: string
   border?: boolean
   className?: string // passthrough for className
   color?: ColorValues
@@ -15,6 +16,7 @@ export interface ButtonProps {
 }
 
 export const Button: React.FC<ButtonProps> = ({
+  a11ylabel = '',
   border = false,
   children,
   className = '',
@@ -30,6 +32,7 @@ export const Button: React.FC<ButtonProps> = ({
 
   return (
     <button
+      aria-label={a11ylabel}
       className={`button 
     ${border ? '' : 'no-border'} 
     ${className ? className : ''} 

@@ -17,6 +17,7 @@ export const DropdownItem: React.FC<Props> = ({ item, onChange }) => {
   return (
     <li className="dropdown-item" tabIndex={0}>
       <Button
+        a11ylabel={`Select ${item.label}`}
         className="dropdown-item-button"
         label={item.label}
         onClick={() => onChange(item)}

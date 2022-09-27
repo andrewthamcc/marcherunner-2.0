@@ -40,12 +40,12 @@ export const Home: React.FC = () => {
             <div className="about-flex-container">
               <div className="about-flex-container-left">
                 <h3 className="about-title">How it works...</h3>
-                <Text className="about-text" variant="body-copy-xlarge">
+                <Text className="about-text" variant="body-copy-large">
                   A super simple web application for all your grocery shopping
                   needs. Write your list, head off on your shopping trip, and
                   start over again.
                 </Text>
-                <Text className="about-text" variant="body-copy-xlarge">
+                <Text className="about-text" variant="body-copy-large">
                   Items are separated into categories to make your shopping
                   trips easier. There&apos;s lots of future plans with continous
                   updates to improve MarchéRunner and expand on its features.
