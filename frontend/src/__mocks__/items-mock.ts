@@ -9,4 +9,12 @@ export const itemsMock = [
     categoryId: BAKERY_ID,
     purchased: false,
   },
+  {
+    __typename: 'Item',
+    id: '61bd3210-1785-41cb-9292-1c348c2bd60f',
+    name: 'english muffins',
+    userId: USER_ID,
+    categoryId: BAKERY_ID,
+    purchased: false,
+  },
 ]
