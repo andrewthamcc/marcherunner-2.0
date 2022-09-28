@@ -7,7 +7,7 @@ export const TEXT_VARIANTS = [
 ] as const
 export type TextVariant = typeof TEXT_VARIANTS[number]
 
-interface Typography {
+export interface Typography {
   fontSize: string
   lineHeight: string
   fontWeight: number

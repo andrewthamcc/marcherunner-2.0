@@ -19,5 +19,6 @@ A simple listing application where users are able to login and log items require
 
 - Backend: NodeJS, TypeScript, Express, Apollo Server, GraphQL, PostgreSQL, Prisma, Jest
 - Frontend: React, TypeScript, GraphQL, Apollo Client, SCSS, react-testing-library, Storybook
+- Native: React Native, TypeScript, GraphQL, Apollo Client, styled-components
 - Authentication: Auth0
 - Tooling: Docker
