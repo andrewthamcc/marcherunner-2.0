@@ -1,5 +1,7 @@
 import React, { createContext } from 'react'
-import { colors, spacing, typography } from '.'
+import { colors } from './colors'
+import { spacing } from './spacing'
+import { typography } from './typography'
 
 export interface Theme {
   colors: typeof colors

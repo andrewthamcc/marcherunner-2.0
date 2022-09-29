@@ -1,10 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
-import { View } from 'react-native';
+import { StatusBar } from 'expo-status-bar'
+import { SafeAreaView, Text } from 'react-native'
 
 export default function App() {
   return (
-    <View>
-      {/* <StatusBar style="auto" /> */}
-    </View>
-  );
+    <SafeAreaView
+      style={{
+        flex: 1,
+      }}
+    >
+      <StatusBar style="auto" />
+      <Text>Testing</Text>
+    </SafeAreaView>
+  )
 }
