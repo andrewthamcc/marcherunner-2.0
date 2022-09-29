@@ -9,7 +9,8 @@
     "web": "expo start --web",
     "test": "jest",
     "storybook": "start-storybook -p 7007",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "prettier": "npx prettier --write src/"
   },
   "dependencies": {
     "expo": "~46.0.13",

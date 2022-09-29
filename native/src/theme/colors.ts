@@ -1,4 +1,12 @@
-const COLOR_VALUES = ['green', 'orange', 'black', 'light-grey', 'grey', 'red', 'white'] as const
+const COLOR_VALUES = [
+  'green',
+  'orange',
+  'black',
+  'light-grey',
+  'grey',
+  'red',
+  'white',
+] as const
 
 export type ColorValues = typeof COLOR_VALUES[number]
 
@@ -9,5 +17,5 @@ export const colors: Record<ColorValues, string> = {
   'light-grey': '#c0c0c0',
   grey: '#747474',
   red: '#ff0000',
-  white: '#ffffff'
+  white: '#ffffff',
 }

@@ -4,9 +4,10 @@ import { colors, ColorValues, typography, TextVariant } from '../../theme'
 import styled from 'styled-components'
 
 const StyledText = styled(ReactNativeText)<Props>`
-  color: ${({ color }) => color ? colors[color] : colors.black};
-  font-size: ${({ variant }) => variant ? typography[variant].fontSize : typography['body-copy'].fontSize};
-  font-weight: ${({ fontWeight }) => fontWeight ? fontWeight : 400};
+  color: ${({ color }) => (color ? colors[color] : colors.black)};
+  font-size: ${({ variant }) =>
+    variant ? typography[variant].fontSize : typography['body-copy'].fontSize};
+  font-weight: ${({ fontWeight }) => (fontWeight ? fontWeight : 400)};
 `
 
 interface Props {

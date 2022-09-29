@@ -3,11 +3,7 @@ import Svg, { G, Circle, Rect } from 'react-native-svg'
 
 export const AddOrange: React.FC = () => {
   return (
-    <Svg
-      width="18"
-      height="18"
-      viewBox="0 0 18 18"
-    >
+    <Svg width="18" height="18" viewBox="0 0 18 18">
       <G fill="none" fill-rule="evenodd">
         <Circle cx="9" cy="9" r="9" fill="#f59517" />
         <Rect
