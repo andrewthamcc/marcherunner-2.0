@@ -1,4 +1,6 @@
 import React from 'react'
+import { View } from 'react-native'
+import styled from 'styled-components/native'
 import {
   AddDisabled,
   AddGreen,
@@ -39,12 +41,35 @@ const symbolVariants: Record<SymbolVariants, React.FC> = {
   warning: Warning,
 }
 
-export interface SymbolProps {
+interface StyledProps {
+  width?: number
+  height?: number
+}
+
+export interface SymbolProps extends StyledProps {
   symbol: SymbolVariants
 }
 
-export const Symbol: React.FC<SymbolProps> = ({ symbol }) => {
+const StyledIconView = styled(View)<StyledProps>`
+  height: ${({ height }) => (height ? height : height)}px;
+  width: ${({ width }) => (width ? width : width)}px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+
+export const Symbol: React.FC<SymbolProps> = ({
+  height = 20,
+  symbol,
+  width = 20,
+}) => {
   const SVG = symbolVariants[symbol]
 
-  return <SVG />
+  return (
+    <StyledIconView height={height} width={width}>
+      <SVG />
+    </StyledIconView>
+  )
 }

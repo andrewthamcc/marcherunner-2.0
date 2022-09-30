@@ -1,4 +1,5 @@
 import React from 'react'
+import { View } from 'react-native'
 import { colors, ColorValues } from '../../theme'
 import {
   CaretDown,
@@ -10,6 +11,7 @@ import {
   Trash,
   BaseIconProps,
 } from './icons'
+import styled from 'styled-components/native'
 
 export const ICON_TYPES = [
   'caret down',
@@ -32,13 +34,37 @@ const iconVariants: Record<IconVariants, React.FC<BaseIconProps>> = {
   trash: Trash,
 }
 
-interface IconProps {
+interface StyledProps {
+  width?: number
+  height?: number
+}
+
+interface IconProps extends StyledProps {
   color?: ColorValues
   icon: IconVariants
 }
 
-export const Icon: React.FC<IconProps> = ({ color = 'white', icon }) => {
+const StyledIconView = styled(View)<StyledProps>`
+  height: ${({ height }) => (height ? height : height)}px;
+  width: ${({ width }) => (width ? width : width)}px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+
+export const Icon: React.FC<IconProps> = ({
+  height = 40,
+  color = 'white',
+  icon,
+  width = 40,
+}) => {
   const SVG = iconVariants[icon]
 
-  return <SVG color={colors[color]} />
+  return (
+    <StyledIconView height={height} width={width}>
+      <SVG color={colors[color]} />
+    </StyledIconView>
+  )
 }

@@ -4,7 +4,7 @@ import { BaseIconProps } from './types'
 
 export const Trash: React.FC<BaseIconProps> = ({ color }) => {
   return (
-    <Svg width="18" height="18" viewBox="0 0 18 18">
+    <Svg viewBox="0 0 18 18">
       <Path
         fill={color}
         fill-rule="evenodd"

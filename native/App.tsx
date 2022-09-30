@@ -1,15 +1,12 @@
+import { ApolloWrapper } from './src/apollo'
 import { StatusBar } from 'expo-status-bar'
-import { SafeAreaView, Text } from 'react-native'
+import { Screens } from './src/screens'
 
 export default function App() {
   return (
-    <SafeAreaView
-      style={{
-        flex: 1,
-      }}
-    >
+    <>
       <StatusBar style="auto" />
-      <Text>Testing</Text>
-    </SafeAreaView>
+      <Screens />
+    </>
   )
 }

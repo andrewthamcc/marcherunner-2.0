@@ -3,7 +3,7 @@ import Svg, { Path } from 'react-native-svg'
 
 export const Seafood: React.FC = () => {
   return (
-    <Svg width="48" height="48" viewBox="0 0 48 48">
+    <Svg viewBox="0 0 48 48">
       <Path
         fill="#00BCD4"
         d="M27,16c-9,0-16,7-16,7l-3,2.003l3,2.148C15.026,30.021,20.018,34,27,34c7,0,17-7,17-10S34,16,27,16z"

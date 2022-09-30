@@ -1,4 +1,5 @@
 import React from 'react'
+import { View } from 'react-native'
 import {
   All,
   Bakery,
@@ -15,6 +16,7 @@ import {
   Seafood,
   Snacks,
 } from './icons'
+import styled from 'styled-components/native'
 
 export const CATEGORY_ICONS = [
   'all',
@@ -51,12 +53,35 @@ const categoryVariants: Record<CategoryVariants, React.FC> = {
   snacks: Snacks,
 }
 
-interface CategoryIconProps {
+interface StyledProps {
+  width?: number
+  height?: number
+}
+
+interface CategoryIconProps extends StyledProps {
   icon: CategoryVariants
 }
 
-export const CategoryIcon: React.FC<CategoryIconProps> = ({ icon }) => {
+const StyledCategoryIconView = styled(View)<StyledProps>`
+  height: ${({ height }) => (height ? height : height)}px;
+  width: ${({ width }) => (width ? width : width)}px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+
+export const CategoryIcon: React.FC<CategoryIconProps> = ({
+  height = 40,
+  icon,
+  width = 40,
+}) => {
   const SVG = categoryVariants[icon]
 
-  return <SVG />
+  return (
+    <StyledCategoryIconView height={height} width={width}>
+      <SVG />
+    </StyledCategoryIconView>
+  )
 }

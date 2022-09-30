@@ -3,7 +3,7 @@ import Svg, { Path } from 'react-native-svg'
 
 export const Dairy: React.FC = () => {
   return (
-    <Svg width="48" height="48" viewBox="0 0 48 48">
+    <Svg viewBox="0 0 48 48">
       <Path
         fill="#90CAF9"
         d="M33,26c0-6.5-4-5-4-19c0,0-8,0-10,0c0,14-4,12.5-4,19v15.5c0,0.828,0.672,1.5,1.5,1.5h15c0.828,0,1.5-0.672,1.5-1.5V26z"

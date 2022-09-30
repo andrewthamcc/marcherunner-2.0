@@ -3,7 +3,7 @@ import Svg, { Path, G } from 'react-native-svg'
 
 export const Bakery: React.FC = () => {
   return (
-    <Svg width="48" height="48" viewBox="0 0 48 48">
+    <Svg viewBox="0 0 48 48">
       <Path
         fill="#FFB300"
         d="M40.061,7.939c4.852,4.853,0.109,14.49-8.761,23.361c-8.87,8.867-18.508,13.611-23.36,8.76c-4.853-4.853-0.11-14.49,8.76-23.361C25.569,7.831,35.208,3.087,40.061,7.939z"

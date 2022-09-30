@@ -3,7 +3,7 @@ import Svg, { Path } from 'react-native-svg'
 
 export const List: React.FC = () => {
   return (
-    <Svg width="48" height="48" viewBox="0 0 48 48">
+    <Svg viewBox="0 0 48 48">
       <Path fill="#B2EBF2" d="M7 4H41V44H7z"></Path>
       <Path
         fill="#00ACC1"
