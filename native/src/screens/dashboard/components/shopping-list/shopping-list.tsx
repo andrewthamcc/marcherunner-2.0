@@ -1,14 +1,15 @@
 import React from 'react'
 import { View } from 'react-native'
+import {
+  Dashboard_groceryCategories,
+  Dashboard_items,
+} from '../../types/Dashboard'
 
 interface Props {
-  categories: any[]
-  items: any[]
-  userId: string
+  categories: Dashboard_groceryCategories[]
+  items: Dashboard_items[]
 }
 
-export const ShopingList: React.FC<Props> = ({ categories, items, userId}) => {
-  return (
-    <View>shopping-list</View>
-  )
+export const ShoppingList: React.FC<Props> = ({ categories, items }) => {
+  return <View>shopping-list</View>
 }

@@ -10,18 +10,15 @@ export interface DataSources {
   userAPI: UserAPI
 }
 
-export type DataSourcesContext = { user: User }
-
 export interface Context {
   dataSources: DataSources
   user: User
 }
 
-export const dataSourcesInit =
-  (prisma: PrismaClient) => (context: DataSourcesContext) => {
-    return {
-      itemAPI: new ItemAPI(prisma, context),
-      groceryCategoryAPI: new GroceryCategoryAPI(prisma, context),
-      userAPI: new UserAPI(prisma, context),
-    }
+export const dataSourcesInit = (prisma: PrismaClient) => {
+  return {
+    itemAPI: new ItemAPI(prisma),
+    groceryCategoryAPI: new GroceryCategoryAPI(prisma),
+    userAPI: new UserAPI(prisma),
   }
+}

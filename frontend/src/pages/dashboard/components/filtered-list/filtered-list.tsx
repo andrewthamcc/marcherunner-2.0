@@ -10,13 +10,12 @@ import './style.scss'
 interface Props {
   category: Dashboard_groceryCategories
   items: Dashboard_items[]
-  userId: string
 }
 
-export const FilteredList: React.FC<Props> = ({ category, items, userId }) => {
+export const FilteredList: React.FC<Props> = ({ category, items }) => {
   return (
     <div className="filtered-items">
-      <CategoryControls category={category} userId={userId} />
+      <CategoryControls category={category} />
       <hr />
       {items.length === 0 && (
         <Text align="center" variant="body-copy-xsmall">

@@ -1,26 +1,21 @@
 import { PrismaClient } from '@prisma/client'
 import { DataSource } from 'apollo-datasource'
-import { hasPermission, Permission } from '../../auth'
-import { DataSourcesContext } from '..'
+import { Permission } from '../../auth'
 
 export class UserAPI extends DataSource {
   private store: PrismaClient
-  private context: DataSourcesContext
-  private userPermissions: Permission[]
 
-  constructor(store: PrismaClient, context: DataSourcesContext) {
+  constructor(store: PrismaClient) {
     super()
     this.store = store
-    this.context = context
-    this.userPermissions = this.context.user?.permissions || []
   }
 
   /**
    *
    * @returns Promise<boolean>
    */
-  async hasPermisson(permission: Permission) {
-    if (hasPermission(this.userPermissions, permission)) {
+  async hasPermisson(userPermissions: Permission[], permission: Permission) {
+    if (userPermissions.includes(permission)) {
       return true
     }
 

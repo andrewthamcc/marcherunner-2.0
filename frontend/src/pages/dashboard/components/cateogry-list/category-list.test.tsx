@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react'
 import { MockedProvider } from '@apollo/client/testing'
 import { ToastProvider } from '../../../../components'
 import { Dashboard_items } from '../../types/Dashboard'
-import { BAKERY_ID, USER_ID } from '../../../../__mocks__/constants'
+import { BAKERY_ID } from '../../../../__mocks__/constants'
 import { itemsMock } from '../../../../__mocks__'
 import { CategoryTitles, getCategoryTitle } from '../../../../utils'
 import { CategoryList } from './category-list'
@@ -23,7 +23,6 @@ describe('Category List', () => {
             category={bakeryCategory}
             isEmpty={isEmpty}
             items={items}
-            userId={USER_ID}
           />
         </ToastProvider>
       </MockedProvider>

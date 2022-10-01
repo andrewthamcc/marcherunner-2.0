@@ -1,7 +1,8 @@
 import { PrismaClient } from '@prisma/client'
 import { DataSource } from 'apollo-datasource'
-import { dataSourcesWithContext as dataSources } from '../../server'
-import { DataSourcesContext } from '..'
+import { Permission } from '../../auth'
+import { User } from '../../middlewares'
+import { dataSources } from '../../server'
 
 interface Item {
   name: string
@@ -11,12 +12,10 @@ interface Item {
 
 export class ItemAPI extends DataSource {
   private store: PrismaClient
-  private context: DataSourcesContext
 
-  constructor(store: PrismaClient, context: DataSourcesContext) {
+  constructor(store: PrismaClient) {
     super()
     this.store = store
-    this.context = context
   }
 
   /**
@@ -24,10 +23,10 @@ export class ItemAPI extends DataSource {
    * @param userId - UUID
    * @returns Promise<items[]>
    */
-  async getItems(userId: string) {
-    await dataSources?.userAPI.hasPermisson('read:items')
+  async getItems({ id, permissions }: User) {
+    await dataSources?.userAPI.hasPermisson(permissions, 'read:items')
 
-    return this.store.item.findMany({ where: { userId } })
+    return this.store.item.findMany({ where: { userId: id } })
   }
 
   /**
@@ -46,8 +45,8 @@ export class ItemAPI extends DataSource {
    * @param item - {  name: string, categoryId: UUID, userId: UUID }
    * @returns Promise<item>
    */
-  async createItem(item: Item) {
-    await dataSources?.userAPI.hasPermisson('create:item')
+  async createItem(item: Item, userPermissions: Permission[]) {
+    await dataSources?.userAPI.hasPermisson(userPermissions, 'create:item')
 
     const { name, categoryId, userId } = item
 
@@ -65,8 +64,8 @@ export class ItemAPI extends DataSource {
    * @param itemId - string
    * @returns Promise<item>
    */
-  async updateItem(itemId: string) {
-    await dataSources?.userAPI.hasPermisson('update:item')
+  async updateItem(itemId: string, userPermissions: Permission[]) {
+    await dataSources?.userAPI.hasPermisson(userPermissions, 'update:item')
 
     const item = await this.store.item.findUnique({ where: { id: itemId } })
     if (!item) throw new Error('That item could not be found.')
@@ -86,8 +85,8 @@ export class ItemAPI extends DataSource {
    * @param itemId - string
    * @returns Promise<item>
    */
-  async deleteItem(itemId: string) {
-    await dataSources?.userAPI.hasPermisson('delete:item')
+  async deleteItem(itemId: string, userPermissions: Permission[]) {
+    await dataSources?.userAPI.hasPermisson(userPermissions, 'delete:item')
 
     const item = this.store.item.findUnique({ where: { id: itemId } })
     if (!item) throw new Error('That item could not be found.')
@@ -104,10 +103,10 @@ export class ItemAPI extends DataSource {
    * @param string
    * @returns Promise
    */
-  async deleteItems(userId: string) {
-    await dataSources?.userAPI.hasPermisson('delete:items')
+  async deleteItems({ id, permissions }: User) {
+    await dataSources?.userAPI.hasPermisson(permissions, 'delete:items')
 
-    return this.store.item.deleteMany({ where: { userId } })
+    return this.store.item.deleteMany({ where: { userId: id } })
   }
 
   /**
@@ -115,9 +114,11 @@ export class ItemAPI extends DataSource {
    * @param string
    * @returns Promise
    */
-  async deletePurchasedItems(userId: string) {
-    await dataSources?.userAPI.hasPermisson('delete:purchased')
+  async deletePurchasedItems({ id, permissions }: User) {
+    await dataSources?.userAPI.hasPermisson(permissions, 'delete:purchased')
 
-    return this.store.item.deleteMany({ where: { userId, purchased: true } })
+    return this.store.item.deleteMany({
+      where: { userId: id, purchased: true },
+    })
   }
 }

@@ -7,11 +7,6 @@
 // START Enums and Input Objects
 //==============================================================
 
-export interface CreateItemData {
-  name: string
-  categoryId: string
-}
-
 //==============================================================
 // END Enums and Input Objects
 //==============================================================

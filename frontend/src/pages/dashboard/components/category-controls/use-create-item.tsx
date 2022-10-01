@@ -16,7 +16,6 @@ export const CREATE_ITEM = gql`
 
 interface Item {
   name: string
-  userId: string
   categoryId: string
 }
 
