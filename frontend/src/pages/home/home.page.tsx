@@ -45,11 +45,6 @@ export const Home: React.FC = () => {
                   needs. Write your list, head off on your shopping trip, and
                   start over again.
                 </Text>
-                <Text className="about-text" variant="body-copy-large">
-                  Items are separated into categories to make your shopping
-                  trips easier. There&apos;s lots of future plans with continous
-                  updates to improve MarchéRunner and expand on its features.
-                </Text>
               </div>
               <div className="about-screenshot">
                 <img alt="MarchéRunner app screenshot" src={Screenshot} />
