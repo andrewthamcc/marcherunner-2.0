@@ -8,6 +8,8 @@ const StyledText = styled(ReactNativeText)<Props>`
   font-size: ${({ variant }) =>
     variant ? typography[variant].fontSize : typography['body-copy'].fontSize};
   font-weight: ${({ fontWeight }) => (fontWeight ? fontWeight : 400)};
+  text-decoration: ${({ strikethrough }) =>
+    strikethrough ? 'line-through' : 'none'};
 `
 
 interface Props {
@@ -15,6 +17,7 @@ interface Props {
   variant?: TextVariant
   color?: ColorValues
   fontWeight?: number
+  strikethrough?: boolean
 }
 
 export const Text: React.FC<Props & TextProps> = ({
@@ -23,10 +26,16 @@ export const Text: React.FC<Props & TextProps> = ({
   color = 'black',
   variant = 'body-copy',
   fontWeight = 400,
+  strikethrough = false,
   ...rest
 }) => {
   return (
-    <StyledText color={color} variant={variant} {...rest}>
+    <StyledText
+      color={color}
+      strikethrough={strikethrough}
+      variant={variant}
+      {...rest}
+    >
       {children}
     </StyledText>
   )
