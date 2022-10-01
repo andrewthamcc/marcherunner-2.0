@@ -13,13 +13,12 @@ export const Home: React.FC = () => {
           <Text>MarchéRunner - helping with your grocery runs.</Text>
           <Button label="Login" onPress={login} />
         </View>
-
-        <Text>How it works...</Text>
-
         <Text>
           A super simple application for all your grocery shopping needs. Write
           your list, head off on your shopping trip, and start over again.
         </Text>
+
+        <Text>How it works...</Text>
 
         <Text align="center" variant="body-copy-xlarge" fontWeight={600}>
           1. Login with a social media partner.

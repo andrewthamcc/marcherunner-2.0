@@ -1,10 +1,10 @@
 import React from 'react'
 import { ScrollView, View } from 'react-native'
 import { useQuery } from '@apollo/client'
-import { useAuth } from '../../auth/use-auth'
 import { Button, LoadingSpinner, Text } from '../../components'
-import { DASHBOARD_QUERY } from './query'
+import { useAuth } from '../../auth/use-auth'
 import { Dashboard as DashboardData } from './types/Dashboard'
+import { DASHBOARD_QUERY } from './query'
 import { ShoppingList } from './components'
 
 export const Dashboard: React.FC = () => {
