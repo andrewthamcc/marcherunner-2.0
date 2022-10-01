@@ -4,7 +4,6 @@ type ItemArgs = {
   item: {
     name: string
     categoryId: string
-    userId: string
   }
 }
 
@@ -15,7 +14,7 @@ export default {
       _args: void,
       { user, dataSources }: Context
     ) => {
-      return await dataSources.itemAPI.getItems(user?.id || '')
+      return await dataSources.itemAPI.getItems(user)
     },
     item: async (
       _parent: void,
@@ -29,29 +28,32 @@ export default {
     createItem: async (
       _parent: void,
       { item }: ItemArgs,
-      { dataSources }: Context
+      { user, dataSources }: Context
     ) => {
-      const { name, categoryId, userId } = item
+      const { name, categoryId } = item
 
-      return await dataSources.itemAPI.createItem({
-        name,
-        categoryId,
-        userId,
-      })
+      return await dataSources.itemAPI.createItem(
+        {
+          name,
+          categoryId,
+          userId: user.id,
+        },
+        user.permissions
+      )
     },
     updateItem: async (
       _parent: void,
       { id }: { id: string },
-      { dataSources }: Context
+      { user, dataSources }: Context
     ) => {
-      return await dataSources.itemAPI.updateItem(id)
+      return await dataSources.itemAPI.updateItem(id, user.permissions)
     },
     deleteItem: async (
       _parent: void,
       { id }: { id: string },
-      { dataSources }: Context
+      { user, dataSources }: Context
     ) => {
-      return await dataSources.itemAPI.deleteItem(id)
+      return await dataSources.itemAPI.deleteItem(id, user.permissions)
     },
   },
 }

@@ -9,10 +9,10 @@ export default function App() {
   return (
     <AuthProvider>
       <ApolloWrapper>
-          <SafeAreaView style={{ flex: 1 }}>
-            <StatusBar style="auto" />
-            <Screens />
-          </SafeAreaView>
+        <SafeAreaView style={{ flex: 1 }}>
+          <StatusBar style="auto" />
+          <Screens />
+        </SafeAreaView>
       </ApolloWrapper>
     </AuthProvider>
   )

@@ -17,7 +17,6 @@ export default gql`
   input CreateItemData {
     name: String!
     categoryId: ID!
-    userId: ID!
   }
 
   type Mutation {

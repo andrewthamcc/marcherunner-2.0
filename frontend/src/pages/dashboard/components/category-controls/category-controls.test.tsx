@@ -18,7 +18,6 @@ const createMock = {
     variables: {
       item: {
         name: 'cookies',
-        userId: USER_ID,
         categoryId: BAKERY_ID,
       },
     },
@@ -49,7 +48,7 @@ describe('Category Controls', () => {
     return (
       <MockedProvider addTypename cache={createCache()} mocks={mocks}>
         <ToastProvider>
-          <CategoryControls category={bakeryCategory} userId={USER_ID} />
+          <CategoryControls category={bakeryCategory} />
         </ToastProvider>
       </MockedProvider>
     )

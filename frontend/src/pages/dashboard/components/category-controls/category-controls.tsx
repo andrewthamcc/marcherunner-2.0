@@ -16,12 +16,11 @@ import './style.scss'
 
 interface Props {
   category: Dashboard_groceryCategories
-  userId: string
 }
 
 type InputHandle = ElementRef<typeof TextInput>
 
-export const CategoryControls: React.FC<Props> = ({ category, userId }) => {
+export const CategoryControls: React.FC<Props> = ({ category }) => {
   const [isEditing, setIsEditing] = useState(false)
   const [itemName, setItemName] = useState('')
   const itemInput = useRef<InputHandle>(null)
@@ -32,7 +31,6 @@ export const CategoryControls: React.FC<Props> = ({ category, userId }) => {
 
     await createItem({
       name: itemName,
-      userId,
       categoryId: category.id,
     })
 

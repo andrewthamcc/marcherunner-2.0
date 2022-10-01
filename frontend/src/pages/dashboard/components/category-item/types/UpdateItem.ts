@@ -8,17 +8,17 @@
 // ====================================================
 
 export interface UpdateItem_updateItem {
-  id: string;
-  name: string;
-  userId: string;
-  categoryId: string;
-  purchased: boolean;
+  id: string
+  name: string
+  userId: string
+  categoryId: string
+  purchased: boolean
 }
 
 export interface UpdateItem {
-  updateItem: UpdateItem_updateItem;
+  updateItem: UpdateItem_updateItem
 }
 
 export interface UpdateItemVariables {
-  id: string;
+  id: string
 }

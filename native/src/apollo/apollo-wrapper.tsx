@@ -15,7 +15,6 @@ export const ApolloWrapper: React.FC = ({ children }) => {
   const { authError, token } = useAuth()
 
   const authLink = setContext(async (_, { headers, ...rest }) => {
-
     return {
       ...rest,
       headers: {
@@ -31,12 +30,12 @@ export const ApolloWrapper: React.FC = ({ children }) => {
   })
 
   if (authError) {
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-    <Symbol symbol="error" />
-    <Text align="center" variant="body-copy-xsmall">
-      {authError}
-    </Text>
-  </View>
+    ;<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Symbol symbol="error" />
+      <Text align="center" variant="body-copy-xsmall">
+        {authError}
+      </Text>
+    </View>
   }
 
   return <ApolloProvider client={client}>{children}</ApolloProvider>
