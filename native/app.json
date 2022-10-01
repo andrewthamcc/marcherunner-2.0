@@ -1,7 +1,8 @@
 {
   "expo": {
     "name": "marcherunner",
-    "slug": "native",
+    "slug": "marcherunner",
+    "owner": "andrewthamcc",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",

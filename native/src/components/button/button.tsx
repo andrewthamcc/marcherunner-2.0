@@ -3,7 +3,7 @@ import { TouchableOpacity, TouchableOpacityProps, Text } from 'react-native'
 import { colors, ColorValues, typography } from '../../theme'
 import styled from 'styled-components/native'
 
-const StyledButton = styled(TouchableOpacity)<Props>`
+const StyledButton = styled(TouchableOpacity)<StyledProps>`
   background: ${({ color }) => (color ? colors[color] : colors.green)};
   border: 2px solid #c0c0c0;
   border-radius: 40px;
@@ -18,21 +18,26 @@ const StyledButtonText = styled(Text)`
   color: #ffffff;
 `
 
-interface Props {
+interface StyledProps {
   color?: ColorValues
   disabled?: boolean
+}
+
+interface Props extends StyledProps {
+  label: string
 }
 
 export const Button: React.FC<Props & TouchableOpacityProps> = ({
   color = 'green',
   disabled = false,
+  label,
   ...rest
 }) => {
   const buttonColor = disabled ? 'light-grey' : color
 
   return (
     <StyledButton color={buttonColor} disabled={disabled} {...rest}>
-      <StyledButtonText>Button</StyledButtonText>
+      <StyledButtonText>{label}</StyledButtonText>
     </StyledButton>
   )
 }
