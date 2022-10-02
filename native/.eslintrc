@@ -46,7 +46,7 @@
     "react-native/split-platform-components": 1,
     "react-native/no-inline-styles": 1,
     "react-native/no-color-literals": 1,
-    "react-native/no-raw-text": 1,
+    // "react-native/no-raw-text": 1,
     "import/export": 1,
     "import/first": 1,
     "import/no-named-as-default": 0,

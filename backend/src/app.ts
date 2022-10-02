@@ -14,7 +14,6 @@ app.use(
     ],
   })
 )
-// app.use(cors())
 
 app.use('/item', restAuth, itemRouter)
 

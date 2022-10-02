@@ -6,6 +6,7 @@ import {
   REACT_APP_AUTH0_DOMAIN,
   REACT_APP_AUTH0_CLIENT_ID,
   REACT_APP_AUTH0_AUDIENCE,
+  // eslint-disable-next-line import/no-unresolved
 } from '@env'
 import { bearerToken } from '../apollo/store'
 
@@ -56,7 +57,6 @@ export const AuthProvider: React.FC = ({ children }) => {
       }
 
       if (result.type === 'success') {
-        console.log(result)
         const token = result.params.access_token
         setToken(token)
         bearerToken(token)

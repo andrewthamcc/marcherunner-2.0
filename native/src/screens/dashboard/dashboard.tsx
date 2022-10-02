@@ -1,21 +1,24 @@
 import React from 'react'
-import { ScrollView, View } from 'react-native'
+import { ScrollView } from 'react-native'
 import { useQuery } from '@apollo/client'
-import { Button, LoadingSpinner, Text } from '../../components'
-import { useAuth } from '../../auth/use-auth'
+import { LoadingSpinner, Text } from '../../components'
 import { Dashboard as DashboardData } from './types/Dashboard'
 import { DASHBOARD_QUERY } from './query'
 import { ShoppingList } from './components'
+import { DashboardView, LoadingErrorView } from './style'
 
 export const Dashboard: React.FC = () => {
-  const { logout } = useAuth()
-
   const { data, loading, error } = useQuery<DashboardData>(DASHBOARD_QUERY)
 
   if (loading || error || !data) {
+    if (error) console.error(error)
     return (
-      <View style={{ flex: 1 }}>
-        {error && <Text align="center">{error.message}</Text>}
+      <LoadingErrorView>
+        {error && (
+          <Text align="center" color="red">
+            {error.message}
+          </Text>
+        )}
         {loading && (
           <>
             <LoadingSpinner />
@@ -24,25 +27,28 @@ export const Dashboard: React.FC = () => {
             </Text>
           </>
         )}
-        {!data && (
-          <>
-            <Text align="center" variant="body-copy-xlarge">
-              No Data!
-            </Text>
-            <Text align="center" variant="body-copy-xsmall">
-              Something has gone very very wrong...
-            </Text>
-          </>
-        )}
-      </View>
+      </LoadingErrorView>
+    )
+  }
+
+  if (!data) {
+    return (
+      <LoadingErrorView>
+        <Text align="center" variant="body-copy-xlarge">
+          No Data!
+        </Text>
+        <Text align="center" variant="body-copy-xsmall">
+          Something has gone very very wrong...
+        </Text>
+      </LoadingErrorView>
     )
   }
 
   return (
-    <View style={{ flex: 1 }}>
+    <DashboardView>
       <ScrollView>
         <ShoppingList categories={data.groceryCategories} items={data.items} />
       </ScrollView>
-    </View>
+    </DashboardView>
   )
 }

@@ -1,37 +1,66 @@
 import React from 'react'
-import { ScrollView, View } from 'react-native'
+import { View } from 'react-native'
+import { StatusBar } from 'expo-status-bar'
+import { colors } from '../../theme'
 import { Button, Text } from '../../components'
 import { useAuth } from '../../auth/use-auth'
+import {
+  HomeView,
+  HeroContainer,
+  HeroBackgroundImage,
+  HeroTitle,
+  HeroSubTitle,
+  HomeInstructions,
+  IconContainer,
+  LoginContainer,
+} from './style'
+import { Cart, List, Profile } from './assets'
 
 export const Home: React.FC = () => {
   const { login } = useAuth()
 
   return (
-    <View style={{ flex: 1 }}>
-      <ScrollView>
-        <View>
-          <Text>MarchéRunner - helping with your grocery runs.</Text>
-          <Button label="Login" onPress={login} />
-        </View>
-        <Text>
-          A super simple application for all your grocery shopping needs. Write
-          your list, head off on your shopping trip, and start over again.
-        </Text>
+    <HomeView>
+      <StatusBar backgroundColor={colors.green} />
+      <HeroBackgroundImage source={require('./assets/grocery.jpg')}>
+        <HeroContainer>
+          <HeroTitle>MarchéRunner</HeroTitle>
+          <HeroSubTitle>Helping with your grocery runs</HeroSubTitle>
 
-        <Text>How it works...</Text>
+          <HomeInstructions>
+            <View>
+              <IconContainer>
+                <Profile />
+              </IconContainer>
+              <Text align="center" color="white" variant="body-copy-xlarge">
+                Login with a social media partner
+              </Text>
+            </View>
 
-        <Text align="center" variant="body-copy-xlarge" fontWeight={600}>
-          1. Login with a social media partner.
-        </Text>
+            <View>
+              <IconContainer>
+                <List />
+              </IconContainer>
+              <Text align="center" color="white" variant="body-copy-xlarge">
+                Make your shopping list
+              </Text>
+            </View>
 
-        <Text align="center" variant="body-copy-xlarge" fontWeight={600}>
-          2. Make your shopping list.
-        </Text>
+            <View>
+              <IconContainer>
+                <Cart />
+              </IconContainer>
+              <Text align="center" color="white" variant="body-copy-xlarge">
+                Go shopping with MarchéRunner!
+              </Text>
+            </View>
+          </HomeInstructions>
 
-        <Text align="center" variant="body-copy-xlarge" fontWeight={600}>
-          3. Go shopping with MarchéRunner!
-        </Text>
-      </ScrollView>
-    </View>
+          <LoginContainer>
+            <Button color="orange" label="Login" onPress={login} />
+          </LoginContainer>
+        </HeroContainer>
+      </HeroBackgroundImage>
+    </HomeView>
   )
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { View } from 'react-native'
+import { Text, View } from 'react-native'
 import {
   Dashboard_groceryCategories,
   Dashboard_items,
@@ -11,5 +11,9 @@ interface Props {
 }
 
 export const ShoppingList: React.FC<Props> = ({ categories, items }) => {
-  return <View>shopping-list</View>
+  return (
+    <View>
+      <Text>Shopping List</Text>
+    </View>
+  )
 }

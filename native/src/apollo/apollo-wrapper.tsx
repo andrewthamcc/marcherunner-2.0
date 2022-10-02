@@ -3,13 +3,20 @@ import { ApolloProvider } from '@apollo/client'
 import { ApolloClient, HttpLink } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
 import { View } from 'react-native'
-import { LoadingSpinner, Symbol, Text } from '../components'
+import styled from 'styled-components/native'
+import { Symbol, Text } from '../components'
 import { useAuth } from '../auth/use-auth'
-import { REACT_APP_GRAPHQL_URL } from '@env'
-import { bearerToken } from './store'
 import { createCache } from './cache'
 
-const httpLink = new HttpLink({ uri: REACT_APP_GRAPHQL_URL })
+const ErrorView = styled(View)`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`
+
+const httpLink = new HttpLink({
+  uri: `http://192.168.86.85:4000/graphql`,
+})
 
 export const ApolloWrapper: React.FC = ({ children }) => {
   const { authError, token } = useAuth()
@@ -30,12 +37,14 @@ export const ApolloWrapper: React.FC = ({ children }) => {
   })
 
   if (authError) {
-    ;<View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Symbol symbol="error" />
-      <Text align="center" variant="body-copy-xsmall">
-        {authError}
-      </Text>
-    </View>
+    return (
+      <ErrorView>
+        <Symbol symbol="error" />
+        <Text align="center" variant="body-copy-xsmall">
+          {authError}
+        </Text>
+      </ErrorView>
+    )
   }
 
   return <ApolloProvider client={client}>{children}</ApolloProvider>
