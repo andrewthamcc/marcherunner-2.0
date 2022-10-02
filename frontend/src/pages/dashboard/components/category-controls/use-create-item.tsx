@@ -43,8 +43,11 @@ export const useCreateItem = (): UseCreateItem => {
       },
       update: (cache, { data }) => {
         const newItemRef = cache.writeQuery({
-          data: data?.createItem,
           query: CREATE_ITEM,
+          data,
+          variables: {
+            item,
+          },
         })
 
         cache.modify({
