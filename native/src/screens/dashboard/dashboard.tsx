@@ -1,6 +1,8 @@
 import React from 'react'
 import { ScrollView } from 'react-native'
+import { StatusBar } from 'expo-status-bar'
 import { useQuery } from '@apollo/client'
+import { colors } from '../../theme'
 import { LoadingSpinner, Text } from '../../components'
 import { Dashboard as DashboardData } from './types/Dashboard'
 import { DASHBOARD_QUERY } from './query'
@@ -46,6 +48,7 @@ export const Dashboard: React.FC = () => {
 
   return (
     <DashboardView>
+      <StatusBar backgroundColor={colors.green} />
       <ScrollView>
         <ShoppingList categories={data.groceryCategories} items={data.items} />
       </ScrollView>

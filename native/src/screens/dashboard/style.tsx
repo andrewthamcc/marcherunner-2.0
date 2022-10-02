@@ -9,5 +9,6 @@ export const LoadingErrorView = styled(View)`
 
 export const DashboardView = styled(View)`
   flex: 1;
-  padding: 20% 5%;
+  padding: 0 5%;
+  padding-top: 20%;
 `

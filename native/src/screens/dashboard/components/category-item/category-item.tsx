@@ -1,9 +1,14 @@
 import React from 'react'
-import { Pressable, View } from 'react-native'
-import { Symbol, IconButton, Text } from '../../../../components'
+import { Pressable } from 'react-native'
+import { Symbol, IconButton } from '../../../../components'
 import { Dashboard_items } from '../../types/Dashboard'
 import { useDeleteItem } from './use-delete-item'
 import { useUpdateItem } from './use-update-item'
+import {
+  CategoryItemContainer,
+  CategoryItemCheckbox,
+  CategoryItemText,
+} from './style'
 
 interface Props {
   item: Dashboard_items
@@ -23,26 +28,22 @@ export const CategoryItem: React.FC<Props> = ({ item }) => {
   }
 
   return (
-    <View
-      style={{
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-      }}
-    >
+    <CategoryItemContainer>
       <Pressable
         accessibilityHint="Update Item"
         accessibilityLabel={purchased ? 'Purchased' : 'Not Purchased'}
         onPress={handleUpdate}
       >
-        <Symbol symbol={purchased ? 'checkmark' : 'unselected'} />
-        <Text strikethrough={purchased}>{name}</Text>
+        <CategoryItemCheckbox>
+          <Symbol symbol={purchased ? 'checkmark' : 'unselected'} />
+          <CategoryItemText strikethrough={purchased}>{name}</CategoryItemText>
+        </CategoryItemCheckbox>
       </Pressable>
       <IconButton
         accessibilityLabel="Delete Item"
         icon="trash"
         onPress={handleDelete}
       />
-    </View>
+    </CategoryItemContainer>
   )
 }
