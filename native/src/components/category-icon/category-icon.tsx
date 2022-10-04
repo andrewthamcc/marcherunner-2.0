@@ -1,5 +1,6 @@
 import React from 'react'
 import { View } from 'react-native'
+import styled from 'styled-components/native'
 import {
   All,
   Bakery,
@@ -16,7 +17,6 @@ import {
   Seafood,
   Snacks,
 } from './icons'
-import styled from 'styled-components/native'
 
 export const CATEGORY_ICONS = [
   'all',

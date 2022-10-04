@@ -1,7 +1,7 @@
 import React from 'react'
+import styled from 'styled-components/native'
 import { TouchableOpacity, TouchableOpacityProps, Text } from 'react-native'
 import { colors, ColorValues, typography } from '../../theme'
-import styled from 'styled-components/native'
 
 const StyledButton = styled(TouchableOpacity)<StyledProps>`
   background: ${({ color }) => (color ? colors[color] : colors.green)};

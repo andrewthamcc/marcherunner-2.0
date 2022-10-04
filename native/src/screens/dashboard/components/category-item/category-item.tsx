@@ -1,48 +1,56 @@
 import React from 'react'
-import { Pressable, View } from 'react-native'
-import { Symbol, IconButton, Text } from '../../../../components'
+import { Pressable } from 'react-native'
+import { Symbol, Icon } from '../../../../components'
 import { Dashboard_items } from '../../types/Dashboard'
 import { useDeleteItem } from './use-delete-item'
 import { useUpdateItem } from './use-update-item'
+import {
+  CategoryItemContainer,
+  CategoryItemCheckbox,
+  CategoryItemText,
+} from './style'
 
 interface Props {
+  isDeleteVisible: boolean
   item: Dashboard_items
+  showDelete: () => void
 }
 
-export const CategoryItem: React.FC<Props> = ({ item }) => {
+export const CategoryItem: React.FC<Props> = ({
+  isDeleteVisible,
+  item,
+  showDelete,
+}) => {
   const { deleteItem } = useDeleteItem()
   const { updateItem } = useUpdateItem()
   const { id, name, purchased } = item
 
-  const handleUpdate = async () => {
+  const handlePress = async () => {
+    if (isDeleteVisible) {
+      await deleteItem(id)
+      return
+    }
+
     await updateItem(id)
   }
 
-  const handleDelete = async () => {
-    await deleteItem(id)
-  }
-
   return (
-    <View
-      style={{
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-      }}
-    >
+    <CategoryItemContainer>
       <Pressable
         accessibilityHint="Update Item"
         accessibilityLabel={purchased ? 'Purchased' : 'Not Purchased'}
-        onPress={handleUpdate}
+        onLongPress={showDelete}
+        onPress={handlePress}
       >
-        <Symbol symbol={purchased ? 'checkmark' : 'unselected'} />
-        <Text strikethrough={purchased}>{name}</Text>
+        <CategoryItemCheckbox>
+          {!isDeleteVisible ? (
+            <Symbol symbol={purchased ? 'checkmark' : 'unselected'} />
+          ) : (
+            <Icon color="light-grey" height={20} icon="trash" width={20} />
+          )}
+          <CategoryItemText purchased={purchased}>{name}</CategoryItemText>
+        </CategoryItemCheckbox>
       </Pressable>
-      <IconButton
-        accessibilityLabel="Delete Item"
-        icon="trash"
-        onPress={handleDelete}
-      />
-    </View>
+    </CategoryItemContainer>
   )
 }

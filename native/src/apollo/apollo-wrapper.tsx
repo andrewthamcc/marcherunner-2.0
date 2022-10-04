@@ -4,6 +4,7 @@ import { ApolloClient, HttpLink } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
+import { REACT_APP_GRAPHQL_URL } from '@env'
 import { Symbol, Text } from '../components'
 import { useAuth } from '../auth/use-auth'
 import { createCache } from './cache'
@@ -15,7 +16,7 @@ const ErrorView = styled(View)`
 `
 
 const httpLink = new HttpLink({
-  uri: `http://192.168.86.85:4000/graphql`,
+  uri: `${REACT_APP_GRAPHQL_URL}`,
 })
 
 export const ApolloWrapper: React.FC = ({ children }) => {

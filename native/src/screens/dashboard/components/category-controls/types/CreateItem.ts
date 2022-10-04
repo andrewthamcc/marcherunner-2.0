@@ -3,11 +3,13 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
+import { CreateItemData } from "./../../../../../types/globalTypesFile";
+
 // ====================================================
-// GraphQL mutation operation: DeleteItem
+// GraphQL mutation operation: CreateItem
 // ====================================================
 
-export interface DeleteItem_deleteItem {
+export interface CreateItem_createItem {
   id: string;
   name: string;
   userId: string;
@@ -15,10 +17,10 @@ export interface DeleteItem_deleteItem {
   purchased: boolean;
 }
 
-export interface DeleteItem {
-  deleteItem: DeleteItem_deleteItem;
+export interface CreateItem {
+  createItem: CreateItem_createItem;
 }
 
-export interface DeleteItemVariables {
-  id: string;
+export interface CreateItemVariables {
+  item: CreateItemData;
 }

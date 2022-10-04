@@ -8,19 +8,19 @@
 // ====================================================
 
 export interface Dashboard_items {
-  id: string
-  name: string
-  userId: string
-  categoryId: string
-  purchased: boolean
+  id: string;
+  name: string;
+  userId: string;
+  categoryId: string;
+  purchased: boolean;
 }
 
 export interface Dashboard_groceryCategories {
-  id: string
-  categoryName: string
+  id: string;
+  categoryName: string;
 }
 
 export interface Dashboard {
-  items: Dashboard_items[]
-  groceryCategories: Dashboard_groceryCategories[]
+  items: Dashboard_items[];
+  groceryCategories: Dashboard_groceryCategories[];
 }

@@ -11,11 +11,11 @@ const SPACING_VALUES = [
 export type SpacingValues = typeof SPACING_VALUES[number]
 
 export const spacing: Record<SpacingValues, string> = {
-  xxsmall: '10px',
-  xsmall: '12px',
-  small: '14px',
-  medium: '16px',
-  large: '18px',
-  xlarge: '20px',
-  xxlarge: '22px',
+  xxsmall: '4px',
+  xsmall: '8px',
+  small: '10px',
+  medium: '12px',
+  large: '16px',
+  xlarge: '18px',
+  xxlarge: '20px',
 }

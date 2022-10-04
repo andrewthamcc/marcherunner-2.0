@@ -1,30 +1,49 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { TextInput as ReactNativeTextInput, TextInputProps } from 'react-native'
-import { colors } from '../../theme'
 import styled from 'styled-components'
+import { colors } from '../../theme'
 
-const StyledTextInput = styled(ReactNativeTextInput)<Props>`
-  margin: 1rem 0;
-  padding: 8px 16px;
-  display: block;
+const StyledTextInput = styled(ReactNativeTextInput)<StyledProps>`
+  padding: 2px 8px;
   border: 2px solid;
-  border-color: ${({ error }) => (error ? colors.red : '#c0c0c0')};
+  border-color: ${({ borderColor }) => borderColor};
   border-radius: 8px;
-  transition: border 0.2s ease-in, box-shadow 0.2s ease-in;
-  width: 100%;
-
-  &:focus {
-    border-color: ${colors.green};
-  }
 `
 
+interface StyledProps extends Props {
+  borderColor: string
+}
+
 interface Props {
-  error: boolean
+  error?: boolean
 }
 
 export const TextInput: React.FC<Props & TextInputProps> = ({
-  error,
+  error = false,
+  onBlur,
+  onFocus,
   ...rest
 }) => {
-  return <StyledTextInput error={error} {...rest} />
+  const [isFocused, setIsFocused] = useState(false)
+
+  let borderColor = colors['light-grey']
+  if (isFocused) borderColor = colors.green
+  if (error) borderColor = colors.red
+
+  return (
+    <StyledTextInput
+      borderColor={borderColor}
+      onBlur={(e) => {
+        setIsFocused(false)
+
+        if (onBlur) onBlur(e)
+      }}
+      onFocus={(e) => {
+        setIsFocused(true)
+
+        if (onFocus) onFocus(e)
+      }}
+      {...rest}
+    />
+  )
 }
