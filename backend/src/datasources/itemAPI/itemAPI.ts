@@ -100,11 +100,28 @@ export class ItemAPI extends DataSource {
 
   /**
    *
+   * @param items - {items: UUID[]}
+   * @returns Promise
+   */
+  async deleteItems(items: string[], userPermissions: Permission[]) {
+    await dataSources?.userAPI.hasPermisson(userPermissions, 'delete:items')
+
+    return this.store.item.deleteMany({
+      where: {
+        id: {
+          in: items,
+        },
+      },
+    })
+  }
+
+  /**
+   *
    * @param string
    * @returns Promise
    */
-  async deleteItems({ id, permissions }: User) {
-    await dataSources?.userAPI.hasPermisson(permissions, 'delete:items')
+  async deleteAllItems({ id, permissions }: User) {
+    await dataSources?.userAPI.hasPermisson(permissions, 'delete:allitems')
 
     return this.store.item.deleteMany({ where: { userId: id } })
   }

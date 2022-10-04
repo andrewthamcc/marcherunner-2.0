@@ -8,7 +8,7 @@ itemRouter.post('/deleteAll', async ({ user }: AuthRequest, res) => {
   if (!dataSources) return res.status(400)
   if (!user) return res.status(401).send('Unauthorized')
 
-  await dataSources.itemAPI.deleteItems(user)
+  await dataSources.itemAPI.deleteAllItems(user)
   return res.status(200).send({ body: { deleted: 'All Items' } })
 })
 

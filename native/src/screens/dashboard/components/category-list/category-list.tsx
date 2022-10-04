@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import {
   Dashboard_groceryCategories,
   Dashboard_items,
@@ -8,33 +8,36 @@ import { CategoryListContainer, HR, NothingHere } from './style'
 
 interface Props {
   category: Dashboard_groceryCategories
+  handleSelectItems: (id: string) => void
+  isDeleting: boolean
   items: Dashboard_items[]
+  selectedItems: string[]
+  showDelete: () => void
 }
 
-export const CategoryList: React.FC<Props> = ({ category, items }) => {
-  const [isDeleteVisible, setIsDeleteVisible] = useState(false)
-
-  useEffect(() => {
-    if (!items.length) setIsDeleteVisible(false)
-  }, [items])
-
+export const CategoryList: React.FC<Props> = ({
+  category,
+  handleSelectItems,
+  isDeleting,
+  items,
+  selectedItems,
+  showDelete,
+}) => {
   return (
     <CategoryListContainer>
-      <CategoryControls
-        category={category}
-        hideDelete={() => setIsDeleteVisible(false)}
-        isDeleteVisible={isDeleteVisible}
-      />
+      <CategoryControls category={category} isDeleting={isDeleting} />
       <HR />
       {!items.length ? (
         <NothingHere>Nothing here...</NothingHere>
       ) : (
         items.map((i) => (
           <CategoryItem
-            isDeleteVisible={isDeleteVisible}
+            handleSelectItems={handleSelectItems}
+            isDeleting={isDeleting}
             item={i}
             key={i.id}
-            showDelete={() => setIsDeleteVisible(true)}
+            selectedItems={selectedItems}
+            showDelete={showDelete}
           />
         ))
       )}

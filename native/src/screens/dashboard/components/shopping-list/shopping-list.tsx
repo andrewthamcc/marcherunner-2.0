@@ -8,10 +8,21 @@ import { CategoryList } from '..'
 
 interface Props {
   categories: Dashboard_groceryCategories[]
+  handleSelectItems: (id: string) => void
+  isDeleting: boolean
   items: Dashboard_items[]
+  selectedItems: string[]
+  showDelete: () => void
 }
 
-export const ShoppingList: React.FC<Props> = ({ categories, items }) => {
+export const ShoppingList: React.FC<Props> = ({
+  categories,
+  handleSelectItems,
+  isDeleting,
+  items,
+  selectedItems,
+  showDelete,
+}) => {
   return (
     <View>
       {categories
@@ -19,7 +30,17 @@ export const ShoppingList: React.FC<Props> = ({ categories, items }) => {
         .sort((a, b) => a.categoryName.localeCompare(b.categoryName))
         .map((c) => {
           const categoryItems = items.filter((i) => i.categoryId === c.id)
-          return <CategoryList category={c} items={categoryItems} key={c.id} />
+          return (
+            <CategoryList
+              category={c}
+              handleSelectItems={handleSelectItems}
+              isDeleting={isDeleting}
+              items={categoryItems}
+              key={c.id}
+              selectedItems={selectedItems}
+              showDelete={showDelete}
+            />
+          )
         })}
     </View>
   )
