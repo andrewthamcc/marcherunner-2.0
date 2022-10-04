@@ -27,8 +27,8 @@ export const TextInput: React.FC<Props & TextInputProps> = ({
   const [isFocused, setIsFocused] = useState(false)
 
   let borderColor = colors['light-grey']
-  if (error) borderColor = colors.red
   if (isFocused) borderColor = colors.green
+  if (error) borderColor = colors.red
 
   return (
     <StyledTextInput

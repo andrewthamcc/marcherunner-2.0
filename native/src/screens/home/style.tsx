@@ -1,6 +1,6 @@
 import { ImageBackground, StatusBar, View } from 'react-native'
 import styled from 'styled-components/native'
-import { colors } from '../../theme'
+import { colors, spacing } from '../../theme'
 import { Text } from '../../components'
 
 export const HomeView = styled(View)`
@@ -23,8 +23,6 @@ export const HeroTitle = styled(Text)`
   font-size: 40px;
   font-weight: 600;
   font-style: italic;
-  text-shadow: 5px 5px #000000;
-  font-style: italic;
 `
 
 export const HeroSubTitle = styled(Text)`
@@ -39,8 +37,8 @@ export const IconContainer = styled(View)`
   border-radius: 12px;
   height: 90px;
   width: 90px;
-  padding: 10px;
-  margin: 0 auto 12px;
+  padding: ${spacing.xsmall};
+  margin: 0 auto ${spacing.medium};
 `
 
 export const HomeInstructions = styled(View)`

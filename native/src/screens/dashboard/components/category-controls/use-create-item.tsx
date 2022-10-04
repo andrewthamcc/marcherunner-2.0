@@ -37,8 +37,8 @@ export const useCreateItem = (): UseCreateItem => {
       onError: (error) => console.error(error),
       update: (cache, { data }) => {
         const newItemRef = cache.writeQuery({
-          data: data?.createItem,
           query: CREATE_ITEM,
+          data,
         })
 
         cache.modify({

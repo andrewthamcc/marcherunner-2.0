@@ -1,4 +1,5 @@
 export * from './category-controls'
 export * from './category-item'
 export * from './category-list'
+export * from './header'
 export * from './shopping-list'

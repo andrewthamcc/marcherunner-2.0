@@ -1,5 +1,6 @@
 import { View } from 'react-native'
 import styled from 'styled-components/native'
+import { spacing } from '../../theme'
 
 export const LoadingErrorView = styled(View)`
   flex: 1;
@@ -9,6 +10,5 @@ export const LoadingErrorView = styled(View)`
 
 export const DashboardView = styled(View)`
   flex: 1;
-  padding: 0 5%;
-  padding-top: 20%;
+  padding: 0 ${spacing.large};
 `

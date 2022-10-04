@@ -17,9 +17,7 @@ export const restClient = async (
 ) => {
   const token = bearerToken()
   const baseUrl =
-    process.env.NODE_ENV === 'development'
-      ? `http://${REACT_APP_REST_URL}:4000`
-      : ''
+    process.env.NODE_ENV === 'development' ? REACT_APP_REST_URL : ''
 
   return fetch(baseUrl + url, {
     method,

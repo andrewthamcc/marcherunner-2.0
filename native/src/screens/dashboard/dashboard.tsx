@@ -6,7 +6,7 @@ import { colors } from '../../theme'
 import { LoadingSpinner, Text } from '../../components'
 import { Dashboard as DashboardData } from './types/Dashboard'
 import { DASHBOARD_QUERY } from './query'
-import { ShoppingList } from './components'
+import { Header, ShoppingList } from './components'
 import { DashboardView, LoadingErrorView } from './style'
 
 export const Dashboard: React.FC = () => {
@@ -47,11 +47,17 @@ export const Dashboard: React.FC = () => {
   }
 
   return (
-    <DashboardView>
-      <StatusBar backgroundColor={colors.green} />
-      <ScrollView>
-        <ShoppingList categories={data.groceryCategories} items={data.items} />
-      </ScrollView>
-    </DashboardView>
+    <>
+      <Header />
+      <DashboardView>
+        <StatusBar backgroundColor={colors.green} />
+        <ScrollView>
+          <ShoppingList
+            categories={data.groceryCategories}
+            items={data.items}
+          />
+        </ScrollView>
+      </DashboardView>
+    </>
   )
 }
