@@ -10,6 +10,12 @@ export const Header = styled(View)`
 
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
+`
+
+export const HeaderTitleContainer = styled(View)`
+  flex-direction: row;
+  align-items: center;
 `
 
 export const HeaderTitle = styled(Text)`
@@ -22,4 +28,13 @@ export const HeaderTitle = styled(Text)`
 export const HeaderIcon = styled(View)`
   height: 40px;
   width: 40px;
+`
+
+export const DeleteContainer = styled(View)`
+  flex-direction: row;
+  align-items: center;
+`
+
+export const CloseIcon = styled(View)`
+  margin-left: ${spacing.medium};
 `

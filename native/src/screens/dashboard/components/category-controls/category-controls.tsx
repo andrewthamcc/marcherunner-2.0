@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Pressable } from 'react-native'
 import {
   CategoryIcon,
   CategoryVariants,
-  Icon,
   IconButton,
   LoadingSpinner,
   Symbol,
@@ -13,7 +12,6 @@ import { Dashboard_groceryCategories } from '../../types/Dashboard'
 import {
   CategoryControlsContainer,
   CategoryTitle,
-  CloseDelete,
   ItemInput,
   CategoryClose,
 } from './style'
@@ -21,22 +19,13 @@ import { useCreateItem } from './use-create-item'
 
 interface Props {
   category: Dashboard_groceryCategories
-  hideDelete: () => void
-  isDeleteVisible: boolean
+  isDeleting: boolean
 }
 
-export const CategoryControls: React.FC<Props> = ({
-  category,
-  hideDelete,
-  isDeleteVisible,
-}) => {
+export const CategoryControls: React.FC<Props> = ({ category, isDeleting }) => {
   const [isEditing, setIsEditing] = useState(false)
   const [itemName, setItemName] = useState('')
   const { createItem, loading } = useCreateItem()
-
-  useEffect(() => {
-    if (isDeleteVisible) setIsEditing(false)
-  }, [isDeleteVisible])
 
   const handleSubmit = async () => {
     if (!itemName) return
@@ -81,25 +70,11 @@ export const CategoryControls: React.FC<Props> = ({
   }
 
   return (
-    <Pressable
-      onPress={() => {
-        if (isDeleteVisible) {
-          hideDelete()
-          return
-        }
-
-        setIsEditing(true)
-      }}
-    >
+    <Pressable disabled={isDeleting} onPress={() => setIsEditing(true)}>
       <CategoryControlsContainer>
         <CategoryIcon icon={category.categoryName as CategoryVariants} />
         <CategoryTitle>{title}</CategoryTitle>
-        {isDeleteVisible && <CloseDelete>Done?</CloseDelete>}
-        {!isDeleteVisible ? (
-          <Symbol symbol="add orange" />
-        ) : (
-          <Icon color="red" height={25} icon="close" width={25} />
-        )}
+        <Symbol symbol={isDeleting ? 'add disabled' : 'add orange'} />
       </CategoryControlsContainer>
     </Pressable>
   )

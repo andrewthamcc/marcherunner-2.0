@@ -9,6 +9,10 @@ export default gql`
     userId: ID!
   }
 
+  type Count {
+    count: Int!
+  }
+
   type Query {
     items: [Item!]!
     item(id: ID!): Item!
@@ -23,5 +27,6 @@ export default gql`
     createItem(item: CreateItemData!): Item!
     updateItem(id: ID!): Item!
     deleteItem(id: ID!): Item!
+    deleteItems(deleteData: [String!]!): Count!
   }
 `

@@ -55,5 +55,12 @@ export default {
     ) => {
       return await dataSources.itemAPI.deleteItem(id, user.permissions)
     },
+    deleteItems: async (
+      _parent: void,
+      { deleteData }: { deleteData: string[] },
+      { user, dataSources }: Context
+    ) => {
+      return await dataSources.itemAPI.deleteItems(deleteData, user.permissions)
+    },
   },
 }
