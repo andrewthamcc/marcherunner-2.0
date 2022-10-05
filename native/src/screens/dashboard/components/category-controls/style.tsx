@@ -1,25 +1,12 @@
 import { View } from 'react-native'
 import styled from 'styled-components/native'
-import { Text, TextInput } from '../../../../components'
-import { typography, spacing } from '../../../../theme'
+import { TextInput } from '../../../../components'
+import { spacing, colors } from '../../../../theme'
 
 export const CategoryControlsContainer = styled(View)`
   flex-direction: row;
   align-items: center;
-`
-
-export const CategoryTitle = styled(Text)`
-  flex: 1;
-  font-size: ${typography['body-copy-xlarge'].fontSize};
-  font-weight: 600;
-`
-
-export const CloseDelete = styled(Text)`
-  text-align: right;
-  font-size: ${typography['body-copy'].fontSize};
-  font-style: italic;
-  font-weight: 500;
-  margin-right: ${spacing.xsmall};
+  padding: 0 ${spacing.xxlarge};
 `
 
 export const ItemInput = styled(TextInput)`
@@ -27,6 +14,15 @@ export const ItemInput = styled(TextInput)`
   margin: 0 ${spacing.xsmall};
 `
 
+export const FullWidth = styled(View)`
+  flex: 1;
+`
+
 export const CategoryClose = styled(View)`
-  margin-left: ${spacing.xsmall};
+  margin-left: ${spacing.medium};
+`
+
+export const HR = styled(View)`
+  border: 0.75px solid ${colors['light-grey']};
+  margin: ${spacing.xsmall} 0;
 `

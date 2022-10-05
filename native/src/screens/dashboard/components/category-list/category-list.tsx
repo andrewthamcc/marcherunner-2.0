@@ -3,8 +3,9 @@ import {
   Dashboard_groceryCategories,
   Dashboard_items,
 } from '../../types/Dashboard'
+import { Text } from '../../../../components'
 import { CategoryControls, CategoryItem } from '..'
-import { CategoryListContainer, HR, NothingHere } from './style'
+import { CategoryListContainer } from './style'
 
 interface Props {
   category: Dashboard_groceryCategories
@@ -26,16 +27,17 @@ export const CategoryList: React.FC<Props> = ({
   return (
     <CategoryListContainer>
       <CategoryControls category={category} isDeleting={isDeleting} />
-      <HR />
       {!items.length ? (
-        <NothingHere>Nothing here...</NothingHere>
+        <Text align="center" variant="body-copy-xsmall">
+          Nothing here...
+        </Text>
       ) : (
-        items.map((i) => (
+        items.map((item) => (
           <CategoryItem
             handleSelectItems={handleSelectItems}
             isDeleting={isDeleting}
-            item={i}
-            key={i.id}
+            item={item}
+            key={item.id}
             selectedItems={selectedItems}
             showDelete={showDelete}
           />

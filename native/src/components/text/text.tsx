@@ -1,7 +1,7 @@
 import React from 'react'
+import styled from 'styled-components'
 import { Text as ReactNativeText, TextProps } from 'react-native'
 import { colors, ColorValues, typography, TextVariant } from '../../theme'
-import styled from 'styled-components'
 
 const StyledText = styled(ReactNativeText)<Props>`
   color: ${({ color }) => (color ? colors[color] : colors.black)};
@@ -10,6 +10,7 @@ const StyledText = styled(ReactNativeText)<Props>`
   font-weight: ${({ fontWeight }) => (fontWeight ? fontWeight : 400)};
   text-decoration: ${({ strikethrough }) =>
     strikethrough ? 'line-through' : 'none'};
+  text-align: ${({ align }) => (align ? align : 'left')};
 `
 
 interface Props {
@@ -31,7 +32,9 @@ export const Text: React.FC<Props & TextProps> = ({
 }) => {
   return (
     <StyledText
+      align={align}
       color={color}
+      fontWeight={fontWeight}
       strikethrough={strikethrough}
       variant={variant}
       {...rest}

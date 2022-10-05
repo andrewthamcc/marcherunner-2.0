@@ -64,9 +64,9 @@ const StyledIconView = styled(View)<StyledProps>`
 `
 
 export const Symbol: React.FC<SymbolProps> = ({
-  height = 20,
+  height = 30,
   symbol,
-  width = 20,
+  width = 30,
 }) => {
   const SVG = symbolVariants[symbol]
 

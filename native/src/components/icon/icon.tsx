@@ -1,5 +1,6 @@
 import React from 'react'
 import { View } from 'react-native'
+import styled from 'styled-components/native'
 import { colors, ColorValues } from '../../theme'
 import {
   CaretDown,
@@ -11,7 +12,6 @@ import {
   Trash,
   BaseIconProps,
 } from './icons'
-import styled from 'styled-components/native'
 
 export const ICON_TYPES = [
   'caret down',
@@ -55,10 +55,10 @@ const StyledIconView = styled(View)<StyledProps>`
 `
 
 export const Icon: React.FC<IconProps> = ({
-  height = 40,
+  height = 30,
   color = 'white',
   icon,
-  width = 40,
+  width = 30,
 }) => {
   const SVG = iconVariants[icon]
 

@@ -24,15 +24,23 @@ export const Home: React.FC = () => {
       <StatusBar backgroundColor={colors.green} />
       <HeroBackgroundImage source={require('./assets/grocery.jpg')}>
         <HeroContainer>
-          <HeroTitle>MarchéRunner</HeroTitle>
-          <HeroSubTitle>Helping with your grocery runs</HeroSubTitle>
+          <HeroTitle color="white" fontWeight={600}>
+            MarchéRunner
+          </HeroTitle>
+          <HeroSubTitle
+            color="white"
+            fontWeight={500}
+            variant="body-copy-xlarge"
+          >
+            Helping with your grocery runs
+          </HeroSubTitle>
 
           <HomeInstructions>
             <View>
               <IconContainer>
                 <Profile />
               </IconContainer>
-              <Text align="center" color="white" variant="body-copy-xlarge">
+              <Text align="center" color="white" variant="body-copy-large">
                 Login with a social media partner
               </Text>
             </View>
@@ -41,7 +49,7 @@ export const Home: React.FC = () => {
               <IconContainer>
                 <List />
               </IconContainer>
-              <Text align="center" color="white" variant="body-copy-xlarge">
+              <Text align="center" color="white" variant="body-copy-large">
                 Make your shopping list
               </Text>
             </View>
@@ -50,14 +58,19 @@ export const Home: React.FC = () => {
               <IconContainer>
                 <Cart />
               </IconContainer>
-              <Text align="center" color="white" variant="body-copy-xlarge">
+              <Text align="center" color="white" variant="body-copy-large">
                 Go shopping with MarchéRunner!
               </Text>
             </View>
           </HomeInstructions>
 
           <LoginContainer>
-            <Button color="orange" label="Login" onPress={login} />
+            <Button
+              accessibilityLabel="login"
+              color="orange"
+              label="Login"
+              onPress={login}
+            />
           </LoginContainer>
         </HeroContainer>
       </HeroBackgroundImage>

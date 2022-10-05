@@ -1,18 +1,19 @@
-import React, { useState } from 'react'
-import { Pressable } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { BackHandler, Pressable } from 'react-native'
 import {
   CategoryIcon,
   CategoryVariants,
   IconButton,
   LoadingSpinner,
   Symbol,
+  Text,
 } from '../../../../components'
 import { CategoryTitles, getCategoryTitle } from '../../../../utils'
 import { Dashboard_groceryCategories } from '../../types/Dashboard'
 import {
   CategoryControlsContainer,
-  CategoryTitle,
   ItemInput,
+  FullWidth,
   CategoryClose,
 } from './style'
 import { useCreateItem } from './use-create-item'
@@ -26,6 +27,20 @@ export const CategoryControls: React.FC<Props> = ({ category, isDeleting }) => {
   const [isEditing, setIsEditing] = useState(false)
   const [itemName, setItemName] = useState('')
   const { createItem, loading } = useCreateItem()
+
+  useEffect(() => {
+    const backAction = () => {
+      if (isEditing) setIsEditing(false)
+      return true
+    }
+
+    const backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      backAction
+    )
+
+    return () => backHandler.remove()
+  }, [isEditing])
 
   const handleSubmit = async () => {
     if (!itemName) return
@@ -56,11 +71,12 @@ export const CategoryControls: React.FC<Props> = ({ category, isDeleting }) => {
             </Pressable>
             <CategoryClose>
               <IconButton
+                accessibilityLabel="close"
                 color="red"
-                height={25}
+                height={30}
                 icon="close"
                 onPress={() => setIsEditing(false)}
-                width={25}
+                width={30}
               />
             </CategoryClose>
           </>
@@ -73,7 +89,11 @@ export const CategoryControls: React.FC<Props> = ({ category, isDeleting }) => {
     <Pressable disabled={isDeleting} onPress={() => setIsEditing(true)}>
       <CategoryControlsContainer>
         <CategoryIcon icon={category.categoryName as CategoryVariants} />
-        <CategoryTitle>{title}</CategoryTitle>
+        <FullWidth>
+          <Text fontWeight={600} variant="body-copy-xlarge">
+            {title}
+          </Text>
+        </FullWidth>
         <Symbol symbol={isDeleting ? 'add disabled' : 'add orange'} />
       </CategoryControlsContainer>
     </Pressable>
