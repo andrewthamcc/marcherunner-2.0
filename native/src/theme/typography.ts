@@ -15,27 +15,27 @@ export interface Typography {
 
 export const typography: Record<TextVariant, Typography> = {
   'body-copy': {
-    fontSize: '16px',
+    fontSize: '17px',
     lineHeight: '',
     fontWeight: 400,
   },
   'body-copy-small': {
-    fontSize: '14px',
+    fontSize: '15px',
     lineHeight: '',
     fontWeight: 400,
   },
   'body-copy-xsmall': {
-    fontSize: '12px',
+    fontSize: '14px',
     lineHeight: '',
     fontWeight: 400,
   },
   'body-copy-large': {
-    fontSize: '18px',
+    fontSize: '20px',
     lineHeight: '',
     fontWeight: 400,
   },
   'body-copy-xlarge': {
-    fontSize: '20px',
+    fontSize: '24px',
     lineHeight: '',
     fontWeight: 400,
   },

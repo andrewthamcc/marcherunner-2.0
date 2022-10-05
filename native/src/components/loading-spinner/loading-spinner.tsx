@@ -1,7 +1,11 @@
 import React from 'react'
 import { ActivityIndicator } from 'react-native'
-import { colors } from '../../theme'
+import { colors, ColorValues } from '../../theme'
 
-export const LoadingSpinner = () => {
-  return <ActivityIndicator color={colors.green} size="small" />
+interface Props {
+  color?: ColorValues
+}
+
+export const LoadingSpinner: React.FC<Props> = ({ color = 'green' }) => {
+  return <ActivityIndicator color={colors[color]} size="small" />
 }

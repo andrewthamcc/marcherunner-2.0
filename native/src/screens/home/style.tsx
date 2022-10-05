@@ -5,12 +5,12 @@ import { Text } from '../../components'
 
 export const HomeView = styled(View)`
   flex: 1;
-  padding-top: ${StatusBar.currentHeight}px;
+  margin-top: ${StatusBar.currentHeight}px;
 `
 
 export const HeroContainer = styled(View)`
   flex: 1;
-  padding: 12% 8%;
+  padding: 5%;
   background-color: 'rgba(6, 16, 7, 0.5)';
 `
 
@@ -19,16 +19,11 @@ export const HeroBackgroundImage = styled(ImageBackground)`
 `
 
 export const HeroTitle = styled(Text)`
-  color: #ffffff;
   font-size: 40px;
-  font-weight: 600;
   font-style: italic;
 `
 
 export const HeroSubTitle = styled(Text)`
-  color: #ffffff;
-  font-size: 22px;
-  font-weight: 500;
   font-style: italic;
 `
 

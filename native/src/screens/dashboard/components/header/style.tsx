@@ -6,7 +6,7 @@ import { colors, spacing } from '../../../../theme'
 export const Header = styled(View)`
   background-color: ${colors.green};
   margin-top: ${StatusBar.currentHeight}px;
-  padding: ${spacing.medium} ${spacing.large};
+  padding: ${spacing.medium} ${spacing.xxlarge};
 
   flex-direction: row;
   align-items: center;
@@ -36,5 +36,5 @@ export const DeleteContainer = styled(View)`
 `
 
 export const CloseIcon = styled(View)`
-  margin-left: ${spacing.medium};
+  margin-left: ${spacing.xlarge};
 `

@@ -38,16 +38,18 @@ export const Header: React.FC<Props> = ({
           <IconButton
             color={isDeleteDisabled ? 'light-grey' : 'white'}
             disabled={isDeleteDisabled || isDeleteLoading}
+            height={30}
             icon="trash"
             onPress={handleDeleteItems}
+            width={30}
           />
           <CloseIcon>
             <IconButton
               color="white"
-              height={25}
+              height={30}
               icon="close"
               onPress={closeDelete}
-              width={25}
+              width={30}
             />
           </CloseIcon>
         </DeleteContainer>
