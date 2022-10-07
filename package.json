@@ -19,7 +19,7 @@
     "test:frontend:ci": "cd frontend && npm run test -- --ci",
     "heroku:build:backend": "cd backend && npm install && npm run build",
     "heroku:build:frontend": "cd frontend && npm install && npm run build",
-    "heroku-postbuild": "npm heroku:build:backend && npm heroku:build:frontend",
+    "heroku-postbuild": "npm run heroku:build:backend && npm run heroku:build:frontend",
     "start": "cd backend && npm run:build"
   },
   "repository": {
