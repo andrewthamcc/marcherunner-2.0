@@ -16,8 +16,7 @@ export const restClient = async (
   body?: BodyInit
 ) => {
   const token = bearerToken()
-  const baseUrl =
-    process.env.NODE_ENV === 'development' ? REACT_APP_REST_URL : ''
+  const baseUrl = REACT_APP_REST_URL
 
   return fetch(baseUrl + url, {
     method,

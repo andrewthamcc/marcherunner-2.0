@@ -30,11 +30,27 @@ export const HeaderIcon = styled(View)`
   width: 40px;
 `
 
-export const DeleteContainer = styled(View)`
+export const IconContainer = styled(View)`
   flex-direction: row;
   align-items: center;
 `
 
-export const CloseIcon = styled(View)`
+export const IconSpacing = styled(View)`
   margin-left: ${spacing.xlarge};
+`
+
+export const ModalView = styled(View)`
+  background-color: ${colors.white};
+  border-radius: 18px;
+  border: 1px solid ${colors['light-grey']};
+  margin: 50% ${spacing.xxlarge};
+  padding: ${spacing.large};
+`
+
+export const ModalControls = styled(View)`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: ${spacing.xxlarge};
+  background-color: ${colors.white};
 `
