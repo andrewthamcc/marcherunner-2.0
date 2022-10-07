@@ -8,7 +8,12 @@ import { bearerToken } from './store'
 import { createCache } from '.'
 import './style.scss'
 
-const httpLink = new HttpLink({ uri: process.env.REACT_APP_GRAPHQL_URL })
+const env = process.env
+const uri =
+  env.NODE_ENV === 'development'
+    ? process.env.REACT_APP_DEV_GRAPHQL_URL
+    : process.env.REACT_APP_PROD_GRAPHQL_URL
+const httpLink = new HttpLink({ uri })
 
 export const ApolloWrapper: React.FC = ({ children }) => {
   const [accessToken, setAccessToken] = useState<string | null>(null)

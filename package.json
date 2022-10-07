@@ -16,7 +16,11 @@
     "install:frontend:ci": "cd frontend && npm ci",
     "build:frontend": "cd frontend && CI=false npm run build",
     "test:backend:ci": "cd backend && npm run test -- --ci",
-    "test:frontend:ci": "cd frontend && npm run test -- --ci"
+    "test:frontend:ci": "cd frontend && npm run test -- --ci",
+    "heroku:build:backend": "cd backend && npm install && npm run build",
+    "heroku:build:frontend": "cd frontend && npm install && npm run build",
+    "heroku-postbuild": "npm heroku:build:backend && npm heroku:build:frontend",
+    "start": "cd backend && npm run:build"
   },
   "repository": {
     "type": "git",

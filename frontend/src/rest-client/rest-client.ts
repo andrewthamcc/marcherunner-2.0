@@ -15,8 +15,11 @@ export const restClient = async (
   body?: BodyInit
 ) => {
   const token = bearerToken()
+  const env = process.env
   const baseUrl =
-    process.env.NODE_ENV === 'development' ? 'http://localhost:4000' : ''
+    env.NODE_ENV === 'development'
+      ? process.env.REACT_APP_DEV_REST_URL
+      : process.env.REACT_APP_PROD_REST_URL
 
   return fetch(baseUrl + url, {
     method,

@@ -6,7 +6,9 @@
   "scripts": {
     "start": "nodemon --config nodemon.json src/index.ts",
     "prettier": "npx prettier --write src/",
-    "test": "tsc --noEmit && jest -i"
+    "test": "tsc --noEmit && jest -i",
+    "run:build": "node build/index.js",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",

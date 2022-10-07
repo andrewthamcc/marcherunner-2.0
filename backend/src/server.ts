@@ -36,10 +36,11 @@ export async function startApolloServer() {
   await server.start()
   server.applyMiddleware({ app })
 
-  const port = process.env.port || 4000
-  app.listen({ port }, () =>
+  const env = process.env
+  const PORT = env.PORT || 4000
+  app.listen(PORT, () =>
     console.log(
-      `Server running on http://localhost:${port}${server.graphqlPath} 🚀`
+      `Server running on http://localhost:${PORT}${server.graphqlPath} 🚀`
     )
   )
   return { server, app }
