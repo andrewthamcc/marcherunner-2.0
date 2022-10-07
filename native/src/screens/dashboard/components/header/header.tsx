@@ -10,10 +10,9 @@ import {
 import { restClient } from '../../../../rest-client'
 import {
   Header as StyledHeader,
-  HeaderTitleContainer,
+  Centered,
   HeaderTitle,
   HeaderIcon,
-  IconContainer,
   IconSpacing,
   ModalView,
   ModalControls,
@@ -73,13 +72,13 @@ export const Header: React.FC<Props> = ({
   return (
     <>
       <StyledHeader>
-        <HeaderTitleContainer>
+        <Centered>
           <HeaderTitle color="white">MarchéRunner</HeaderTitle>
           <HeaderIcon>
             <Runner />
           </HeaderIcon>
-        </HeaderTitleContainer>
-        <IconContainer>
+        </Centered>
+        <Centered>
           {isDeleting ? (
             <IconButton
               color={isDeleteDisabled ? 'light-grey' : 'white'}
@@ -122,7 +121,7 @@ export const Header: React.FC<Props> = ({
               </IconSpacing>
             </>
           )}
-        </IconContainer>
+        </Centered>
       </StyledHeader>
 
       <Modal

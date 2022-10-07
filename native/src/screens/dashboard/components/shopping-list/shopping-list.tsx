@@ -4,7 +4,7 @@ import {
   Dashboard_groceryCategories,
   Dashboard_items,
 } from '../../types/Dashboard'
-import { CategoryList } from '..'
+import { CategoryList } from '../category-list'
 
 interface Props {
   categories: Dashboard_groceryCategories[]

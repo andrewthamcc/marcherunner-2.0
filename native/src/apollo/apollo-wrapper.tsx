@@ -4,7 +4,7 @@ import { ApolloClient, HttpLink } from '@apollo/client'
 import { setContext } from '@apollo/client/link/context'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
-import { REACT_APP_GRAPHQL_URL } from '@env'
+import { REACT_APP_DEV_GRAPHQL_URL, REACT_APP_PROD_GRAPHQL_URL } from '@env'
 import { Symbol, Text } from '../components'
 import { useAuth } from '../auth/use-auth'
 import { createCache } from './cache'
@@ -15,8 +15,14 @@ const ErrorView = styled(View)`
   align-items: center;
 `
 
+const env = process.env
+const uri =
+  env.NODE_ENV === 'development'
+    ? REACT_APP_DEV_GRAPHQL_URL
+    : REACT_APP_PROD_GRAPHQL_URL
+
 const httpLink = new HttpLink({
-  uri: `${REACT_APP_GRAPHQL_URL}`,
+  uri,
 })
 
 export const ApolloWrapper: React.FC = ({ children }) => {

@@ -1,4 +1,4 @@
-import { REACT_APP_REST_URL } from '@env'
+import { REACT_APP_DEV_REST_URL, REACT_APP_PROD_REST_URL } from '@env'
 import { bearerToken } from '../apollo/store'
 
 type HTTPMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE'
@@ -16,7 +16,11 @@ export const restClient = async (
   body?: BodyInit
 ) => {
   const token = bearerToken()
-  const baseUrl = REACT_APP_REST_URL
+  const env = process.env
+  const baseUrl =
+    env.NODE_ENV === 'development'
+      ? REACT_APP_DEV_REST_URL
+      : REACT_APP_PROD_REST_URL
 
   return fetch(baseUrl + url, {
     method,

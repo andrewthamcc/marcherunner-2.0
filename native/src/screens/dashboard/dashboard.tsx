@@ -3,12 +3,16 @@ import { BackHandler, ScrollView } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 import { useQuery } from '@apollo/client'
 import { colors } from '../../theme'
-import { LoadingSpinner, Text } from '../../components'
+import {
+  CenteredView,
+  FullWidthHeight,
+  LoadingSpinner,
+  Text,
+} from '../../components'
 import { Header, ShoppingList } from './components'
 import { Dashboard as DashboardData } from './types/Dashboard'
 import { useDeleteItems } from './use-delete-items'
 import { DASHBOARD_QUERY } from './query'
-import { DashboardView, LoadingErrorView } from './style'
 
 export const Dashboard: React.FC = () => {
   const [isDeleting, setIsDeleting] = useState(false)
@@ -33,7 +37,7 @@ export const Dashboard: React.FC = () => {
   if (loading || error) {
     if (error) console.error(error)
     return (
-      <LoadingErrorView>
+      <CenteredView>
         {error && (
           <Text align="center" color="red">
             {error.message}
@@ -47,20 +51,20 @@ export const Dashboard: React.FC = () => {
             </Text>
           </>
         )}
-      </LoadingErrorView>
+      </CenteredView>
     )
   }
 
   if (!data) {
     return (
-      <LoadingErrorView>
+      <CenteredView>
         <Text align="center" variant="body-copy-xlarge">
           No Data!
         </Text>
         <Text align="center" variant="body-copy-xsmall">
           Something has gone very very wrong...
         </Text>
-      </LoadingErrorView>
+      </CenteredView>
     )
   }
 
@@ -90,7 +94,7 @@ export const Dashboard: React.FC = () => {
         isDeleteLoading={deleteLoading}
         isDeleting={isDeleting}
       />
-      <DashboardView>
+      <FullWidthHeight>
         <ScrollView>
           <StatusBar backgroundColor={colors.green} />
           <ShoppingList
@@ -102,7 +106,7 @@ export const Dashboard: React.FC = () => {
             showDelete={() => setIsDeleting(true)}
           />
         </ScrollView>
-      </DashboardView>
+      </FullWidthHeight>
     </>
   )
 }
