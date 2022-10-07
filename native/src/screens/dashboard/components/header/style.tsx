@@ -13,7 +13,7 @@ export const Header = styled(View)`
   justify-content: space-between;
 `
 
-export const HeaderTitleContainer = styled(View)`
+export const Centered = styled(View)`
   flex-direction: row;
   align-items: center;
 `
@@ -28,11 +28,6 @@ export const HeaderTitle = styled(Text)`
 export const HeaderIcon = styled(View)`
   height: 40px;
   width: 40px;
-`
-
-export const IconContainer = styled(View)`
-  flex-direction: row;
-  align-items: center;
 `
 
 export const IconSpacing = styled(View)`

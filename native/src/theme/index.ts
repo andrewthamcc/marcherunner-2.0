@@ -1,5 +1,3 @@
 export * from './colors'
 export * from './spacing'
-export * from './theme.provider'
 export * from './typography'
-export * from './use-theme'

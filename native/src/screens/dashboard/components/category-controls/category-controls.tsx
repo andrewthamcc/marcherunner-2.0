@@ -7,15 +7,11 @@ import {
   LoadingSpinner,
   Symbol,
   Text,
+  FullWidthHeight,
 } from '../../../../components'
 import { CategoryTitles, getCategoryTitle } from '../../../../utils'
 import { Dashboard_groceryCategories } from '../../types/Dashboard'
-import {
-  CategoryControlsContainer,
-  ItemInput,
-  FullWidth,
-  CategoryClose,
-} from './style'
+import { CategoryControlsContainer, ItemInput, CategoryClose } from './style'
 import { useCreateItem } from './use-create-item'
 
 interface Props {
@@ -89,11 +85,11 @@ export const CategoryControls: React.FC<Props> = ({ category, isDeleting }) => {
     <Pressable disabled={isDeleting} onPress={() => setIsEditing(true)}>
       <CategoryControlsContainer>
         <CategoryIcon icon={category.categoryName as CategoryVariants} />
-        <FullWidth>
-          <Text fontWeight={600} variant="body-copy-xlarge">
+        <FullWidthHeight>
+          <Text fontWeight={600} variant="body-copy-large">
             {title}
           </Text>
-        </FullWidth>
+        </FullWidthHeight>
         <Symbol symbol={isDeleting ? 'add disabled' : 'add orange'} />
       </CategoryControlsContainer>
     </Pressable>
