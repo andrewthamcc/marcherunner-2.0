@@ -6,9 +6,9 @@ import { colors } from '../../theme'
 import { LoadingSpinner, Text } from '../../components'
 import { Header, ShoppingList } from './components'
 import { Dashboard as DashboardData } from './types/Dashboard'
-import { DashboardView, LoadingErrorView } from './style'
-import { DASHBOARD_QUERY } from './query'
 import { useDeleteItems } from './use-delete-items'
+import { DASHBOARD_QUERY } from './query'
+import { DashboardView, LoadingErrorView } from './style'
 
 export const Dashboard: React.FC = () => {
   const [isDeleting, setIsDeleting] = useState(false)
@@ -66,6 +66,7 @@ export const Dashboard: React.FC = () => {
 
   const handleDeleteItems = async () => {
     await deleteItems(selectedItems)
+    setIsDeleting(false)
     setSelectedItems([])
   }
 
@@ -82,18 +83,16 @@ export const Dashboard: React.FC = () => {
   return (
     <>
       <Header
-        closeDelete={() => {
-          setSelectedItems([])
-          setIsDeleting(false)
-        }}
         handleDeleteItems={handleDeleteItems}
+        hasItems={data.items.length > 0}
+        hasPurchasedItems={data.items.filter((i) => i.purchased).length > 0}
         isDeleteDisabled={!selectedItems.length}
         isDeleteLoading={deleteLoading}
         isDeleting={isDeleting}
       />
       <DashboardView>
-        <StatusBar backgroundColor={colors.green} />
         <ScrollView>
+          <StatusBar backgroundColor={colors.green} />
           <ShoppingList
             categories={data.groceryCategories}
             handleSelectItems={handleSelectItems}
