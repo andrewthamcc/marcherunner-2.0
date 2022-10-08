@@ -19,7 +19,7 @@ app.use(
 )
 
 app.use('/item', restAuth, itemRouter)
-app.get('/', (_, res) => {
+app.get('/test', (_, res) => {
   res.status(200).send('Hello World 🌎')
 })
 
