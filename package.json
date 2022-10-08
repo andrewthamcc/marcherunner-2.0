@@ -2,7 +2,6 @@
   "name": "marcherunner",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "backend": "npm start --prefix backend",
@@ -17,10 +16,9 @@
     "build:frontend": "cd frontend && CI=false npm run build",
     "test:backend:ci": "cd backend && npm run test -- --ci",
     "test:frontend:ci": "cd frontend && npm run test -- --ci",
-    "heroku:build:backend": "cd backend && npm install && npm run build",
-    "heroku:build:frontend": "cd frontend && npm install && npm run build",
-    "heroku-postbuild": "npm run heroku:build:backend && npm run heroku:build:frontend",
-    "start": "cd backend && npm run:build"
+    "install": " NPM_CONFIG_PRODUCTION=false cd frontend && npm install --dev && cd ../backend && npm install --dev",
+    "build": "cd frontend && npm run build && cd ../backend && npm run build",
+    "start": "cd backend/dist && node index.js"
   },
   "repository": {
     "type": "git",

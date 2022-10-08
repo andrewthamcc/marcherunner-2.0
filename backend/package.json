@@ -2,13 +2,12 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "start": "nodemon --config nodemon.json src/index.ts",
     "prettier": "npx prettier --write src/",
     "test": "tsc --noEmit && jest -i",
-    "run:build": "node build/index.js",
-    "build": "tsc"
+    "build": "tsc --build"
   },
   "keywords": [],
   "author": "",

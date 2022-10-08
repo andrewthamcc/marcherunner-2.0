@@ -1,6 +1,6 @@
+import path from 'path'
 import express from 'express'
 import cors from 'cors'
-import path from 'path'
 import { itemRouter } from './routes'
 import { restAuth } from './middlewares'
 
@@ -19,16 +19,18 @@ app.use(
 )
 
 app.use('/item', restAuth, itemRouter)
-app.get('/', (_, res) => {
+app.get('/test', (_, res) => {
   res.status(200).send('Hello World 🌎')
 })
 
-if (env === "production") {
-  app.use(express.static("frontend/build"));
+if (env === 'production') {
+  const pathName = path.join(__dirname, '../../frontend/build')
 
-  app.get("*", (_, res) => {
-    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
-  });
+  app.use(express.static(pathName))
+
+  app.get('*', (_, res) => {
+    res.sendFile(pathName)
+  })
 }
 
 export default app
