@@ -1,12 +1,16 @@
 .shopping-list-controls {
   display: flex;
   align-items: center;
-
-  &-drop {
-    margin-left: auto;
-  }
+  justify-content: space-between;
 
   &-right {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &-delete {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -23,3 +27,28 @@
     }
   }
 }
+
+@media only screen and (max-width: 690px) {
+  .shopping-list-controls {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    justify-content: center;
+  
+    &-search-container{
+      display: flex;
+      flex: 1;
+      width: 100%;
+    }
+
+    &-search {
+      width: 100%;
+    }
+
+    &-right {
+      flex: 1;
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+}
+

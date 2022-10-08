@@ -87,55 +87,59 @@ export const ShoppingListControls: React.FC<Props> = ({
 
   return (
     <div className="shopping-list-controls">
-      <SearchInput
-        className="shopping-list-controls-search"
-        id="shopping-list-search"
-        name="shopping-list-search"
-        onSearch={handleSearch}
-        placeholder="Search"
-      />
-
-      {dropdownList && selectedCategory && (
-        <Dropdown
-          className="shopping-list-controls-drop"
-          list={dropdownList}
-          onChange={(category) => {
-            setSelectedCategory(category)
-
-            if (category.label === 'All') {
-              handleFilter(null)
-              return
-            }
-
-            handleFilter(category.value as string)
-          }}
-          value={selectedCategory}
+      <div className="shopping-list-controls-search-container">
+        <SearchInput
+          className="shopping-list-controls-search"
+          id="shopping-list-search"
+          name="shopping-list-search"
+          onSearch={handleSearch}
+          placeholder="Search"
         />
-      )}
+      </div>
 
       <div className="shopping-list-controls-right">
-        <IconButton
-          a11ylabel="delete purchased items"
-          className="shopping-list-controls-delete"
-          color="green"
-          disabled={!hasPurchasedItems}
-          icon="checkout cart"
-          onClick={() => {
-            setItemDeleteType('purchased')
-            openModal()
-          }}
-        />
-        <IconButton
-          a11ylabel="delete all items"
-          className="shopping-list-controls-delete"
-          color="red"
-          disabled={!hasItems}
-          icon="clear cart"
-          onClick={() => {
-            setItemDeleteType('all')
-            openModal()
-          }}
-        />
+        {dropdownList && selectedCategory && (
+          <Dropdown
+            className="shopping-list-controls-drop"
+            list={dropdownList}
+            onChange={(category) => {
+              setSelectedCategory(category)
+
+              if (category.label === 'All') {
+                handleFilter(null)
+                return
+              }
+
+              handleFilter(category.value as string)
+            }}
+            value={selectedCategory}
+          />
+        )}
+
+        <div className="shopping-list-controls-delete">
+          <IconButton
+            a11ylabel="delete purchased items"
+            className="shopping-list-controls-delete"
+            color="green"
+            disabled={!hasPurchasedItems}
+            icon="checkout cart"
+            onClick={() => {
+              setItemDeleteType('purchased')
+              openModal()
+            }}
+          />
+          <IconButton
+            a11ylabel="delete all items"
+            className="shopping-list-controls-delete"
+            color="red"
+            disabled={!hasItems}
+            icon="clear cart"
+            onClick={() => {
+              setItemDeleteType('all')
+              openModal()
+            }}
+          />
+        </div>
       </div>
 
       <ConfirmationModal
