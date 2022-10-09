@@ -41,8 +41,8 @@ export const Dropdown: React.FC<DropdownProps> = ({
   width = 275,
 }) => {
   const [isOpen, setIsOpen] = useState(false)
-  const [coords, setCoords] = useState<Coords>({ x: 0, y: 0, width: 0 }) // coordinates to open dropdown list
-  const dropdownRef = useRef<null | HTMLDivElement>(null) // ref of dropdown list for coordinates
+  const [coords, setCoords] = useState<Coords>({ x: 0, y: 0, width: 0 })
+  const dropdownRef = useRef<null | HTMLDivElement>(null)
   useOutsideClick(dropdownRef, isOpen, () => setIsOpen(false))
 
   useEffect(() => {
