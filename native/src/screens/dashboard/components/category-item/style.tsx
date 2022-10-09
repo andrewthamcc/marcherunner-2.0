@@ -19,6 +19,8 @@ export const CategoryItemText = styled(Text)<{ purchased: boolean }>`
   margin-left: ${spacing.xsmall};
   font-style: ${({ purchased }) => (purchased ? 'italic' : '')};
   text-decoration: ${({ purchased }) => (purchased ? 'line-through' : '')};
+  color: ${({ purchased }) =>
+    purchased ? colors['light-grey'] : colors.black};
 `
 
 export const SwipeContainer = styled(View)`
