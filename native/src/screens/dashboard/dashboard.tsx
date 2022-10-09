@@ -9,14 +9,21 @@ import {
   LoadingSpinner,
   Text,
 } from '../../components'
-import { Header, ShoppingList } from './components'
-import { Dashboard as DashboardData } from './types/Dashboard'
+import { CategoryList, Header, ShoppingList } from './components'
+import {
+  Dashboard as DashboardData,
+  Dashboard_groceryCategories,
+} from './types/Dashboard'
 import { useDeleteItems } from './use-delete-items'
 import { DASHBOARD_QUERY } from './query'
+import { ShoppingListControls } from './components/shoppling-list-controls/shopping-list-controls'
 
 export const Dashboard: React.FC = () => {
   const [isDeleting, setIsDeleting] = useState(false)
   const [selectedItems, setSelectedItems] = useState<string[]>([])
+  const [filteredCategory, setFilteredCategory] =
+    useState<Dashboard_groceryCategories | null>(null)
+
   const { data, loading, error } = useQuery<DashboardData>(DASHBOARD_QUERY)
   const { deleteItems, loading: deleteLoading } = useDeleteItems()
 
@@ -84,27 +91,55 @@ export const Dashboard: React.FC = () => {
     setSelectedItems((prev) => [itemId, ...prev])
   }
 
+  const handleFilter = (categoryId: string | null) => {
+    if (!categoryId) {
+      setFilteredCategory(null)
+      return
+    }
+
+    const category = data.groceryCategories.find((c) => c.id === categoryId)
+    setFilteredCategory(category as Dashboard_groceryCategories)
+  }
+
   return (
     <>
       <Header
         handleDeleteItems={handleDeleteItems}
-        hasItems={data.items.length > 0}
-        hasPurchasedItems={data.items.filter((i) => i.purchased).length > 0}
         isDeleteDisabled={!selectedItems.length}
         isDeleteLoading={deleteLoading}
         isDeleting={isDeleting}
       />
       <FullWidthHeight>
         <ScrollView>
-          <StatusBar backgroundColor={colors.green} />
-          <ShoppingList
+          <ShoppingListControls
             categories={data.groceryCategories}
-            handleSelectItems={handleSelectItems}
-            isDeleting={isDeleting}
-            items={data.items}
-            selectedItems={selectedItems}
-            showDelete={() => setIsDeleting(true)}
+            handleFilter={handleFilter}
+            hasItems={data.items.length > 0}
+            hasPurchasedItems={data.items.filter((i) => i.purchased).length > 0}
+            isFiltered={Boolean(filteredCategory)}
           />
+          <StatusBar backgroundColor={colors.green} />
+          {filteredCategory ? (
+            <CategoryList
+              category={filteredCategory}
+              handleSelectItems={handleSelectItems}
+              isDeleting={isDeleting}
+              items={data.items.filter(
+                (i) => i.categoryId === filteredCategory.id
+              )}
+              selectedItems={selectedItems}
+              showDelete={() => setIsDeleting(true)}
+            />
+          ) : (
+            <ShoppingList
+              categories={data.groceryCategories}
+              handleSelectItems={handleSelectItems}
+              isDeleting={isDeleting}
+              items={data.items}
+              selectedItems={selectedItems}
+              showDelete={() => setIsDeleting(true)}
+            />
+          )}
         </ScrollView>
       </FullWidthHeight>
     </>
