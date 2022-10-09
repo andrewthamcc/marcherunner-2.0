@@ -24,13 +24,8 @@ export const DeleteModalView = styled(View)`
   background-color: ${colors.white};
   border-radius: 18px;
   border: 1px solid ${colors['light-grey']};
-  margin: 50% ${spacing.xxlarge};
-  padding: ${spacing.large};
-
-  shadow-color: ${colors.black};
-  shadow-radius: 10px;
-  shadow-opacity: 1;
-  elevation: 100;
+  width: 80%;
+  padding: ${spacing.xxlarge} ${spacing.large};
 `
 
 export const DeleteModalControls = styled(View)`

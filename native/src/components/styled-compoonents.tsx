@@ -10,3 +10,10 @@ export const CenteredView = styled(View)`
   justify-content: center;
   align-items: center;
 `
+
+export const CenteredModal = styled(View)`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+`

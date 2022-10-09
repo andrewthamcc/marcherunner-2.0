@@ -5,6 +5,7 @@ import {
   Button,
   CategoryIcon,
   CategoryVariants,
+  CenteredModal,
   Dropdown,
   DropItem,
   IconButton,
@@ -145,31 +146,33 @@ export const ShoppingListControls: React.FC<Props> = ({
         transparent={true}
         visible={showDeleteModal}
       >
-        <DeleteModalView>
-          {loading ? (
-            <LoadingSpinner />
-          ) : (
-            <Text align="center">{`Delete ${itemDeleteType?.toUpperCase()} items?`}</Text>
-          )}
-          <DeleteModalControls>
-            <Button
-              color="orange"
-              label="Cancel"
-              onPress={() => {
-                setItemDeleteType(null)
-                setShowDeleteModal(false)
-              }}
-            />
-            <Button
-              color="green"
-              label="Confirm"
-              onPress={() => {
-                if (!itemDeleteType) return
-                handleDelete(itemDeleteType)
-              }}
-            />
-          </DeleteModalControls>
-        </DeleteModalView>
+        <CenteredModal>
+          <DeleteModalView>
+            {loading ? (
+              <LoadingSpinner />
+            ) : (
+              <Text align="center">{`Delete ${itemDeleteType?.toUpperCase()} items?`}</Text>
+            )}
+            <DeleteModalControls>
+              <Button
+                color="orange"
+                label="Cancel"
+                onPress={() => {
+                  setItemDeleteType(null)
+                  setShowDeleteModal(false)
+                }}
+              />
+              <Button
+                color="green"
+                label="Confirm"
+                onPress={() => {
+                  if (!itemDeleteType) return
+                  handleDelete(itemDeleteType)
+                }}
+              />
+            </DeleteModalControls>
+          </DeleteModalView>
+        </CenteredModal>
       </Modal>
     </>
   )
