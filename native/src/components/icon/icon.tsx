@@ -8,6 +8,7 @@ import {
   CartClear,
   Close,
   Gear,
+  Logout,
   Search,
   Trash,
   BaseIconProps,
@@ -19,6 +20,7 @@ export const ICON_TYPES = [
   'clear cart',
   'close',
   'gear',
+  'logout',
   'search',
   'trash',
 ] as const
@@ -30,6 +32,7 @@ const iconVariants: Record<IconVariants, React.FC<BaseIconProps>> = {
   'clear cart': CartClear,
   close: Close,
   gear: Gear,
+  logout: Logout,
   search: Search,
   trash: Trash,
 }

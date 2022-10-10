@@ -29,3 +29,12 @@ export const HeaderIcon = styled(View)`
   height: 40px;
   width: 40px;
 `
+
+export const Logout = styled(View)`
+  flex-direction: row;
+  align-items: center;
+`
+
+export const IconSpacing = styled(View)`
+  margin-right: ${spacing.xxsmall};
+`

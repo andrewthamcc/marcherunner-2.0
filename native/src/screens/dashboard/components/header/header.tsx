@@ -1,10 +1,14 @@
 import React from 'react'
-import { IconButton, LoadingSpinner } from '../../../../components'
+import { Pressable } from 'react-native'
+import { useAuth } from '../../../../auth/use-auth'
+import { Icon, IconButton, LoadingSpinner, Text } from '../../../../components'
 import {
   Header as StyledHeader,
   Centered,
   HeaderTitle,
   HeaderIcon,
+  Logout,
+  IconSpacing,
 } from './style'
 import { Runner } from './assets/runner'
 
@@ -21,6 +25,8 @@ export const Header: React.FC<Props> = ({
   isDeleteLoading,
   isDeleting,
 }) => {
+  const { logout } = useAuth()
+
   return (
     <StyledHeader>
       <Centered>
@@ -41,6 +47,18 @@ export const Header: React.FC<Props> = ({
           />
         ) : (
           isDeleteLoading && <LoadingSpinner />
+        )}
+        {!isDeleting && (
+          <Pressable onPress={logout}>
+            <Logout>
+              <IconSpacing>
+                <Icon color="white" height={20} icon="logout" width={20} />
+              </IconSpacing>
+              <Text color="white" variant="body-copy-xsmall">
+                Logout
+              </Text>
+            </Logout>
+          </Pressable>
         )}
       </Centered>
     </StyledHeader>
