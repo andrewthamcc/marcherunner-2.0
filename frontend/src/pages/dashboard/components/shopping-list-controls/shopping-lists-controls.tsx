@@ -65,18 +65,19 @@ export const ShoppingListControls: React.FC<Props> = ({
     const url = deleteType === 'all' ? DELETE_ALL : DELETE_PURCHASED
 
     try {
-      await restClient(url, 'POST')
+      const res = await restClient(url, 'POST')
 
-      client.cache.modify({
-        fields: {
-          items(prev: StoreObject[], { readField }) {
-            if (deleteType === 'all') return []
-            return prev.filter((i) => !readField('purchased', i))
+      if (res.status === 200) {
+        client.cache.modify({
+          fields: {
+            items(prev: StoreObject[], { readField }) {
+              if (deleteType === 'all') return []
+              return prev.filter((i) => !readField('purchased', i))
+            },
           },
-        },
-      })
-
-      closeModal()
+        })
+        closeModal()
+      }
     } catch (error) {
       toast(`Could not delete ${deleteType} items.`, { variant: 'error' })
       console.error(error)

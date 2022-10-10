@@ -5,6 +5,7 @@ import {
   Button,
   CategoryIcon,
   CategoryVariants,
+  CenteredModal,
   Dropdown,
   DropItem,
   IconButton,
@@ -20,6 +21,7 @@ import {
   IconSpacing,
   DeleteModalView,
   DeleteModalControls,
+  ClearFilterIcon,
 } from './style'
 
 interface Props {
@@ -67,18 +69,19 @@ export const ShoppingListControls: React.FC<Props> = ({
     const url = deleteType === 'all' ? DELETE_ALL : DELETE_PURCHASED
 
     try {
-      await restClient(url, 'POST')
+      const res = await restClient(url, 'POST')
 
-      client.cache.modify({
-        fields: {
-          items(prev: StoreObject[], { readField }) {
-            if (deleteType === 'all') return []
-            return prev.filter((i) => !readField('purchased', i))
+      if (res.status === 200) {
+        client.cache.modify({
+          fields: {
+            items(prev: StoreObject[], { readField }) {
+              if (deleteType === 'all') return []
+              return prev.filter((i) => !readField('purchased', i))
+            },
           },
-        },
-      })
-
-      setShowDeleteModal(false)
+        })
+        setShowDeleteModal(false)
+      }
     } catch (error) {
       console.error(error)
     } finally {
@@ -106,7 +109,20 @@ export const ShoppingListControls: React.FC<Props> = ({
           />
         )}
 
-        {!isFiltered && (
+        {isFiltered ? (
+          <ClearFilterIcon>
+            <IconButton
+              color="red"
+              height={30}
+              icon="close"
+              onPress={() => {
+                handleFilter(null)
+                setSelectedCategory(dropdownList && dropdownList[0])
+              }}
+              width={30}
+            />
+          </ClearFilterIcon>
+        ) : (
           <DeleteIcons>
             <IconButton
               accessibilityLabel="delete purchased items"
@@ -138,6 +154,7 @@ export const ShoppingListControls: React.FC<Props> = ({
       </ShoppingListContainer>
 
       <Modal
+        animationType="fade"
         onRequestClose={() => {
           setItemDeleteType(null)
           setShowDeleteModal(false)
@@ -145,31 +162,33 @@ export const ShoppingListControls: React.FC<Props> = ({
         transparent={true}
         visible={showDeleteModal}
       >
-        <DeleteModalView>
-          {loading ? (
-            <LoadingSpinner />
-          ) : (
-            <Text align="center">{`Delete ${itemDeleteType?.toUpperCase()} items?`}</Text>
-          )}
-          <DeleteModalControls>
-            <Button
-              color="orange"
-              label="Cancel"
-              onPress={() => {
-                setItemDeleteType(null)
-                setShowDeleteModal(false)
-              }}
-            />
-            <Button
-              color="green"
-              label="Confirm"
-              onPress={() => {
-                if (!itemDeleteType) return
-                handleDelete(itemDeleteType)
-              }}
-            />
-          </DeleteModalControls>
-        </DeleteModalView>
+        <CenteredModal>
+          <DeleteModalView>
+            {loading ? (
+              <LoadingSpinner />
+            ) : (
+              <Text align="center">{`Delete ${itemDeleteType?.toUpperCase()} items?`}</Text>
+            )}
+            <DeleteModalControls>
+              <Button
+                color="orange"
+                label="Cancel"
+                onPress={() => {
+                  setItemDeleteType(null)
+                  setShowDeleteModal(false)
+                }}
+              />
+              <Button
+                color="green"
+                label="Confirm"
+                onPress={() => {
+                  if (!itemDeleteType) return
+                  handleDelete(itemDeleteType)
+                }}
+              />
+            </DeleteModalControls>
+          </DeleteModalView>
+        </CenteredModal>
       </Modal>
     </>
   )

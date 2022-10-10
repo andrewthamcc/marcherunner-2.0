@@ -1,12 +1,11 @@
 import React, { createContext, useEffect, useState } from 'react'
 import { Platform } from 'react-native'
 import * as AuthSession from 'expo-auth-session'
-import { openAuthSessionAsync } from 'expo-web-browser'
+import * as WebBrowser from 'expo-web-browser'
 import {
   REACT_APP_AUTH0_DOMAIN,
   REACT_APP_AUTH0_CLIENT_ID,
   REACT_APP_AUTH0_AUDIENCE,
-  // eslint-disable-next-line import/no-unresolved
 } from '@env'
 import { bearerToken } from '../apollo/store'
 
@@ -68,15 +67,15 @@ export const AuthProvider: React.FC = ({ children }) => {
 
   const login = () => promptAsync({ useProxy })
 
-  // todo - this is not working as intended
   const logout = async () => {
     try {
-      await openAuthSessionAsync(
-        `${authorizationEndpoint}?response_type=id_token&client_id=${REACT_APP_AUTH0_CLIENT_ID}&returnTo=${redirectUri}`,
+      await WebBrowser.openAuthSessionAsync(
+        `https://${REACT_APP_AUTH0_DOMAIN}/v2/logout?client_id=${REACT_APP_AUTH0_CLIENT_ID}&returnTo=${redirectUri}`,
         'redirectUrl'
       )
 
       setIsAuthenticated(false)
+      setToken(null)
     } catch (error) {
       console.error(error)
     }
