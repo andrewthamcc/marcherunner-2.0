@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, RouteProps } from 'react-router-dom'
+import { RouteProps } from 'react-router-dom'
 import { withAuthenticationRequired } from '@auth0/auth0-react'
 
 interface Props extends RouteProps {
@@ -7,7 +7,7 @@ interface Props extends RouteProps {
 }
 
 export const PrivateRoute: React.FC<Props> = ({ component, ...props }) => {
-  return (
-    <Route component={withAuthenticationRequired(component, {})} {...props} />
-  )
+  const Protected = withAuthenticationRequired(component)
+
+  return <Protected {...props} />
 }
