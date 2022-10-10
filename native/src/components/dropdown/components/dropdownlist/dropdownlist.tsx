@@ -20,7 +20,7 @@ export const DropdownList: React.FC<Props> = ({
 }) => {
   return (
     <Modal
-      animationType="none"
+      animationType="fade"
       onRequestClose={closeDropdown}
       transparent
       visible={isOpen}

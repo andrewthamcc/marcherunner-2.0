@@ -35,3 +35,7 @@ export const DeleteModalControls = styled(View)`
   margin-top: ${spacing.xxlarge};
   background-color: ${colors.white};
 `
+
+export const ClearFilterIcon = styled(View)`
+  margin-left: ${spacing.xlarge};
+`

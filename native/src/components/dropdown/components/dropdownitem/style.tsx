@@ -5,9 +5,9 @@ import { spacing } from '../../../../theme'
 export const Item = styled(View)`
   flex-direction: row;
   align-items: center;
-  padding: ${spacing.xsmall} ${spacing.small};
+  padding: ${spacing.small} 0;
 `
 
 export const ItemIcon = styled(View)`
-  margin-right: ${spacing.medium};
+  margin-right: ${spacing.xsmall};
 `

@@ -21,6 +21,7 @@ import {
   IconSpacing,
   DeleteModalView,
   DeleteModalControls,
+  ClearFilterIcon,
 } from './style'
 
 interface Props {
@@ -108,7 +109,20 @@ export const ShoppingListControls: React.FC<Props> = ({
           />
         )}
 
-        {!isFiltered && (
+        {isFiltered ? (
+          <ClearFilterIcon>
+            <IconButton
+              color="red"
+              height={30}
+              icon="close"
+              onPress={() => {
+                handleFilter(null)
+                setSelectedCategory(dropdownList && dropdownList[0])
+              }}
+              width={30}
+            />
+          </ClearFilterIcon>
+        ) : (
           <DeleteIcons>
             <IconButton
               accessibilityLabel="delete purchased items"
@@ -140,6 +154,7 @@ export const ShoppingListControls: React.FC<Props> = ({
       </ShoppingListContainer>
 
       <Modal
+        animationType="fade"
         onRequestClose={() => {
           setItemDeleteType(null)
           setShowDeleteModal(false)

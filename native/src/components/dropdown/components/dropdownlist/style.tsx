@@ -6,6 +6,6 @@ export const DropdownView = styled(View)`
   background-color: ${colors.white};
   border-radius: 18px;
   border: 1px solid ${colors['light-grey']};
-  padding: ${spacing.large};
+  padding: ${spacing.medium};
   height: 80%;
 `
