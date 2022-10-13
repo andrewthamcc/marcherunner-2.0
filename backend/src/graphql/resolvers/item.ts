@@ -16,13 +16,6 @@ export default {
     ) => {
       return await dataSources.itemAPI.getItems(user)
     },
-    item: async (
-      _parent: void,
-      { id }: { id: string },
-      { dataSources }: Context
-    ) => {
-      return await dataSources.itemAPI.getItem(id)
-    },
   },
   Mutation: {
     createItem: async (

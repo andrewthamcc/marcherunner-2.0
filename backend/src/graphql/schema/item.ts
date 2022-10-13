@@ -15,7 +15,6 @@ export default gql`
 
   type Query {
     items: [Item!]!
-    item(id: ID!): Item!
   }
 
   input CreateItemData {
