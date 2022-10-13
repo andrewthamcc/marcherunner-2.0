@@ -17,6 +17,8 @@ const prisma = new PrismaClient({
   },
 })
 
-export const prismaClient: { prisma: PrismaClient } = {
+const prismaClient: { prisma: PrismaClient } = {
   prisma,
 }
+
+export default prismaClient

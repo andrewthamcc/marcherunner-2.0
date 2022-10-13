@@ -24,20 +24,9 @@ export class ItemAPI extends DataSource {
    * @returns Promise<items[]>
    */
   async getItems({ id, permissions }: User) {
-    await dataSources?.userAPI.hasPermisson(permissions, 'read:items')
+    dataSources?.userAPI.hasPermisson(permissions, 'read:items')
 
     return this.store.item.findMany({ where: { userId: id } })
-  }
-
-  /**
-   *
-   * @param userId - string
-   * @returns Promise<item>
-   */
-  async getItem(itemId: string) {
-    // await dataSources?.userAPI.hasPermisson('read:item')
-
-    return this.store.item.findMany({ where: { id: itemId } })
   }
 
   /**
@@ -46,7 +35,7 @@ export class ItemAPI extends DataSource {
    * @returns Promise<item>
    */
   async createItem(item: Item, userPermissions: Permission[]) {
-    await dataSources?.userAPI.hasPermisson(userPermissions, 'create:item')
+    dataSources?.userAPI.hasPermisson(userPermissions, 'create:item')
 
     const { name, categoryId, userId } = item
 
@@ -65,7 +54,7 @@ export class ItemAPI extends DataSource {
    * @returns Promise<item>
    */
   async updateItem(itemId: string, userPermissions: Permission[]) {
-    await dataSources?.userAPI.hasPermisson(userPermissions, 'update:item')
+    dataSources?.userAPI.hasPermisson(userPermissions, 'update:item')
 
     const item = await this.store.item.findUnique({ where: { id: itemId } })
     if (!item) throw new Error('That item could not be found.')
@@ -86,7 +75,7 @@ export class ItemAPI extends DataSource {
    * @returns Promise<item>
    */
   async deleteItem(itemId: string, userPermissions: Permission[]) {
-    await dataSources?.userAPI.hasPermisson(userPermissions, 'delete:item')
+    dataSources?.userAPI.hasPermisson(userPermissions, 'delete:item')
 
     const item = this.store.item.findUnique({ where: { id: itemId } })
     if (!item) throw new Error('That item could not be found.')
@@ -104,7 +93,7 @@ export class ItemAPI extends DataSource {
    * @returns Promise
    */
   async deleteItems(items: string[], userPermissions: Permission[]) {
-    await dataSources?.userAPI.hasPermisson(userPermissions, 'delete:items')
+    dataSources?.userAPI.hasPermisson(userPermissions, 'delete:items')
 
     return this.store.item.deleteMany({
       where: {
@@ -121,7 +110,7 @@ export class ItemAPI extends DataSource {
    * @returns Promise
    */
   async deleteAllItems({ id, permissions }: User) {
-    await dataSources?.userAPI.hasPermisson(permissions, 'delete:allitems')
+    dataSources?.userAPI.hasPermisson(permissions, 'delete:allitems')
 
     return this.store.item.deleteMany({ where: { userId: id } })
   }
@@ -132,7 +121,7 @@ export class ItemAPI extends DataSource {
    * @returns Promise
    */
   async deletePurchasedItems({ id, permissions }: User) {
-    await dataSources?.userAPI.hasPermisson(permissions, 'delete:purchased')
+    dataSources?.userAPI.hasPermisson(permissions, 'delete:purchased')
 
     return this.store.item.deleteMany({
       where: { userId: id, purchased: true },

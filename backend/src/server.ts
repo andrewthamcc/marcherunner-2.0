@@ -1,6 +1,6 @@
 import { ApolloServer, ExpressContext } from 'apollo-server-express'
 import { schema } from './graphql'
-import { prismaClient } from './prismaClient'
+import prismaClient from './prismaClient'
 import { isTokenValid } from './auth'
 import { dataSourcesInit } from './datasources'
 import { Auth0TokenResponse } from './middlewares'

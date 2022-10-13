@@ -2,6 +2,8 @@ import { PrismaClient } from '@prisma/client'
 import { DataSource } from 'apollo-datasource'
 import { Permission } from '../../auth'
 
+export const PERMISSION_ERROR = 'User does not have the correct permissions.'
+
 export class UserAPI extends DataSource {
   private store: PrismaClient
 
@@ -12,13 +14,13 @@ export class UserAPI extends DataSource {
 
   /**
    *
-   * @returns Promise<boolean>
+   * @returns boolean | error
    */
-  async hasPermisson(userPermissions: Permission[], permission: Permission) {
+  hasPermisson(userPermissions: Permission[], permission: Permission) {
     if (userPermissions.includes(permission)) {
       return true
     }
 
-    throw new Error('User does not have the correct permissions.')
+    throw new Error(PERMISSION_ERROR)
   }
 }
