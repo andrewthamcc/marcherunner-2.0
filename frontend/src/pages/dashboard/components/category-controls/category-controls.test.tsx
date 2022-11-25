@@ -3,9 +3,9 @@ import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { act } from 'react-dom/test-utils'
 import { MockedProvider, MockedResponse } from '@apollo/client/testing'
 import { createCache } from '../../../../apollo'
-import { ToastProvider } from '../../../../components'
+import { CategoryVariants, ToastProvider } from '../../../../components'
 import { BAKERY_ID, USER_ID } from '../../../../__mocks__/constants'
-import { CategoryTitles, getCategoryTitle } from '../../../../utils'
+import { getCategoryTitle } from '../../../../utils'
 import { CategoryControls } from './category-controls'
 import { CREATE_ITEM } from './use-create-item'
 
@@ -58,7 +58,7 @@ describe('Category Controls', () => {
     render(customRender())
     expect(
       screen.getByText(
-        getCategoryTitle(bakeryCategory.categoryName as CategoryTitles)
+        getCategoryTitle(bakeryCategory.categoryName as CategoryVariants)
       )
     ).toBeInTheDocument()
   })

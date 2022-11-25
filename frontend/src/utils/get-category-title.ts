@@ -1,8 +1,6 @@
 import { CategoryVariants } from '../components'
 
-export type CategoryTitles = Exclude<CategoryVariants, 'list'>
-
-const categoryTiles: Record<CategoryTitles, string> = {
+const categoryTiles: Record<CategoryVariants, string> = {
   all: 'All',
   bakery: 'Bakery',
   beverage: 'Beverages',
@@ -10,6 +8,7 @@ const categoryTiles: Record<CategoryTitles, string> = {
   dry: 'Dry & Canned Goods',
   frozen: 'Frozen Foods',
   household: 'Household Items',
+  list: 'List',
   meat: 'Meat',
   pharmacy: 'Pharmacy & Personal Items',
   prepared: 'Deli & Prepared Foods',
@@ -18,5 +17,5 @@ const categoryTiles: Record<CategoryTitles, string> = {
   snacks: 'Snacks',
 }
 
-export const getCategoryTitle = (category: CategoryTitles) =>
+export const getCategoryTitle = (category: CategoryVariants) =>
   categoryTiles[category]

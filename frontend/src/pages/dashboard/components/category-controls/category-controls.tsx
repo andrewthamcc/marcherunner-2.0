@@ -10,7 +10,7 @@ import {
   Text,
 } from '../../../../components'
 import { Dashboard_groceryCategories } from '../../types/Dashboard'
-import { CategoryTitles, getCategoryTitle } from '../../../../utils'
+import { getCategoryTitle } from '../../../../utils'
 import { useCreateItem } from './use-create-item'
 import './style.scss'
 
@@ -52,7 +52,7 @@ export const CategoryControls: React.FC<Props> = ({ category }) => {
             icon={category.categoryName as CategoryVariants}
           />
           <Text className="category-controls-title" variant="body-copy-large">
-            {getCategoryTitle(category.categoryName as CategoryTitles)}
+            {getCategoryTitle(category.categoryName as CategoryVariants)}
           </Text>
           <Symbol symbol="add orange" />
         </Button>

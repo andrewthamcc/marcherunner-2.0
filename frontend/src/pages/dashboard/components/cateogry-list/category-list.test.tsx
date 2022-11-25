@@ -1,11 +1,11 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { MockedProvider } from '@apollo/client/testing'
-import { ToastProvider } from '../../../../components'
+import { CategoryVariants, ToastProvider } from '../../../../components'
 import { Dashboard_items } from '../../types/Dashboard'
 import { BAKERY_ID } from '../../../../__mocks__/constants'
 import { itemsMock } from '../../../../__mocks__'
-import { CategoryTitles, getCategoryTitle } from '../../../../utils'
+import { getCategoryTitle } from '../../../../utils'
 import { CategoryList } from './category-list'
 
 describe('Category List', () => {
@@ -33,7 +33,7 @@ describe('Category List', () => {
     render(customRender())
     expect(
       screen.getByText(
-        getCategoryTitle(bakeryCategory.categoryName as CategoryTitles)
+        getCategoryTitle(bakeryCategory.categoryName as CategoryVariants)
       )
     ).toBeInTheDocument
   })

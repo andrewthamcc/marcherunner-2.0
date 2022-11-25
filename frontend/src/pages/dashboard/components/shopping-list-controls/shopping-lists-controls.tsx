@@ -15,7 +15,7 @@ import {
 import { useModal } from '../../../../hooks'
 import { restClient } from '../../../../rest-client'
 import { Dashboard_groceryCategories } from '../../types/Dashboard'
-import { CategoryTitles, getCategoryTitle } from '../../../../utils'
+import { getCategoryTitle } from '../../../../utils'
 import './style.scss'
 
 interface Props {
@@ -52,7 +52,7 @@ export const ShoppingListControls: React.FC<Props> = ({
     const dropdownList = categories
       .map((c) => ({
         icon: <CategoryIcon icon={c.categoryName as CategoryVariants} />,
-        label: getCategoryTitle(c.categoryName as CategoryTitles),
+        label: getCategoryTitle(c.categoryName as CategoryVariants),
         value: c.id,
       }))
       .sort((a, b) => a.label.localeCompare(b.label))
