@@ -1,20 +1,13 @@
 import React from 'react'
 import { render, screen, fireEvent } from '@testing-library/react'
-import { Button } from './button'
+import { Button, ButtonProps } from './button'
 
 describe('button component', () => {
   const clickfn = jest.fn()
-  const customRender = (disabled = false, className = '') => (
-    <Button
-      className={className}
-      disabled={disabled}
-      label="my button"
-      onClick={clickfn}
-    />
-  )
+  const customRender = (props: Partial<ButtonProps>) => <Button {...props} />
 
   test('renders a button', () => {
-    render(customRender())
+    render(customRender({ label: 'my button' }))
     const button = screen.getByRole('button', { name: /my button/i })
     fireEvent.click(button)
 
