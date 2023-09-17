@@ -35,4 +35,4 @@ A simple listing application where users are able to login and create a list of 
 - Docker utilized for local development database instance
 
 ### Deployment
-- Heroku
+- Heroku (no longer deployed the latest incarnation of this project utilizes Remix and is deployed via Vercel)
